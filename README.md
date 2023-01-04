@@ -1,7 +1,10 @@
 # GoPlus API SDK for Go
 
 ### Installation
-> go get github.com/GoPlusSecurity/goplus-sdk-go
+
+```
+go get github.com/GoPlusSecurity/goplus-sdk-go
+```
 
 ### Get AccessToken
 ```go
