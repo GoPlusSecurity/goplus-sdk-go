@@ -1,4 +1,4 @@
-package supported_chains
+package chain
 
 import (
 	"encoding/json"
@@ -12,13 +12,13 @@ type Config struct {
 	Timeout int
 }
 
-type SupportedChains struct {
+type Chain struct {
 	AccessToken string
 	Config      *Config
 }
 
-func NewSupportedChains(accessToken string, config *Config) *SupportedChains {
-	return &SupportedChains{
+func NewChain(accessToken string, config *Config) *Chain {
+	return &Chain{
 		AccessToken: accessToken,
 		Config:      config,
 	}
@@ -30,7 +30,7 @@ type Result struct {
 	Result  []map[string]string `json:"result"`
 }
 
-func (s *SupportedChains) Run(name string) (*Result, error) {
+func (s *Chain) Run(name string) (*Result, error) {
 
 	url := conf.Domain + "/api/v1/supported_chains"
 

@@ -29,8 +29,8 @@ accessToken := data.Result.AccessToken
 
 ```go
 accessToken := ""
-supportedChains := NewSupportedChains(accessToken, nil)
-data, err := supportedChains.Run("")
+chain := NewChain(accessToken, nil)
+data, err := chain.Run("")
 
 if err != nil {
     panic(err)
