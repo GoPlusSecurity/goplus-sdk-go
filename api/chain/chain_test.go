@@ -1,6 +1,7 @@
 package chain
 
 import (
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
 )
 
@@ -13,7 +14,7 @@ func TestChain_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }

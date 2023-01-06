@@ -1,6 +1,7 @@
 package phishing_site
 
 import (
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
 )
 
@@ -15,7 +16,7 @@ func TestPhishingSiteDetection_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }

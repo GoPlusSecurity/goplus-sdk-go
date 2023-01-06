@@ -1,6 +1,9 @@
 package token
 
-import "testing"
+import (
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
+	"testing"
+)
 
 func TestTokenSecurity_Run(t *testing.T) {
 	tokenSecurity := NewTokenSecurity("", nil)
@@ -10,7 +13,7 @@ func TestTokenSecurity_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }

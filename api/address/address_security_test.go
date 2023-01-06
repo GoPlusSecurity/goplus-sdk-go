@@ -1,6 +1,9 @@
 package address
 
-import "testing"
+import (
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
+	"testing"
+)
 
 func TestAddressSecurity_Run(t *testing.T) {
 	accessToken := ""
@@ -10,7 +13,7 @@ func TestAddressSecurity_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }

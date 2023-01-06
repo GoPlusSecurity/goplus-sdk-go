@@ -1,6 +1,9 @@
 package approval
 
-import "testing"
+import (
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
+	"testing"
+)
 
 func TestApprovalSecurityV2_Token(t *testing.T) {
 	accessToken := ""
@@ -11,7 +14,7 @@ func TestApprovalSecurityV2_Token(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }
@@ -26,7 +29,7 @@ func TestApprovalSecurityV2_ERC721NFT(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }
@@ -41,7 +44,7 @@ func TestApprovalSecurityV2_ERC1155NFT(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != 1 {
+	if data.Code != errorcode.SUCCESS {
 		t.Errorf(data.Message)
 	}
 }
