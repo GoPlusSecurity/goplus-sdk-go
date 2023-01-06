@@ -18,7 +18,7 @@ if err != nil {
     panic(err.Error())
 }
 
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -35,7 +35,7 @@ data, err := chain.Run("")
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -46,14 +46,16 @@ if data.Code != 1 {
 ```go
 
 accessToken := ""
-tokenSecurity := token.NewTokenSecurity(accessToken, nil)
+tokenSecurity := token.NewTokenSecurity(accessToken, &Config{
+    Timeout: 10, // you can set timeout seconds
+})
 chainId := "1"
 contractAddresses := []string{"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"}
 data, err := tokenSecurity.Run(chainId, contractAddresses)
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 value, ok := data.Result["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"]
@@ -74,7 +76,7 @@ data, err := addressSecurity.Run("", "0xc8b759860149542a98a3eb57c14aadf59d6d89b9
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -93,7 +95,7 @@ if err != nil {
     panic(err)
 }
 
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS && data.Code != errorcode.DATA_PENDING_SYNC {
     panic(data.Message)
 }
 
@@ -114,7 +116,7 @@ data, err := approvalSecurityV2.Token("56", "0xd018e2b543a2669410537f96293590138
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -131,7 +133,7 @@ data, err := approvalSecurityV2.ERC721NFT("1", "0xd95dbdab08a9fed2d71ac9c3028aac
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -148,7 +150,7 @@ data, err := approvalSecurityV2.ERC1155NFT("56", "0xb0dccbb9c4a65a94a41a0165aaea
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -167,7 +169,7 @@ data, err := signatureDataDecode.Run(chainId, contractAddress, inputData)
 if err != nil {
     panic(err)
 }
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -187,7 +189,7 @@ if err != nil {
     panic(err)
 }
 
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS && data.Code != errorcode.DATA_PENDING_SYNC {
     panic(data.Message)
 }
 
@@ -206,7 +208,7 @@ if err != nil {
     panic(err)
 }
 
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
@@ -225,7 +227,7 @@ if err != nil {
     panic(err)
 }
 
-if data.Code != 1 {
+if data.Code != errorcode.SUCCESS {
     panic(data.Message)
 }
 
