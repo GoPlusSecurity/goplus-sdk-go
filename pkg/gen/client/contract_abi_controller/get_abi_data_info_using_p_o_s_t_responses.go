@@ -53,6 +53,7 @@ func (o *GetAbiDataInfoUsingPOSTReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +65,7 @@ func NewGetAbiDataInfoUsingPOSTOK() *GetAbiDataInfoUsingPOSTOK {
 }
 
 /*
-GetAbiDataInfoUsingPOSTOK describes a response with status code 200, with default header values.
+GetAbiDataInfoUsingPOSTOK handles this case with default header values.
 
 OK
 */
@@ -75,6 +76,7 @@ type GetAbiDataInfoUsingPOSTOK struct {
 func (o *GetAbiDataInfoUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /api/v1/abi/input_decode][%d] getAbiDataInfoUsingPOSTOK  %+v", 200, o.Payload)
 }
+
 func (o *GetAbiDataInfoUsingPOSTOK) GetPayload() *models.ResponseWrapperParseAbiDataResponse {
 	return o.Payload
 }
@@ -97,7 +99,7 @@ func NewGetAbiDataInfoUsingPOSTCreated() *GetAbiDataInfoUsingPOSTCreated {
 }
 
 /*
-GetAbiDataInfoUsingPOSTCreated describes a response with status code 201, with default header values.
+GetAbiDataInfoUsingPOSTCreated handles this case with default header values.
 
 Created
 */
@@ -119,7 +121,7 @@ func NewGetAbiDataInfoUsingPOSTUnauthorized() *GetAbiDataInfoUsingPOSTUnauthoriz
 }
 
 /*
-GetAbiDataInfoUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+GetAbiDataInfoUsingPOSTUnauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -141,7 +143,7 @@ func NewGetAbiDataInfoUsingPOSTForbidden() *GetAbiDataInfoUsingPOSTForbidden {
 }
 
 /*
-GetAbiDataInfoUsingPOSTForbidden describes a response with status code 403, with default header values.
+GetAbiDataInfoUsingPOSTForbidden handles this case with default header values.
 
 Forbidden
 */
@@ -163,7 +165,7 @@ func NewGetAbiDataInfoUsingPOSTNotFound() *GetAbiDataInfoUsingPOSTNotFound {
 }
 
 /*
-GetAbiDataInfoUsingPOSTNotFound describes a response with status code 404, with default header values.
+GetAbiDataInfoUsingPOSTNotFound handles this case with default header values.
 
 Not Found
 */

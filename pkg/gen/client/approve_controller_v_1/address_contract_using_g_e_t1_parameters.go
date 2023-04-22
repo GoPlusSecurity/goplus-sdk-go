@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewAddressContractUsingGET1Params creates a new AddressContractUsingGET1Params object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewAddressContractUsingGET1Params creates a new AddressContractUsingGET1Params object
+// with the default values initialized.
 func NewAddressContractUsingGET1Params() *AddressContractUsingGET1Params {
+	var ()
 	return &AddressContractUsingGET1Params{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAddressContractUsingGET1ParamsWithTimeout creates a new AddressContractUsingGET1Params object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewAddressContractUsingGET1ParamsWithTimeout(timeout time.Duration) *AddressContractUsingGET1Params {
+	var ()
 	return &AddressContractUsingGET1Params{
+
 		timeout: timeout,
 	}
 }
 
 // NewAddressContractUsingGET1ParamsWithContext creates a new AddressContractUsingGET1Params object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewAddressContractUsingGET1ParamsWithContext(ctx context.Context) *AddressContractUsingGET1Params {
+	var ()
 	return &AddressContractUsingGET1Params{
+
 		Context: ctx,
 	}
 }
 
 // NewAddressContractUsingGET1ParamsWithHTTPClient creates a new AddressContractUsingGET1Params object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewAddressContractUsingGET1ParamsWithHTTPClient(client *http.Client) *AddressContractUsingGET1Params {
+	var ()
 	return &AddressContractUsingGET1Params{
 		HTTPClient: client,
 	}
@@ -54,28 +57,22 @@ func NewAddressContractUsingGET1ParamsWithHTTPClient(client *http.Client) *Addre
 
 /*
 AddressContractUsingGET1Params contains all the parameters to send to the API endpoint
-
-	for the address contract using g e t 1 operation.
-
-	Typically these are written to a http.Request.
+for the address contract using g e t 1 operation typically these are written to a http.Request
 */
 type AddressContractUsingGET1Params struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*Address
+	  address
 
-	/* Address.
-
-	   address
 	*/
 	Address string
-
-	/* ChainID.
-
-	     The chain_id of the blockchain.
+	/*ChainID
+	  The chain_id of the blockchain.
 	"1" means Ethereum;
 	"10" means Optimism;
 	“25” means Cronos;
@@ -94,27 +91,13 @@ type AddressContractUsingGET1Params struct {
 	"59140" means Linea;
 	"1666600000" means Harmony;
 	"tron" means Tron.
+
 	*/
 	ChainID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the address contract using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressContractUsingGET1Params) WithDefaults() *AddressContractUsingGET1Params {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the address contract using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressContractUsingGET1Params) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the address contract using g e t 1 params
@@ -197,6 +180,7 @@ func (o *AddressContractUsingGET1Params) WriteToRequest(r runtime.ClientRequest,
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// path param address
@@ -208,17 +192,16 @@ func (o *AddressContractUsingGET1Params) WriteToRequest(r runtime.ClientRequest,
 
 		// query param chain_id
 		var qrChainID string
-
 		if o.ChainID != nil {
 			qrChainID = *o.ChainID
 		}
 		qChainID := qrChainID
 		if qChainID != "" {
-
 			if err := r.SetQueryParam("chain_id", qChainID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

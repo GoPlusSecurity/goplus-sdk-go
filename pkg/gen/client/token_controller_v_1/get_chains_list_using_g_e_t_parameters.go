@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetChainsListUsingGETParams creates a new GetChainsListUsingGETParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetChainsListUsingGETParams creates a new GetChainsListUsingGETParams object
+// with the default values initialized.
 func NewGetChainsListUsingGETParams() *GetChainsListUsingGETParams {
+	var ()
 	return &GetChainsListUsingGETParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetChainsListUsingGETParamsWithTimeout creates a new GetChainsListUsingGETParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetChainsListUsingGETParamsWithTimeout(timeout time.Duration) *GetChainsListUsingGETParams {
+	var ()
 	return &GetChainsListUsingGETParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetChainsListUsingGETParamsWithContext creates a new GetChainsListUsingGETParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetChainsListUsingGETParamsWithContext(ctx context.Context) *GetChainsListUsingGETParams {
+	var ()
 	return &GetChainsListUsingGETParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetChainsListUsingGETParamsWithHTTPClient creates a new GetChainsListUsingGETParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetChainsListUsingGETParamsWithHTTPClient(client *http.Client) *GetChainsListUsingGETParams {
+	var ()
 	return &GetChainsListUsingGETParams{
 		HTTPClient: client,
 	}
@@ -54,43 +57,24 @@ func NewGetChainsListUsingGETParamsWithHTTPClient(client *http.Client) *GetChain
 
 /*
 GetChainsListUsingGETParams contains all the parameters to send to the API endpoint
-
-	for the get chains list using g e t operation.
-
-	Typically these are written to a http.Request.
+for the get chains list using g e t operation typically these are written to a http.Request
 */
 type GetChainsListUsingGETParams struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*Name
+	  API name.
 
-	/* Name.
-
-	   API name.
 	*/
 	Name *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get chains list using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetChainsListUsingGETParams) WithDefaults() *GetChainsListUsingGETParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get chains list using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetChainsListUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get chains list using g e t params
@@ -162,23 +146,23 @@ func (o *GetChainsListUsingGETParams) WriteToRequest(r runtime.ClientRequest, re
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	if o.Name != nil {
 
 		// query param name
 		var qrName string
-
 		if o.Name != nil {
 			qrName = *o.Name
 		}
 		qName := qrName
 		if qName != "" {
-
 			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

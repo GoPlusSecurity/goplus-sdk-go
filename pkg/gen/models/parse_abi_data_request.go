@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -20,16 +18,13 @@ import (
 type ParseAbiDataRequest struct {
 
 	// chain_id
-	// Example: 56
 	// Required: true
 	ChainID *string `json:"chain_id"`
 
 	// contract_address
-	// Example: 0x55d398326f99059ff775485246999027b3197955
 	ContractAddress string `json:"contract_address,omitempty"`
 
 	// data
-	// Example: 0xa9059cbb00000000000000000000000055d398326f99059ff775485246999027b319795500000000000000000000000000000000000000000000000acc749097d9d00000
 	// Required: true
 	Data *string `json:"data"`
 
@@ -70,11 +65,6 @@ func (m *ParseAbiDataRequest) validateData(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this parse abi data request based on context it is used
-func (m *ParseAbiDataRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

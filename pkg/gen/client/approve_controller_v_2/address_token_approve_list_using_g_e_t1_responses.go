@@ -47,6 +47,7 @@ func (o *AddressTokenApproveListUsingGET1Reader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewAddressTokenApproveListUsingGET1OK() *AddressTokenApproveListUsingGET1OK
 }
 
 /*
-AddressTokenApproveListUsingGET1OK describes a response with status code 200, with default header values.
+AddressTokenApproveListUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type AddressTokenApproveListUsingGET1OK struct {
 func (o *AddressTokenApproveListUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v2/token_approval_security/{chainId}][%d] addressTokenApproveListUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *AddressTokenApproveListUsingGET1OK) GetPayload() *models.ResponseWrapperListApproveTokenOutListResponse {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewAddressTokenApproveListUsingGET1Unauthorized() *AddressTokenApproveListU
 }
 
 /*
-AddressTokenApproveListUsingGET1Unauthorized describes a response with status code 401, with default header values.
+AddressTokenApproveListUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewAddressTokenApproveListUsingGET1Forbidden() *AddressTokenApproveListUsin
 }
 
 /*
-AddressTokenApproveListUsingGET1Forbidden describes a response with status code 403, with default header values.
+AddressTokenApproveListUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewAddressTokenApproveListUsingGET1NotFound() *AddressTokenApproveListUsing
 }
 
 /*
-AddressTokenApproveListUsingGET1NotFound describes a response with status code 404, with default header values.
+AddressTokenApproveListUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

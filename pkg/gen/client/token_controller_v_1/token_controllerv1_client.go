@@ -25,14 +25,11 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetChainsListUsingGET(params *GetChainsListUsingGETParams, opts ...ClientOption) (*GetChainsListUsingGETOK, error)
+	GetChainsListUsingGET(params *GetChainsListUsingGETParams) (*GetChainsListUsingGETOK, error)
 
-	TokenSecurityUsingGET1(params *TokenSecurityUsingGET1Params, opts ...ClientOption) (*TokenSecurityUsingGET1OK, error)
+	TokenSecurityUsingGET1(params *TokenSecurityUsingGET1Params) (*TokenSecurityUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,12 +37,13 @@ type ClientService interface {
 /*
 GetChainsListUsingGET gets the list of chains supported by different functions
 */
-func (a *Client) GetChainsListUsingGET(params *GetChainsListUsingGETParams, opts ...ClientOption) (*GetChainsListUsingGETOK, error) {
+func (a *Client) GetChainsListUsingGET(params *GetChainsListUsingGETParams) (*GetChainsListUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetChainsListUsingGETParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getChainsListUsingGET",
 		Method:             "GET",
 		PathPattern:        "/api/v1/supported_chains",
@@ -56,12 +54,7 @@ func (a *Client) GetChainsListUsingGET(params *GetChainsListUsingGETParams, opts
 		Reader:             &GetChainsListUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -78,12 +71,13 @@ func (a *Client) GetChainsListUsingGET(params *GetChainsListUsingGETParams, opts
 /*
 TokenSecurityUsingGET1 gets token s security and risk data
 */
-func (a *Client) TokenSecurityUsingGET1(params *TokenSecurityUsingGET1Params, opts ...ClientOption) (*TokenSecurityUsingGET1OK, error) {
+func (a *Client) TokenSecurityUsingGET1(params *TokenSecurityUsingGET1Params) (*TokenSecurityUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewTokenSecurityUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "tokenSecurityUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v1/token_security/{chain_id}",
@@ -94,12 +88,7 @@ func (a *Client) TokenSecurityUsingGET1(params *TokenSecurityUsingGET1Params, op
 		Reader:             &TokenSecurityUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

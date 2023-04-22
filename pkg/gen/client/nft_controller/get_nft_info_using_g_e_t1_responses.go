@@ -47,6 +47,7 @@ func (o *GetNftInfoUsingGET1Reader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewGetNftInfoUsingGET1OK() *GetNftInfoUsingGET1OK {
 }
 
 /*
-GetNftInfoUsingGET1OK describes a response with status code 200, with default header values.
+GetNftInfoUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type GetNftInfoUsingGET1OK struct {
 func (o *GetNftInfoUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/nft_security/{chain_id}][%d] getNftInfoUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *GetNftInfoUsingGET1OK) GetPayload() *models.ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewGetNftInfoUsingGET1Unauthorized() *GetNftInfoUsingGET1Unauthorized {
 }
 
 /*
-GetNftInfoUsingGET1Unauthorized describes a response with status code 401, with default header values.
+GetNftInfoUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewGetNftInfoUsingGET1Forbidden() *GetNftInfoUsingGET1Forbidden {
 }
 
 /*
-GetNftInfoUsingGET1Forbidden describes a response with status code 403, with default header values.
+GetNftInfoUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewGetNftInfoUsingGET1NotFound() *GetNftInfoUsingGET1NotFound {
 }
 
 /*
-GetNftInfoUsingGET1NotFound describes a response with status code 404, with default header values.
+GetNftInfoUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

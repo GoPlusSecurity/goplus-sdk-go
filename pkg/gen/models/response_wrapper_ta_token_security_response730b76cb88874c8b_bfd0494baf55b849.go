@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -44,6 +43,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 }
 
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -52,38 +52,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 		if err := m.Result.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper ta token security response 730b76cb 8887 4c8b bfd0 494baf55b849 based on the context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Result != nil {
-		if err := m.Result.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
 			}
 			return err
 		}
@@ -134,6 +102,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) validateContractAddress(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ContractAddress) { // not required
 		return nil
 	}
@@ -142,38 +111,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 		if err := m.ContractAddress.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result" + "." + "{{contract_address}}")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "{{contract_address}}")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result based on the context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateContractAddress(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) contextValidateContractAddress(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContractAddress != nil {
-		if err := m.ContractAddress.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "{{contract_address}}")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "{{contract_address}}")
 			}
 			return err
 		}
@@ -495,6 +432,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateDex(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Dex) { // not required
 		return nil
 	}
@@ -508,8 +446,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 			if err := m.Dex[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "dex" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "dex" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -521,6 +457,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateHolders(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Holders) { // not required
 		return nil
 	}
@@ -534,8 +471,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 			if err := m.Holders[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "holders" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "holders" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -547,6 +482,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateLpHolders(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LpHolders) { // not required
 		return nil
 	}
@@ -560,90 +496,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 			if err := m.LpHolders[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "lp_holders" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "lp_holders" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address based on the context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateDex(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateHolders(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLpHolders(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) contextValidateDex(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Dex); i++ {
-
-		if m.Dex[i] != nil {
-			if err := m.Dex[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "dex" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "dex" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) contextValidateHolders(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Holders); i++ {
-
-		if m.Holders[i] != nil {
-			if err := m.Holders[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "holders" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "holders" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) contextValidateLpHolders(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.LpHolders); i++ {
-
-		if m.LpHolders[i] != nil {
-			if err := m.LpHolders[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "lp_holders" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "{{contract_address}}" + "." + "lp_holders" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -689,11 +541,6 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 
 // Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address dex items0
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address dex items0 based on context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -748,11 +595,6 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ContextValidate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address holders items0 based on context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
 // MarshalBinary interface implementation
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -801,11 +643,6 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 
 // Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address lp holders items0
 func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address lp holders items0 based on context it is used
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

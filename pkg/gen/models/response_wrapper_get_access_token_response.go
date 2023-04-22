@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -43,6 +41,7 @@ func (m *ResponseWrapperGetAccessTokenResponse) Validate(formats strfmt.Registry
 }
 
 func (m *ResponseWrapperGetAccessTokenResponse) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -51,38 +50,6 @@ func (m *ResponseWrapperGetAccessTokenResponse) validateResult(formats strfmt.Re
 		if err := m.Result.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper get access token response based on the context it is used
-func (m *ResponseWrapperGetAccessTokenResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperGetAccessTokenResponse) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Result != nil {
-		if err := m.Result.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
 			}
 			return err
 		}

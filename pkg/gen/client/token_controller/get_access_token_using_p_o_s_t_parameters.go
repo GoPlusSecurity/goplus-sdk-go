@@ -17,37 +17,40 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetAccessTokenUsingPOSTParams creates a new GetAccessTokenUsingPOSTParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetAccessTokenUsingPOSTParams creates a new GetAccessTokenUsingPOSTParams object
+// with the default values initialized.
 func NewGetAccessTokenUsingPOSTParams() *GetAccessTokenUsingPOSTParams {
+	var ()
 	return &GetAccessTokenUsingPOSTParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAccessTokenUsingPOSTParamsWithTimeout creates a new GetAccessTokenUsingPOSTParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetAccessTokenUsingPOSTParamsWithTimeout(timeout time.Duration) *GetAccessTokenUsingPOSTParams {
+	var ()
 	return &GetAccessTokenUsingPOSTParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetAccessTokenUsingPOSTParamsWithContext creates a new GetAccessTokenUsingPOSTParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetAccessTokenUsingPOSTParamsWithContext(ctx context.Context) *GetAccessTokenUsingPOSTParams {
+	var ()
 	return &GetAccessTokenUsingPOSTParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetAccessTokenUsingPOSTParamsWithHTTPClient creates a new GetAccessTokenUsingPOSTParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetAccessTokenUsingPOSTParamsWithHTTPClient(client *http.Client) *GetAccessTokenUsingPOSTParams {
+	var ()
 	return &GetAccessTokenUsingPOSTParams{
 		HTTPClient: client,
 	}
@@ -55,42 +58,20 @@ func NewGetAccessTokenUsingPOSTParamsWithHTTPClient(client *http.Client) *GetAcc
 
 /*
 GetAccessTokenUsingPOSTParams contains all the parameters to send to the API endpoint
-
-	for the get access token using p o s t operation.
-
-	Typically these are written to a http.Request.
+for the get access token using p o s t operation typically these are written to a http.Request
 */
 type GetAccessTokenUsingPOSTParams struct {
 
-	// AppKey.
+	/*AppKey*/
 	AppKey *string
-
-	// Sign.
+	/*Sign*/
 	Sign *string
-
-	// Time.
-	//
-	// Format: int64
+	/*Time*/
 	Time *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get access token using p o s t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAccessTokenUsingPOSTParams) WithDefaults() *GetAccessTokenUsingPOSTParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get access token using p o s t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAccessTokenUsingPOSTParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get access token using p o s t params
@@ -171,51 +152,48 @@ func (o *GetAccessTokenUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param app_key
 		var qrAppKey string
-
 		if o.AppKey != nil {
 			qrAppKey = *o.AppKey
 		}
 		qAppKey := qrAppKey
 		if qAppKey != "" {
-
 			if err := r.SetQueryParam("app_key", qAppKey); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Sign != nil {
 
 		// query param sign
 		var qrSign string
-
 		if o.Sign != nil {
 			qrSign = *o.Sign
 		}
 		qSign := qrSign
 		if qSign != "" {
-
 			if err := r.SetQueryParam("sign", qSign); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Time != nil {
 
 		// query param time
 		var qrTime int64
-
 		if o.Time != nil {
 			qrTime = *o.Time
 		}
 		qTime := swag.FormatInt64(qrTime)
 		if qTime != "" {
-
 			if err := r.SetQueryParam("time", qTime); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

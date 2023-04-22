@@ -25,12 +25,9 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PhishingSiteUsingGET(params *PhishingSiteUsingGETParams, opts ...ClientOption) (*PhishingSiteUsingGETOK, error)
+	PhishingSiteUsingGET(params *PhishingSiteUsingGETParams) (*PhishingSiteUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,12 +35,13 @@ type ClientService interface {
 /*
 PhishingSiteUsingGET checks if the the url is a phishing site
 */
-func (a *Client) PhishingSiteUsingGET(params *PhishingSiteUsingGETParams, opts ...ClientOption) (*PhishingSiteUsingGETOK, error) {
+func (a *Client) PhishingSiteUsingGET(params *PhishingSiteUsingGETParams) (*PhishingSiteUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPhishingSiteUsingGETParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "phishingSiteUsingGET",
 		Method:             "GET",
 		PathPattern:        "/api/v1/phishing_site",
@@ -54,12 +52,7 @@ func (a *Client) PhishingSiteUsingGET(params *PhishingSiteUsingGETParams, opts .
 		Reader:             &PhishingSiteUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

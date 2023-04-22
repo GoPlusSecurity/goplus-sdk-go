@@ -47,6 +47,7 @@ func (o *TokenSecurityUsingGET1Reader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewTokenSecurityUsingGET1OK() *TokenSecurityUsingGET1OK {
 }
 
 /*
-TokenSecurityUsingGET1OK describes a response with status code 200, with default header values.
+TokenSecurityUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type TokenSecurityUsingGET1OK struct {
 func (o *TokenSecurityUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/token_security/{chain_id}][%d] tokenSecurityUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *TokenSecurityUsingGET1OK) GetPayload() *models.ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewTokenSecurityUsingGET1Unauthorized() *TokenSecurityUsingGET1Unauthorized
 }
 
 /*
-TokenSecurityUsingGET1Unauthorized describes a response with status code 401, with default header values.
+TokenSecurityUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewTokenSecurityUsingGET1Forbidden() *TokenSecurityUsingGET1Forbidden {
 }
 
 /*
-TokenSecurityUsingGET1Forbidden describes a response with status code 403, with default header values.
+TokenSecurityUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewTokenSecurityUsingGET1NotFound() *TokenSecurityUsingGET1NotFound {
 }
 
 /*
-TokenSecurityUsingGET1NotFound describes a response with status code 404, with default header values.
+TokenSecurityUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

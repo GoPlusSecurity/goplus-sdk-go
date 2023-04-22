@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -48,6 +47,7 @@ func (m *ContractsSecurity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ContractsSecurity) validateContracts(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Contracts) { // not required
 		return nil
 	}
@@ -61,42 +61,6 @@ func (m *ContractsSecurity) validateContracts(formats strfmt.Registry) error {
 			if err := m.Contracts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("contracts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("contracts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this contracts security based on the context it is used
-func (m *ContractsSecurity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateContracts(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ContractsSecurity) contextValidateContracts(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Contracts); i++ {
-
-		if m.Contracts[i] != nil {
-			if err := m.Contracts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("contracts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("contracts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

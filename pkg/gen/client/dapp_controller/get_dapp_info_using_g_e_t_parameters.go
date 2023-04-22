@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetDappInfoUsingGETParams creates a new GetDappInfoUsingGETParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetDappInfoUsingGETParams creates a new GetDappInfoUsingGETParams object
+// with the default values initialized.
 func NewGetDappInfoUsingGETParams() *GetDappInfoUsingGETParams {
+	var ()
 	return &GetDappInfoUsingGETParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDappInfoUsingGETParamsWithTimeout creates a new GetDappInfoUsingGETParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetDappInfoUsingGETParamsWithTimeout(timeout time.Duration) *GetDappInfoUsingGETParams {
+	var ()
 	return &GetDappInfoUsingGETParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetDappInfoUsingGETParamsWithContext creates a new GetDappInfoUsingGETParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetDappInfoUsingGETParamsWithContext(ctx context.Context) *GetDappInfoUsingGETParams {
+	var ()
 	return &GetDappInfoUsingGETParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetDappInfoUsingGETParamsWithHTTPClient creates a new GetDappInfoUsingGETParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetDappInfoUsingGETParamsWithHTTPClient(client *http.Client) *GetDappInfoUsingGETParams {
+	var ()
 	return &GetDappInfoUsingGETParams{
 		HTTPClient: client,
 	}
@@ -54,43 +57,24 @@ func NewGetDappInfoUsingGETParamsWithHTTPClient(client *http.Client) *GetDappInf
 
 /*
 GetDappInfoUsingGETParams contains all the parameters to send to the API endpoint
-
-	for the get dapp info using g e t operation.
-
-	Typically these are written to a http.Request.
+for the get dapp info using g e t operation typically these are written to a http.Request
 */
 type GetDappInfoUsingGETParams struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*URL
+	  Url or domain
 
-	/* URL.
-
-	   Url or domain
 	*/
 	URL *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get dapp info using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetDappInfoUsingGETParams) WithDefaults() *GetDappInfoUsingGETParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get dapp info using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetDappInfoUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get dapp info using g e t params
@@ -162,23 +146,23 @@ func (o *GetDappInfoUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	if o.URL != nil {
 
 		// query param url
 		var qrURL string
-
 		if o.URL != nil {
 			qrURL = *o.URL
 		}
 		qURL := qrURL
 		if qURL != "" {
-
 			if err := r.SetQueryParam("url", qURL); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

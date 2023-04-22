@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -44,6 +43,7 @@ func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73) Validate
 }
 
 func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -57,42 +57,6 @@ func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73) validate
 			if err := m.Result[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper list JSON object 4e98b9e2 fbdb 4332 9976 a30066e02b73 based on the context it is used
-func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Result); i++ {
-
-		if m.Result[i] != nil {
-			if err := m.Result[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -135,11 +99,6 @@ type ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73ResultItems0 s
 
 // Validate validates this response wrapper list JSON object4e98b9e2 fbdb43329976 a30066e02b73 result items0
 func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73ResultItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper list JSON object4e98b9e2 fbdb43329976 a30066e02b73 result items0 based on context it is used
-func (m *ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73ResultItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

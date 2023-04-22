@@ -47,6 +47,7 @@ func (o *AddressNFT1155ApproveListUsingGET1Reader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewAddressNFT1155ApproveListUsingGET1OK() *AddressNFT1155ApproveListUsingGE
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1OK describes a response with status code 200, with default header values.
+AddressNFT1155ApproveListUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type AddressNFT1155ApproveListUsingGET1OK struct {
 func (o *AddressNFT1155ApproveListUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v2/nft1155_approval_security/{chainId}][%d] addressNFT1155ApproveListUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *AddressNFT1155ApproveListUsingGET1OK) GetPayload() *models.ResponseWrapperListApproveNFT1155ListResponse {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewAddressNFT1155ApproveListUsingGET1Unauthorized() *AddressNFT1155ApproveL
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1Unauthorized describes a response with status code 401, with default header values.
+AddressNFT1155ApproveListUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewAddressNFT1155ApproveListUsingGET1Forbidden() *AddressNFT1155ApproveList
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1Forbidden describes a response with status code 403, with default header values.
+AddressNFT1155ApproveListUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewAddressNFT1155ApproveListUsingGET1NotFound() *AddressNFT1155ApproveListU
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1NotFound describes a response with status code 404, with default header values.
+AddressNFT1155ApproveListUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

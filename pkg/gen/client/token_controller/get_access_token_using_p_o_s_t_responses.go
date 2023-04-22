@@ -53,6 +53,7 @@ func (o *GetAccessTokenUsingPOSTReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +65,7 @@ func NewGetAccessTokenUsingPOSTOK() *GetAccessTokenUsingPOSTOK {
 }
 
 /*
-GetAccessTokenUsingPOSTOK describes a response with status code 200, with default header values.
+GetAccessTokenUsingPOSTOK handles this case with default header values.
 
 OK
 */
@@ -75,6 +76,7 @@ type GetAccessTokenUsingPOSTOK struct {
 func (o *GetAccessTokenUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /api/v1/token][%d] getAccessTokenUsingPOSTOK  %+v", 200, o.Payload)
 }
+
 func (o *GetAccessTokenUsingPOSTOK) GetPayload() *models.ResponseWrapperGetAccessTokenResponse {
 	return o.Payload
 }
@@ -97,7 +99,7 @@ func NewGetAccessTokenUsingPOSTCreated() *GetAccessTokenUsingPOSTCreated {
 }
 
 /*
-GetAccessTokenUsingPOSTCreated describes a response with status code 201, with default header values.
+GetAccessTokenUsingPOSTCreated handles this case with default header values.
 
 Created
 */
@@ -119,7 +121,7 @@ func NewGetAccessTokenUsingPOSTUnauthorized() *GetAccessTokenUsingPOSTUnauthoriz
 }
 
 /*
-GetAccessTokenUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+GetAccessTokenUsingPOSTUnauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -141,7 +143,7 @@ func NewGetAccessTokenUsingPOSTForbidden() *GetAccessTokenUsingPOSTForbidden {
 }
 
 /*
-GetAccessTokenUsingPOSTForbidden describes a response with status code 403, with default header values.
+GetAccessTokenUsingPOSTForbidden handles this case with default header values.
 
 Forbidden
 */
@@ -163,7 +165,7 @@ func NewGetAccessTokenUsingPOSTNotFound() *GetAccessTokenUsingPOSTNotFound {
 }
 
 /*
-GetAccessTokenUsingPOSTNotFound describes a response with status code 404, with default header values.
+GetAccessTokenUsingPOSTNotFound handles this case with default header values.
 
 Not Found
 */

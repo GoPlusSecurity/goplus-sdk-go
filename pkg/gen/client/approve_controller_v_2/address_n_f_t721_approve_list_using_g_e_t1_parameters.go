@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewAddressNFT721ApproveListUsingGET1Params creates a new AddressNFT721ApproveListUsingGET1Params object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewAddressNFT721ApproveListUsingGET1Params creates a new AddressNFT721ApproveListUsingGET1Params object
+// with the default values initialized.
 func NewAddressNFT721ApproveListUsingGET1Params() *AddressNFT721ApproveListUsingGET1Params {
+	var ()
 	return &AddressNFT721ApproveListUsingGET1Params{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAddressNFT721ApproveListUsingGET1ParamsWithTimeout creates a new AddressNFT721ApproveListUsingGET1Params object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewAddressNFT721ApproveListUsingGET1ParamsWithTimeout(timeout time.Duration) *AddressNFT721ApproveListUsingGET1Params {
+	var ()
 	return &AddressNFT721ApproveListUsingGET1Params{
+
 		timeout: timeout,
 	}
 }
 
 // NewAddressNFT721ApproveListUsingGET1ParamsWithContext creates a new AddressNFT721ApproveListUsingGET1Params object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewAddressNFT721ApproveListUsingGET1ParamsWithContext(ctx context.Context) *AddressNFT721ApproveListUsingGET1Params {
+	var ()
 	return &AddressNFT721ApproveListUsingGET1Params{
+
 		Context: ctx,
 	}
 }
 
 // NewAddressNFT721ApproveListUsingGET1ParamsWithHTTPClient creates a new AddressNFT721ApproveListUsingGET1Params object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewAddressNFT721ApproveListUsingGET1ParamsWithHTTPClient(client *http.Client) *AddressNFT721ApproveListUsingGET1Params {
+	var ()
 	return &AddressNFT721ApproveListUsingGET1Params{
 		HTTPClient: client,
 	}
@@ -54,49 +57,29 @@ func NewAddressNFT721ApproveListUsingGET1ParamsWithHTTPClient(client *http.Clien
 
 /*
 AddressNFT721ApproveListUsingGET1Params contains all the parameters to send to the API endpoint
-
-	for the address n f t721 approve list using g e t 1 operation.
-
-	Typically these are written to a http.Request.
+for the address n f t721 approve list using g e t 1 operation typically these are written to a http.Request
 */
 type AddressNFT721ApproveListUsingGET1Params struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*Addresses
+	  contract address
 
-	/* Addresses.
-
-	   contract address
 	*/
 	Addresses string
+	/*ChainID
+	  chain id
 
-	/* ChainID.
-
-	   chain id
 	*/
 	ChainID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the address n f t721 approve list using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressNFT721ApproveListUsingGET1Params) WithDefaults() *AddressNFT721ApproveListUsingGET1Params {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the address n f t721 approve list using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressNFT721ApproveListUsingGET1Params) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the address n f t721 approve list using g e t 1 params
@@ -179,13 +162,13 @@ func (o *AddressNFT721ApproveListUsingGET1Params) WriteToRequest(r runtime.Clien
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// query param addresses
 	qrAddresses := o.Addresses
 	qAddresses := qrAddresses
 	if qAddresses != "" {
-
 		if err := r.SetQueryParam("addresses", qAddresses); err != nil {
 			return err
 		}

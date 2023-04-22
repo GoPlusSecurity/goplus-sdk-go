@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -43,6 +41,7 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) Validate(formats
 }
 
 func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -51,38 +50,6 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) validateResult(f
 		if err := m.Result.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper object f7b82021 fc93 4bb6 9009 542c33e30a39 based on the context it is used
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Result != nil {
-		if err := m.Result.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
 			}
 			return err
 		}
@@ -196,11 +163,6 @@ type ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result struct {
 
 // Validate validates this response wrapper object f7b82021 fc934bb69009542c33e30a39 result
 func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper object f7b82021 fc934bb69009542c33e30a39 result based on context it is used
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
