@@ -1,11 +1,14 @@
 package decode
 
 import (
-	"bytes"
 	"encoding/json"
-	"github.com/GoPlusSecurity/goplus-sdk-go/conf"
-	"net/http"
 	"time"
+
+	"k8s.io/utils/pointer"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/contract_abi_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/models"
 )
 
 type Config struct {
@@ -31,50 +34,31 @@ func NewSignatureDataDecode(accessToken string, config *Config) *SignatureDataDe
 }
 
 func (s *SignatureDataDecode) Run(chainId, contractAddress, data string) (*Result, error) {
-
-	url := conf.Domain + "/api/v1/abi/input_decode"
-	param := map[string]string{
-		"chain_id":         chainId,
-		"contract_address": contractAddress,
-		"data":             data,
+	params := contract_abi_controller.NewGetAbiDataInfoUsingPOSTParams()
+	params.SetAbiDataRequest(&models.ParseAbiDataRequest{
+		ChainID:         pointer.String(chainId),
+		ContractAddress: contractAddress,
+		Data:            pointer.String(data),
+	})
+	if s.Config != nil && s.Config.Timeout != 0 {
+		params.SetTimeout(time.Duration(s.Config.Timeout))
+	}
+	if s.AccessToken != "" {
+		params.SetAuthorization(pointer.String(s.AccessToken))
 	}
 
-	bytesData, err := json.Marshal(param)
+	response, _, err := client.Default.ContractAbiController.GetAbiDataInfoUsingPOST(params)
 	if err != nil {
 		return nil, err
 	}
 
-	reader := bytes.NewReader(bytesData)
-
-	request, err := http.NewRequest("POST", url, reader)
+	tmp, err := json.Marshal(response.Payload)
 	if err != nil {
 		return nil, err
 	}
 
-	request.Header.Add("Content-Type", "application/json")
-
-	client := &http.Client{}
-
-	if s.Config != nil && s.Config.Timeout > 0 {
-		client.Timeout = time.Duration(s.Config.Timeout) * time.Second
-	} else {
-		client.Timeout = time.Duration(conf.Timeout) * time.Second
-	}
-
-	response, err := client.Do(request)
-
-	if err != nil {
-		return nil, err
-	}
-
-	if response.Body != nil {
-		defer response.Body.Close()
-	}
-
-	var res Result
-
-	err = json.NewDecoder(response.Body).Decode(&res)
-
+	res := Result{}
+	err = json.Unmarshal(tmp, &res)
 	if err != nil {
 		return nil, err
 	}

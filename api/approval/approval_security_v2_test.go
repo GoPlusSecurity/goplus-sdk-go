@@ -1,8 +1,9 @@
 package approval
 
 import (
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
 func TestApprovalSecurityV2_Token(t *testing.T) {

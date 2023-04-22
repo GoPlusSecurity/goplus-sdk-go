@@ -1,8 +1,9 @@
 package decode
 
 import (
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
 func TestSignatureDataDecode_Run(t *testing.T) {

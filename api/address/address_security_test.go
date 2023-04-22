@@ -1,8 +1,9 @@
 package address
 
 import (
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
 func TestAddressSecurity_Run(t *testing.T) {

@@ -2,10 +2,12 @@ package approval
 
 import (
 	"encoding/json"
-	"fmt"
-	"github.com/GoPlusSecurity/goplus-sdk-go/conf"
-	"net/http"
 	"time"
+
+	"k8s.io/utils/pointer"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/approve_controller_v_1"
 )
 
 type Config struct {
@@ -32,38 +34,28 @@ type Result struct {
 }
 
 func (a *ApprovalSecurity) Run(chainId, address string) (*Result, error) {
-
-	url := fmt.Sprintf(conf.Domain+"/api/v1/approval_security/%s?contract_addresses=%s", chainId, address)
-
-	client := &http.Client{}
-	request, err := http.NewRequest("GET", url, nil)
-
-	if err != nil {
-		return nil, err
+	params := approve_controller_v_1.NewApprovalContractUsingGETParams()
+	params.SetChainID(chainId)
+	params.SetContractAddresses(pointer.String(address))
+	if a.Config != nil && a.Config.Timeout != 0 {
+		params.SetTimeout(time.Duration(a.Config.Timeout))
 	}
-
 	if a.AccessToken != "" {
-		request.Header.Add("Authorization", a.AccessToken)
+		params.SetAuthorization(pointer.String(a.AccessToken))
 	}
 
-	if a.Config != nil && a.Config.Timeout > 0 {
-		client.Timeout = time.Duration(a.Config.Timeout) * time.Second
-	} else {
-		client.Timeout = time.Duration(conf.Timeout) * time.Second
-	}
-
-	response, err := client.Do(request)
+	response, err := client.Default.ApproveControllerv1.ApprovalContractUsingGET(params)
 	if err != nil {
 		return nil, err
 	}
 
-	if response.Body != nil {
-		defer response.Body.Close()
+	tmp, err := json.Marshal(response.Payload)
+	if err != nil {
+		return nil, err
 	}
 
-	var res Result
-
-	err = json.NewDecoder(response.Body).Decode(&res)
+	res := Result{}
+	err = json.Unmarshal(tmp, &res)
 	if err != nil {
 		return nil, err
 	}

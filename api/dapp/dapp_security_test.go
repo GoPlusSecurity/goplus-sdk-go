@@ -1,8 +1,9 @@
 package dapp
 
 import (
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
 func TestDAppSecurity_Run(t *testing.T) {

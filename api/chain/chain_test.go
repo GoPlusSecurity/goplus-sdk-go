@@ -1,8 +1,9 @@
 package chain
 
 import (
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 	"testing"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
 func TestChain_Run(t *testing.T) {

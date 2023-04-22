@@ -2,11 +2,13 @@ package token
 
 import (
 	"encoding/json"
-	"fmt"
-	"github.com/GoPlusSecurity/goplus-sdk-go/conf"
-	"net/http"
 	"strings"
 	"time"
+
+	"k8s.io/utils/pointer"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller_v_1"
 )
 
 type Config struct {
@@ -34,37 +36,29 @@ type Result struct {
 
 func (s *TokenSecurity) Run(chainId string, addresses []string) (*Result, error) {
 	contractAddresses := strings.Join(addresses, ",")
-	url := fmt.Sprintf(conf.Domain+"/api/v1/token_security/%s?contract_addresses=%s", chainId, contractAddresses)
 
-	client := &http.Client{}
-	request, err := http.NewRequest("GET", url, nil)
-
-	if err != nil {
-		return nil, err
+	params := token_controller_v_1.NewTokenSecurityUsingGET1Params()
+	params.SetChainID(chainId)
+	params.SetContractAddresses(contractAddresses)
+	if s.Config != nil && s.Config.Timeout != 0 {
+		params.SetTimeout(time.Duration(s.Config.Timeout))
 	}
-
 	if s.AccessToken != "" {
-		request.Header.Add("Authorization", s.AccessToken)
+		params.SetAuthorization(pointer.String(s.AccessToken))
 	}
 
-	if s.Config != nil && s.Config.Timeout > 0 {
-		client.Timeout = time.Duration(s.Config.Timeout) * time.Second
-	} else {
-		client.Timeout = time.Duration(conf.Timeout) * time.Second
-	}
-
-	response, err := client.Do(request)
+	response, err := client.Default.TokenControllerv1.TokenSecurityUsingGET1(params)
 	if err != nil {
 		return nil, err
 	}
 
-	if response.Body != nil {
-		defer response.Body.Close()
+	tmp, err := json.Marshal(response.Payload)
+	if err != nil {
+		return nil, err
 	}
 
-	var res Result
-
-	err = json.NewDecoder(response.Body).Decode(&res)
+	res := Result{}
+	err = json.Unmarshal(tmp, &res)
 	if err != nil {
 		return nil, err
 	}
