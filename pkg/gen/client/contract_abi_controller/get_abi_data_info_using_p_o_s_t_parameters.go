@@ -18,37 +18,40 @@ import (
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/models"
 )
 
-// NewGetAbiDataInfoUsingPOSTParams creates a new GetAbiDataInfoUsingPOSTParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetAbiDataInfoUsingPOSTParams creates a new GetAbiDataInfoUsingPOSTParams object
+// with the default values initialized.
 func NewGetAbiDataInfoUsingPOSTParams() *GetAbiDataInfoUsingPOSTParams {
+	var ()
 	return &GetAbiDataInfoUsingPOSTParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAbiDataInfoUsingPOSTParamsWithTimeout creates a new GetAbiDataInfoUsingPOSTParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetAbiDataInfoUsingPOSTParamsWithTimeout(timeout time.Duration) *GetAbiDataInfoUsingPOSTParams {
+	var ()
 	return &GetAbiDataInfoUsingPOSTParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetAbiDataInfoUsingPOSTParamsWithContext creates a new GetAbiDataInfoUsingPOSTParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetAbiDataInfoUsingPOSTParamsWithContext(ctx context.Context) *GetAbiDataInfoUsingPOSTParams {
+	var ()
 	return &GetAbiDataInfoUsingPOSTParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetAbiDataInfoUsingPOSTParamsWithHTTPClient creates a new GetAbiDataInfoUsingPOSTParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetAbiDataInfoUsingPOSTParamsWithHTTPClient(client *http.Client) *GetAbiDataInfoUsingPOSTParams {
+	var ()
 	return &GetAbiDataInfoUsingPOSTParams{
 		HTTPClient: client,
 	}
@@ -56,43 +59,24 @@ func NewGetAbiDataInfoUsingPOSTParamsWithHTTPClient(client *http.Client) *GetAbi
 
 /*
 GetAbiDataInfoUsingPOSTParams contains all the parameters to send to the API endpoint
-
-	for the get abi data info using p o s t operation.
-
-	Typically these are written to a http.Request.
+for the get abi data info using p o s t operation typically these are written to a http.Request
 */
 type GetAbiDataInfoUsingPOSTParams struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*AbiDataRequest
+	  abiDataRequest
 
-	/* AbiDataRequest.
-
-	   abiDataRequest
 	*/
 	AbiDataRequest *models.ParseAbiDataRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get abi data info using p o s t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAbiDataInfoUsingPOSTParams) WithDefaults() *GetAbiDataInfoUsingPOSTParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get abi data info using p o s t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAbiDataInfoUsingPOSTParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get abi data info using p o s t params
@@ -164,7 +148,9 @@ func (o *GetAbiDataInfoUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, 
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
+
 	if o.AbiDataRequest != nil {
 		if err := r.SetBodyParam(o.AbiDataRequest); err != nil {
 			return err

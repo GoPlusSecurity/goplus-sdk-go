@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -44,6 +43,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b) Validate(for
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -52,38 +52,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b) validateResu
 		if err := m.Result.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper JSON object 59da6cfe b2f2 46e4 936a 6968cc97141b based on the context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Result != nil {
-		if err := m.Result.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
 			}
 			return err
 		}
@@ -282,6 +250,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) Valida
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) validatePrivilegedBurn(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.PrivilegedBurn) { // not required
 		return nil
 	}
@@ -290,8 +259,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 		if err := m.PrivilegedBurn.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result" + "." + "privileged_burn")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "privileged_burn")
 			}
 			return err
 		}
@@ -301,6 +268,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) validatePrivilegedMinting(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.PrivilegedMinting) { // not required
 		return nil
 	}
@@ -309,8 +277,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 		if err := m.PrivilegedMinting.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result" + "." + "privileged_minting")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "privileged_minting")
 			}
 			return err
 		}
@@ -320,6 +286,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) validateSameNfts(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SameNfts) { // not required
 		return nil
 	}
@@ -333,8 +300,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 			if err := m.SameNfts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("result" + "." + "same_nfts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "same_nfts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -346,6 +311,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) validateSelfDestruct(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SelfDestruct) { // not required
 		return nil
 	}
@@ -354,8 +320,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 		if err := m.SelfDestruct.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result" + "." + "self_destruct")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "self_destruct")
 			}
 			return err
 		}
@@ -365,6 +329,7 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 }
 
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) validateTransferWithoutApproval(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.TransferWithoutApproval) { // not required
 		return nil
 	}
@@ -373,122 +338,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) valida
 		if err := m.TransferWithoutApproval.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result" + "." + "transfer_without_approval")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "transfer_without_approval")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result based on the context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidatePrivilegedBurn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidatePrivilegedMinting(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSameNfts(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSelfDestruct(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateTransferWithoutApproval(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) contextValidatePrivilegedBurn(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.PrivilegedBurn != nil {
-		if err := m.PrivilegedBurn.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "privileged_burn")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "privileged_burn")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) contextValidatePrivilegedMinting(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.PrivilegedMinting != nil {
-		if err := m.PrivilegedMinting.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "privileged_minting")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "privileged_minting")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) contextValidateSameNfts(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.SameNfts); i++ {
-
-		if m.SameNfts[i] != nil {
-			if err := m.SameNfts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "same_nfts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("result" + "." + "same_nfts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) contextValidateSelfDestruct(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SelfDestruct != nil {
-		if err := m.SelfDestruct.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "self_destruct")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "self_destruct")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResult) contextValidateTransferWithoutApproval(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.TransferWithoutApproval != nil {
-		if err := m.TransferWithoutApproval.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "transfer_without_approval")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result" + "." + "transfer_without_approval")
 			}
 			return err
 		}
@@ -546,11 +395,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivileg
 	return nil
 }
 
-// ContextValidate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result privileged burn based on context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivilegedBurn) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
 // MarshalBinary interface implementation
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivilegedBurn) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -601,11 +445,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivileg
 	return nil
 }
 
-// ContextValidate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result privileged minting based on context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivilegedMinting) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
 // MarshalBinary interface implementation
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultPrivilegedMinting) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -648,11 +487,6 @@ type ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSameNftsItem
 
 // Validate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result same nfts items0
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSameNftsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result same nfts items0 based on context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSameNftsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -706,11 +540,6 @@ func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSelfDest
 	return nil
 }
 
-// ContextValidate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result self destruct based on context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSelfDestruct) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
 // MarshalBinary interface implementation
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultSelfDestruct) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -758,11 +587,6 @@ type ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultTransferWith
 
 // Validate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result transfer without approval
 func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultTransferWithoutApproval) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper JSON object59da6cfe b2f246e4936a6968cc97141b result transfer without approval based on context it is used
-func (m *ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141bResultTransferWithoutApproval) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

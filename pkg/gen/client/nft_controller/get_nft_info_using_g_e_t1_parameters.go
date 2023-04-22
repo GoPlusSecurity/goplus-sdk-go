@@ -16,106 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetNftInfoUsingGET1Params creates a new GetNftInfoUsingGET1Params object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetNftInfoUsingGET1Params creates a new GetNftInfoUsingGET1Params object
+// with the default values initialized.
 func NewGetNftInfoUsingGET1Params() *GetNftInfoUsingGET1Params {
+	var (
+		tokenIDDefault = string("NFT token id")
+	)
 	return &GetNftInfoUsingGET1Params{
+		TokenID: &tokenIDDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetNftInfoUsingGET1ParamsWithTimeout creates a new GetNftInfoUsingGET1Params object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetNftInfoUsingGET1ParamsWithTimeout(timeout time.Duration) *GetNftInfoUsingGET1Params {
+	var (
+		tokenIDDefault = string("NFT token id")
+	)
 	return &GetNftInfoUsingGET1Params{
+		TokenID: &tokenIDDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewGetNftInfoUsingGET1ParamsWithContext creates a new GetNftInfoUsingGET1Params object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetNftInfoUsingGET1ParamsWithContext(ctx context.Context) *GetNftInfoUsingGET1Params {
+	var (
+		tokenIdDefault = string("NFT token id")
+	)
 	return &GetNftInfoUsingGET1Params{
+		TokenID: &tokenIdDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewGetNftInfoUsingGET1ParamsWithHTTPClient creates a new GetNftInfoUsingGET1Params object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetNftInfoUsingGET1ParamsWithHTTPClient(client *http.Client) *GetNftInfoUsingGET1Params {
+	var (
+		tokenIdDefault = string("NFT token id")
+	)
 	return &GetNftInfoUsingGET1Params{
+		TokenID:    &tokenIdDefault,
 		HTTPClient: client,
 	}
 }
 
 /*
 GetNftInfoUsingGET1Params contains all the parameters to send to the API endpoint
-
-	for the get nft info using g e t 1 operation.
-
-	Typically these are written to a http.Request.
+for the get nft info using g e t 1 operation typically these are written to a http.Request
 */
 type GetNftInfoUsingGET1Params struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*ChainID
+	  Chain id, (eth: 1, bsc: 56, Polygon: 137, Avalanche: 43114)
 
-	/* ChainID.
-
-	   Chain id, (eth: 1, bsc: 56, Polygon: 137, Avalanche: 43114)
 	*/
 	ChainID string
+	/*ContractAddresses
+	  NFT contract address
 
-	/* ContractAddresses.
-
-	   NFT contract address
 	*/
 	ContractAddresses string
+	/*TokenID
+	  tokenId
 
-	/* TokenID.
-
-	   tokenId
-
-	   Default: "NFT token id"
 	*/
 	TokenID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get nft info using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetNftInfoUsingGET1Params) WithDefaults() *GetNftInfoUsingGET1Params {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get nft info using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetNftInfoUsingGET1Params) SetDefaults() {
-	var (
-		tokenIDDefault = string("NFT token id")
-	)
-
-	val := GetNftInfoUsingGET1Params{
-		TokenID: &tokenIDDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the get nft info using g e t 1 params
@@ -209,6 +190,7 @@ func (o *GetNftInfoUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg 
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// path param chain_id
@@ -220,7 +202,6 @@ func (o *GetNftInfoUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg 
 	qrContractAddresses := o.ContractAddresses
 	qContractAddresses := qrContractAddresses
 	if qContractAddresses != "" {
-
 		if err := r.SetQueryParam("contract_addresses", qContractAddresses); err != nil {
 			return err
 		}
@@ -230,17 +211,16 @@ func (o *GetNftInfoUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param token_id
 		var qrTokenID string
-
 		if o.TokenID != nil {
 			qrTokenID = *o.TokenID
 		}
 		qTokenID := qrTokenID
 		if qTokenID != "" {
-
 			if err := r.SetQueryParam("token_id", qTokenID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

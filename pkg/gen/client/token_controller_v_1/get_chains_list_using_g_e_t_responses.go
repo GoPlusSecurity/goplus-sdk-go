@@ -47,6 +47,7 @@ func (o *GetChainsListUsingGETReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewGetChainsListUsingGETOK() *GetChainsListUsingGETOK {
 }
 
 /*
-GetChainsListUsingGETOK describes a response with status code 200, with default header values.
+GetChainsListUsingGETOK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type GetChainsListUsingGETOK struct {
 func (o *GetChainsListUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/supported_chains][%d] getChainsListUsingGETOK  %+v", 200, o.Payload)
 }
+
 func (o *GetChainsListUsingGETOK) GetPayload() *models.ResponseWrapperListJSONObject4e98b9e2Fbdb43329976A30066e02b73 {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewGetChainsListUsingGETUnauthorized() *GetChainsListUsingGETUnauthorized {
 }
 
 /*
-GetChainsListUsingGETUnauthorized describes a response with status code 401, with default header values.
+GetChainsListUsingGETUnauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewGetChainsListUsingGETForbidden() *GetChainsListUsingGETForbidden {
 }
 
 /*
-GetChainsListUsingGETForbidden describes a response with status code 403, with default header values.
+GetChainsListUsingGETForbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewGetChainsListUsingGETNotFound() *GetChainsListUsingGETNotFound {
 }
 
 /*
-GetChainsListUsingGETNotFound describes a response with status code 404, with default header values.
+GetChainsListUsingGETNotFound handles this case with default header values.
 
 Not Found
 */

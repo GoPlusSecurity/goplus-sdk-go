@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewApprovalContractUsingGETParams creates a new ApprovalContractUsingGETParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewApprovalContractUsingGETParams creates a new ApprovalContractUsingGETParams object
+// with the default values initialized.
 func NewApprovalContractUsingGETParams() *ApprovalContractUsingGETParams {
+	var ()
 	return &ApprovalContractUsingGETParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewApprovalContractUsingGETParamsWithTimeout creates a new ApprovalContractUsingGETParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewApprovalContractUsingGETParamsWithTimeout(timeout time.Duration) *ApprovalContractUsingGETParams {
+	var ()
 	return &ApprovalContractUsingGETParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewApprovalContractUsingGETParamsWithContext creates a new ApprovalContractUsingGETParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewApprovalContractUsingGETParamsWithContext(ctx context.Context) *ApprovalContractUsingGETParams {
+	var ()
 	return &ApprovalContractUsingGETParams{
+
 		Context: ctx,
 	}
 }
 
 // NewApprovalContractUsingGETParamsWithHTTPClient creates a new ApprovalContractUsingGETParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewApprovalContractUsingGETParamsWithHTTPClient(client *http.Client) *ApprovalContractUsingGETParams {
+	var ()
 	return &ApprovalContractUsingGETParams{
 		HTTPClient: client,
 	}
@@ -54,49 +57,29 @@ func NewApprovalContractUsingGETParamsWithHTTPClient(client *http.Client) *Appro
 
 /*
 ApprovalContractUsingGETParams contains all the parameters to send to the API endpoint
-
-	for the approval contract using g e t operation.
-
-	Typically these are written to a http.Request.
+for the approval contract using g e t operation typically these are written to a http.Request
 */
 type ApprovalContractUsingGETParams struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*ChainID
+	  Chain id, (ETH: 1,  BSC: 56, OKC: 66, Heco: 128, Polygon: 137, Fantom:250, Arbitrum: 42161, Avalanche: 43114)
 
-	/* ChainID.
-
-	   Chain id, (ETH: 1,  BSC: 56, OKC: 66, Heco: 128, Polygon: 137, Fantom:250, Arbitrum: 42161, Avalanche: 43114)
 	*/
 	ChainID string
+	/*ContractAddresses
+	  Contract needs to be detected
 
-	/* ContractAddresses.
-
-	   Contract needs to be detected
 	*/
 	ContractAddresses *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the approval contract using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ApprovalContractUsingGETParams) WithDefaults() *ApprovalContractUsingGETParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the approval contract using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ApprovalContractUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the approval contract using g e t params
@@ -179,6 +162,7 @@ func (o *ApprovalContractUsingGETParams) WriteToRequest(r runtime.ClientRequest,
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// path param chain_id
@@ -190,17 +174,16 @@ func (o *ApprovalContractUsingGETParams) WriteToRequest(r runtime.ClientRequest,
 
 		// query param contract_addresses
 		var qrContractAddresses string
-
 		if o.ContractAddresses != nil {
 			qrContractAddresses = *o.ContractAddresses
 		}
 		qContractAddresses := qrContractAddresses
 		if qContractAddresses != "" {
-
 			if err := r.SetQueryParam("contract_addresses", qContractAddresses); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

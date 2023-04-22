@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -72,11 +70,6 @@ type ContractApproveResponse struct {
 
 // Validate validates this contract approve response
 func (m *ContractApproveResponse) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this contract approve response based on context it is used
-func (m *ContractApproveResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

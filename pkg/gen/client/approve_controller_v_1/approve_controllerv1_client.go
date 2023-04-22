@@ -25,14 +25,11 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddressContractUsingGET1(params *AddressContractUsingGET1Params, opts ...ClientOption) (*AddressContractUsingGET1OK, error)
+	AddressContractUsingGET1(params *AddressContractUsingGET1Params) (*AddressContractUsingGET1OK, error)
 
-	ApprovalContractUsingGET(params *ApprovalContractUsingGETParams, opts ...ClientOption) (*ApprovalContractUsingGETOK, error)
+	ApprovalContractUsingGET(params *ApprovalContractUsingGETParams) (*ApprovalContractUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,12 +37,13 @@ type ClientService interface {
 /*
 AddressContractUsingGET1 checks if the address is malicious
 */
-func (a *Client) AddressContractUsingGET1(params *AddressContractUsingGET1Params, opts ...ClientOption) (*AddressContractUsingGET1OK, error) {
+func (a *Client) AddressContractUsingGET1(params *AddressContractUsingGET1Params) (*AddressContractUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddressContractUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "addressContractUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v1/address_security/{address}",
@@ -56,12 +54,7 @@ func (a *Client) AddressContractUsingGET1(params *AddressContractUsingGET1Params
 		Reader:             &AddressContractUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -78,12 +71,13 @@ func (a *Client) AddressContractUsingGET1(params *AddressContractUsingGET1Params
 /*
 ApprovalContractUsingGET obtains license contract information
 */
-func (a *Client) ApprovalContractUsingGET(params *ApprovalContractUsingGETParams, opts ...ClientOption) (*ApprovalContractUsingGETOK, error) {
+func (a *Client) ApprovalContractUsingGET(params *ApprovalContractUsingGETParams) (*ApprovalContractUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewApprovalContractUsingGETParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "approvalContractUsingGET",
 		Method:             "GET",
 		PathPattern:        "/api/v1/approval_security/{chain_id}",
@@ -94,12 +88,7 @@ func (a *Client) ApprovalContractUsingGET(params *ApprovalContractUsingGETParams
 		Reader:             &ApprovalContractUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

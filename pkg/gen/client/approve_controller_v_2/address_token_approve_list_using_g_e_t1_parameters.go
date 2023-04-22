@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewAddressTokenApproveListUsingGET1Params creates a new AddressTokenApproveListUsingGET1Params object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewAddressTokenApproveListUsingGET1Params creates a new AddressTokenApproveListUsingGET1Params object
+// with the default values initialized.
 func NewAddressTokenApproveListUsingGET1Params() *AddressTokenApproveListUsingGET1Params {
+	var ()
 	return &AddressTokenApproveListUsingGET1Params{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAddressTokenApproveListUsingGET1ParamsWithTimeout creates a new AddressTokenApproveListUsingGET1Params object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewAddressTokenApproveListUsingGET1ParamsWithTimeout(timeout time.Duration) *AddressTokenApproveListUsingGET1Params {
+	var ()
 	return &AddressTokenApproveListUsingGET1Params{
+
 		timeout: timeout,
 	}
 }
 
 // NewAddressTokenApproveListUsingGET1ParamsWithContext creates a new AddressTokenApproveListUsingGET1Params object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewAddressTokenApproveListUsingGET1ParamsWithContext(ctx context.Context) *AddressTokenApproveListUsingGET1Params {
+	var ()
 	return &AddressTokenApproveListUsingGET1Params{
+
 		Context: ctx,
 	}
 }
 
 // NewAddressTokenApproveListUsingGET1ParamsWithHTTPClient creates a new AddressTokenApproveListUsingGET1Params object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewAddressTokenApproveListUsingGET1ParamsWithHTTPClient(client *http.Client) *AddressTokenApproveListUsingGET1Params {
+	var ()
 	return &AddressTokenApproveListUsingGET1Params{
 		HTTPClient: client,
 	}
@@ -54,49 +57,29 @@ func NewAddressTokenApproveListUsingGET1ParamsWithHTTPClient(client *http.Client
 
 /*
 AddressTokenApproveListUsingGET1Params contains all the parameters to send to the API endpoint
-
-	for the address token approve list using g e t 1 operation.
-
-	Typically these are written to a http.Request.
+for the address token approve list using g e t 1 operation typically these are written to a http.Request
 */
 type AddressTokenApproveListUsingGET1Params struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*Addresses
+	  contract address
 
-	/* Addresses.
-
-	   contract address
 	*/
 	Addresses string
+	/*ChainID
+	  chain id
 
-	/* ChainID.
-
-	   chain id
 	*/
 	ChainID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the address token approve list using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressTokenApproveListUsingGET1Params) WithDefaults() *AddressTokenApproveListUsingGET1Params {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the address token approve list using g e t 1 params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddressTokenApproveListUsingGET1Params) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the address token approve list using g e t 1 params
@@ -179,13 +162,13 @@ func (o *AddressTokenApproveListUsingGET1Params) WriteToRequest(r runtime.Client
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// query param addresses
 	qrAddresses := o.Addresses
 	qAddresses := qrAddresses
 	if qAddresses != "" {
-
 		if err := r.SetQueryParam("addresses", qAddresses); err != nil {
 			return err
 		}

@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -61,6 +60,7 @@ func (m *DappContractSecurityResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *DappContractSecurityResponse) validateAuditInfo(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.AuditInfo) { // not required
 		return nil
 	}
@@ -74,8 +74,6 @@ func (m *DappContractSecurityResponse) validateAuditInfo(formats strfmt.Registry
 			if err := m.AuditInfo[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("audit_info" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("audit_info" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -87,6 +85,7 @@ func (m *DappContractSecurityResponse) validateAuditInfo(formats strfmt.Registry
 }
 
 func (m *DappContractSecurityResponse) validateContractsSecurity(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ContractsSecurity) { // not required
 		return nil
 	}
@@ -100,66 +99,6 @@ func (m *DappContractSecurityResponse) validateContractsSecurity(formats strfmt.
 			if err := m.ContractsSecurity[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("contracts_security" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("contracts_security" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this dapp contract security response based on the context it is used
-func (m *DappContractSecurityResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateAuditInfo(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContractsSecurity(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *DappContractSecurityResponse) contextValidateAuditInfo(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.AuditInfo); i++ {
-
-		if m.AuditInfo[i] != nil {
-			if err := m.AuditInfo[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("audit_info" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("audit_info" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *DappContractSecurityResponse) contextValidateContractsSecurity(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.ContractsSecurity); i++ {
-
-		if m.ContractsSecurity[i] != nil {
-			if err := m.ContractsSecurity[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("contracts_security" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("contracts_security" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

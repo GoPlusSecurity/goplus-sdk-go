@@ -25,12 +25,9 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNftInfoUsingGET1(params *GetNftInfoUsingGET1Params, opts ...ClientOption) (*GetNftInfoUsingGET1OK, error)
+	GetNftInfoUsingGET1(params *GetNftInfoUsingGET1Params) (*GetNftInfoUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,12 +35,13 @@ type ClientService interface {
 /*
 GetNftInfoUsingGET1 gets n f t s security and risk data
 */
-func (a *Client) GetNftInfoUsingGET1(params *GetNftInfoUsingGET1Params, opts ...ClientOption) (*GetNftInfoUsingGET1OK, error) {
+func (a *Client) GetNftInfoUsingGET1(params *GetNftInfoUsingGET1Params) (*GetNftInfoUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNftInfoUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getNftInfoUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v1/nft_security/{chain_id}",
@@ -54,12 +52,7 @@ func (a *Client) GetNftInfoUsingGET1(params *GetNftInfoUsingGET1Params, opts ...
 		Reader:             &GetNftInfoUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

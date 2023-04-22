@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/strfmt"
 )
 
@@ -18,10 +16,5 @@ type MapStringString map[string]string
 
 // Validate validates this map string string
 func (m MapStringString) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this map string string based on context it is used
-func (m MapStringString) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

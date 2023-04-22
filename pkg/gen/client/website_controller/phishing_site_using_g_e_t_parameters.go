@@ -16,37 +16,40 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPhishingSiteUsingGETParams creates a new PhishingSiteUsingGETParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewPhishingSiteUsingGETParams creates a new PhishingSiteUsingGETParams object
+// with the default values initialized.
 func NewPhishingSiteUsingGETParams() *PhishingSiteUsingGETParams {
+	var ()
 	return &PhishingSiteUsingGETParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPhishingSiteUsingGETParamsWithTimeout creates a new PhishingSiteUsingGETParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewPhishingSiteUsingGETParamsWithTimeout(timeout time.Duration) *PhishingSiteUsingGETParams {
+	var ()
 	return &PhishingSiteUsingGETParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewPhishingSiteUsingGETParamsWithContext creates a new PhishingSiteUsingGETParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewPhishingSiteUsingGETParamsWithContext(ctx context.Context) *PhishingSiteUsingGETParams {
+	var ()
 	return &PhishingSiteUsingGETParams{
+
 		Context: ctx,
 	}
 }
 
 // NewPhishingSiteUsingGETParamsWithHTTPClient creates a new PhishingSiteUsingGETParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewPhishingSiteUsingGETParamsWithHTTPClient(client *http.Client) *PhishingSiteUsingGETParams {
+	var ()
 	return &PhishingSiteUsingGETParams{
 		HTTPClient: client,
 	}
@@ -54,43 +57,24 @@ func NewPhishingSiteUsingGETParamsWithHTTPClient(client *http.Client) *PhishingS
 
 /*
 PhishingSiteUsingGETParams contains all the parameters to send to the API endpoint
-
-	for the phishing site using g e t operation.
-
-	Typically these are written to a http.Request.
+for the phishing site using g e t operation typically these are written to a http.Request
 */
 type PhishingSiteUsingGETParams struct {
 
-	/* Authorization.
+	/*Authorization
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 
-	   Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
 	*/
 	Authorization *string
+	/*URL
+	  Url
 
-	/* URL.
-
-	   Url
 	*/
 	URL string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the phishing site using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *PhishingSiteUsingGETParams) WithDefaults() *PhishingSiteUsingGETParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the phishing site using g e t params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *PhishingSiteUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the phishing site using g e t params
@@ -162,13 +146,13 @@ func (o *PhishingSiteUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg
 		if err := r.SetHeaderParam("Authorization", *o.Authorization); err != nil {
 			return err
 		}
+
 	}
 
 	// query param url
 	qrURL := o.URL
 	qURL := qrURL
 	if qURL != "" {
-
 		if err := r.SetQueryParam("url", qURL); err != nil {
 			return err
 		}

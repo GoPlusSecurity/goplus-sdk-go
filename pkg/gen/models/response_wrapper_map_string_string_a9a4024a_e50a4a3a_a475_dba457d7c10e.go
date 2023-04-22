@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -43,6 +41,7 @@ func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10e) Validat
 }
 
 func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10e) validateResult(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Result) { // not required
 		return nil
 	}
@@ -51,38 +50,6 @@ func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10e) validat
 		if err := m.Result.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this response wrapper map string string a9a4024a e50a 4a3a a475 dba457d7c10e based on the context it is used
-func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10e) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateResult(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10e) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Result != nil {
-		if err := m.Result.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("result")
 			}
 			return err
 		}
@@ -125,11 +92,6 @@ type ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10eResult struct
 
 // Validate validates this response wrapper map string string a9a4024a e50a4a3a a475 dba457d7c10e result
 func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10eResult) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper map string string a9a4024a e50a4a3a a475 dba457d7c10e result based on context it is used
-func (m *ResponseWrapperMapStringStringA9a4024aE50a4a3aA475Dba457d7c10eResult) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -47,6 +47,7 @@ func (o *AddressContractUsingGET1Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewAddressContractUsingGET1OK() *AddressContractUsingGET1OK {
 }
 
 /*
-AddressContractUsingGET1OK describes a response with status code 200, with default header values.
+AddressContractUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type AddressContractUsingGET1OK struct {
 func (o *AddressContractUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/address_security/{address}][%d] addressContractUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *AddressContractUsingGET1OK) GetPayload() *models.ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39 {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewAddressContractUsingGET1Unauthorized() *AddressContractUsingGET1Unauthor
 }
 
 /*
-AddressContractUsingGET1Unauthorized describes a response with status code 401, with default header values.
+AddressContractUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewAddressContractUsingGET1Forbidden() *AddressContractUsingGET1Forbidden {
 }
 
 /*
-AddressContractUsingGET1Forbidden describes a response with status code 403, with default header values.
+AddressContractUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewAddressContractUsingGET1NotFound() *AddressContractUsingGET1NotFound {
 }
 
 /*
-AddressContractUsingGET1NotFound describes a response with status code 404, with default header values.
+AddressContractUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

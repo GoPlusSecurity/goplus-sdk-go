@@ -47,6 +47,7 @@ func (o *AddressNFT721ApproveListUsingGET1Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +59,7 @@ func NewAddressNFT721ApproveListUsingGET1OK() *AddressNFT721ApproveListUsingGET1
 }
 
 /*
-AddressNFT721ApproveListUsingGET1OK describes a response with status code 200, with default header values.
+AddressNFT721ApproveListUsingGET1OK handles this case with default header values.
 
 OK
 */
@@ -69,6 +70,7 @@ type AddressNFT721ApproveListUsingGET1OK struct {
 func (o *AddressNFT721ApproveListUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v2/nft721_approval_security/{chainId}][%d] addressNFT721ApproveListUsingGET1OK  %+v", 200, o.Payload)
 }
+
 func (o *AddressNFT721ApproveListUsingGET1OK) GetPayload() *models.ResponseWrapperListApproveNFTListResponse {
 	return o.Payload
 }
@@ -91,7 +93,7 @@ func NewAddressNFT721ApproveListUsingGET1Unauthorized() *AddressNFT721ApproveLis
 }
 
 /*
-AddressNFT721ApproveListUsingGET1Unauthorized describes a response with status code 401, with default header values.
+AddressNFT721ApproveListUsingGET1Unauthorized handles this case with default header values.
 
 Unauthorized
 */
@@ -113,7 +115,7 @@ func NewAddressNFT721ApproveListUsingGET1Forbidden() *AddressNFT721ApproveListUs
 }
 
 /*
-AddressNFT721ApproveListUsingGET1Forbidden describes a response with status code 403, with default header values.
+AddressNFT721ApproveListUsingGET1Forbidden handles this case with default header values.
 
 Forbidden
 */
@@ -135,7 +137,7 @@ func NewAddressNFT721ApproveListUsingGET1NotFound() *AddressNFT721ApproveListUsi
 }
 
 /*
-AddressNFT721ApproveListUsingGET1NotFound describes a response with status code 404, with default header values.
+AddressNFT721ApproveListUsingGET1NotFound handles this case with default header values.
 
 Not Found
 */

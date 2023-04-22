@@ -25,16 +25,13 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params, opts ...ClientOption) (*AddressNFT1155ApproveListUsingGET1OK, error)
+	AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params) (*AddressNFT1155ApproveListUsingGET1OK, error)
 
-	AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params, opts ...ClientOption) (*AddressNFT721ApproveListUsingGET1OK, error)
+	AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params) (*AddressNFT721ApproveListUsingGET1OK, error)
 
-	AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params, opts ...ClientOption) (*AddressTokenApproveListUsingGET1OK, error)
+	AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params) (*AddressTokenApproveListUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,12 +39,13 @@ type ClientService interface {
 /*
 AddressNFT1155ApproveListUsingGET1 authorizations authorized address list n f t1155
 */
-func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params, opts ...ClientOption) (*AddressNFT1155ApproveListUsingGET1OK, error) {
+func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params) (*AddressNFT1155ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddressNFT1155ApproveListUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "addressNFT1155ApproveListUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v2/nft1155_approval_security/{chainId}",
@@ -58,12 +56,7 @@ func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155Approv
 		Reader:             &AddressNFT1155ApproveListUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -80,12 +73,13 @@ func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155Approv
 /*
 AddressNFT721ApproveListUsingGET1 authorizations authorized address list n f t721
 */
-func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params, opts ...ClientOption) (*AddressNFT721ApproveListUsingGET1OK, error) {
+func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params) (*AddressNFT721ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddressNFT721ApproveListUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "addressNFT721ApproveListUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v2/nft721_approval_security/{chainId}",
@@ -96,12 +90,7 @@ func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveL
 		Reader:             &AddressNFT721ApproveListUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -118,12 +107,13 @@ func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveL
 /*
 AddressTokenApproveListUsingGET1 authorizations e r c20 authorized address list
 */
-func (a *Client) AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params, opts ...ClientOption) (*AddressTokenApproveListUsingGET1OK, error) {
+func (a *Client) AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params) (*AddressTokenApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddressTokenApproveListUsingGET1Params()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "addressTokenApproveListUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/api/v2/token_approval_security/{chainId}",
@@ -134,12 +124,7 @@ func (a *Client) AddressTokenApproveListUsingGET1(params *AddressTokenApproveLis
 		Reader:             &AddressTokenApproveListUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

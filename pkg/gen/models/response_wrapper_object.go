@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -29,11 +27,6 @@ type ResponseWrapperObject struct {
 
 // Validate validates this response wrapper object
 func (m *ResponseWrapperObject) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this response wrapper object based on context it is used
-func (m *ResponseWrapperObject) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
