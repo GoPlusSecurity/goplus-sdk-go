@@ -15,10 +15,10 @@ import (
 // swagger:model GetAccessTokenResponse
 type GetAccessTokenResponse struct {
 
-	// access token
+	// access_token
 	AccessToken string `json:"access_token,omitempty"`
 
-	// expires in
+	// expires_in
 	ExpiresIn int64 `json:"expires_in,omitempty"`
 }
 

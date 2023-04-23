@@ -62,12 +62,25 @@ for the get access token using p o s t operation typically these are written to 
 */
 type GetAccessTokenUsingPOSTParams struct {
 
-	/*AppKey*/
-	AppKey *string
-	/*Sign*/
-	Sign *string
-	/*Time*/
-	Time *int64
+	/*AppKey
+	  app_key
+
+	*/
+	AppKey string
+	/*Sign
+	  Concatenate app_key, time, app_secret in turn, and do sha1().app_key = mBOMg20QW11BbtyH4Zh0 \n" +
+	            "time = 1647847498 \n" +
+	            "app_secret = V6aRfxlPJwN3ViJSIFSCdxPvneajuJsh \n" +
+	            "sign = sha1(mBOMg20QW11BbtyH4Zh01647847498V6aRfxlPJwN3ViJSIFSCdxPvneajuJsh)\n" +
+	            "        = 7293d385b9225b3c3f232b76ba97255d0e21063e
+
+	*/
+	Sign string
+	/*Time
+	  Quest timestamp (Second)
+
+	*/
+	Time int64
 
 	timeout    time.Duration
 	Context    context.Context
@@ -108,35 +121,35 @@ func (o *GetAccessTokenUsingPOSTParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAppKey adds the appKey to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithAppKey(appKey *string) *GetAccessTokenUsingPOSTParams {
+func (o *GetAccessTokenUsingPOSTParams) WithAppKey(appKey string) *GetAccessTokenUsingPOSTParams {
 	o.SetAppKey(appKey)
 	return o
 }
 
 // SetAppKey adds the appKey to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetAppKey(appKey *string) {
+func (o *GetAccessTokenUsingPOSTParams) SetAppKey(appKey string) {
 	o.AppKey = appKey
 }
 
 // WithSign adds the sign to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithSign(sign *string) *GetAccessTokenUsingPOSTParams {
+func (o *GetAccessTokenUsingPOSTParams) WithSign(sign string) *GetAccessTokenUsingPOSTParams {
 	o.SetSign(sign)
 	return o
 }
 
 // SetSign adds the sign to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetSign(sign *string) {
+func (o *GetAccessTokenUsingPOSTParams) SetSign(sign string) {
 	o.Sign = sign
 }
 
 // WithTime adds the time to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithTime(time *int64) *GetAccessTokenUsingPOSTParams {
+func (o *GetAccessTokenUsingPOSTParams) WithTime(time int64) *GetAccessTokenUsingPOSTParams {
 	o.SetTime(time)
 	return o
 }
 
 // SetTime adds the time to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetTime(time *int64) {
+func (o *GetAccessTokenUsingPOSTParams) SetTime(time int64) {
 	o.Time = time
 }
 
@@ -148,52 +161,31 @@ func (o *GetAccessTokenUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
-	if o.AppKey != nil {
-
-		// query param app_key
-		var qrAppKey string
-		if o.AppKey != nil {
-			qrAppKey = *o.AppKey
+	// query param appKey
+	qrAppKey := o.AppKey
+	qAppKey := qrAppKey
+	if qAppKey != "" {
+		if err := r.SetQueryParam("appKey", qAppKey); err != nil {
+			return err
 		}
-		qAppKey := qrAppKey
-		if qAppKey != "" {
-			if err := r.SetQueryParam("app_key", qAppKey); err != nil {
-				return err
-			}
-		}
-
 	}
 
-	if o.Sign != nil {
-
-		// query param sign
-		var qrSign string
-		if o.Sign != nil {
-			qrSign = *o.Sign
+	// query param sign
+	qrSign := o.Sign
+	qSign := qrSign
+	if qSign != "" {
+		if err := r.SetQueryParam("sign", qSign); err != nil {
+			return err
 		}
-		qSign := qrSign
-		if qSign != "" {
-			if err := r.SetQueryParam("sign", qSign); err != nil {
-				return err
-			}
-		}
-
 	}
 
-	if o.Time != nil {
-
-		// query param time
-		var qrTime int64
-		if o.Time != nil {
-			qrTime = *o.Time
+	// query param time
+	qrTime := o.Time
+	qTime := swag.FormatInt64(qrTime)
+	if qTime != "" {
+		if err := r.SetQueryParam("time", qTime); err != nil {
+			return err
 		}
-		qTime := swag.FormatInt64(qrTime)
-		if qTime != "" {
-			if err := r.SetQueryParam("time", qTime); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if len(res) > 0 {
