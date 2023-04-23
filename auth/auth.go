@@ -7,8 +7,6 @@ import (
 	"strconv"
 	"time"
 
-	"k8s.io/utils/pointer"
-
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller"
 )
@@ -47,9 +45,9 @@ func (a *App) GetAccessToken() (*Result, error) {
 	nowStr := strconv.FormatInt(now, 10)
 	s := sign(a.Key, a.Secret, nowStr)
 	params := token_controller.NewGetAccessTokenUsingPOSTParams()
-	params.SetAppKey(pointer.String(a.Key))
-	params.SetSign(pointer.String(s))
-	params.SetTime(pointer.Int64(now))
+	params.SetAppKey(a.Key)
+	params.SetSign(s)
+	params.SetTime(now)
 	if a.Config != nil && a.Config.Timeout != 0 {
 		params.SetTimeout(time.Duration(a.Config.Timeout))
 	}
