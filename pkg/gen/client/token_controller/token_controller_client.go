@@ -33,7 +33,7 @@ type ClientService interface {
 }
 
 /*
-GetAccessTokenUsingPOST gets access token using p o s t
+GetAccessTokenUsingPOST gets token
 */
 func (a *Client) GetAccessTokenUsingPOST(params *GetAccessTokenUsingPOSTParams) (*GetAccessTokenUsingPOSTOK, *GetAccessTokenUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
