@@ -33,7 +33,7 @@ type ClientService interface {
 }
 
 /*
-GetDappInfoUsingGET dapps information by Url
+GetDappInfoUsingGET checks risk of dapp through URL
 */
 func (a *Client) GetDappInfoUsingGET(params *GetDappInfoUsingGETParams) (*GetDappInfoUsingGETOK, error) {
 	// TODO: Validate the params before sending

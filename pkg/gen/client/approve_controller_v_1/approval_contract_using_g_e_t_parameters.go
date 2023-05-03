@@ -62,7 +62,7 @@ for the approval contract using g e t operation typically these are written to a
 type ApprovalContractUsingGETParams struct {
 
 	/*Authorization
-	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
+	  Authorization example：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...
 
 	*/
 	Authorization *string

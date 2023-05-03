@@ -37,7 +37,7 @@ type ClientService interface {
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1 authorizations authorized address list n f t1155
+AddressNFT1155ApproveListUsingGET1 checks risk of all erc1155 approvals under one e o a
 */
 func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params) (*AddressNFT1155ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -71,7 +71,7 @@ func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155Approv
 }
 
 /*
-AddressNFT721ApproveListUsingGET1 authorizations authorized address list n f t721
+AddressNFT721ApproveListUsingGET1 checks risk of all erc721 approvals under one e o a
 */
 func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params) (*AddressNFT721ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -105,7 +105,7 @@ func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveL
 }
 
 /*
-AddressTokenApproveListUsingGET1 authorizations e r c20 authorized address list
+AddressTokenApproveListUsingGET1 checks risk of all erc20 approvals under one e o a
 */
 func (a *Client) AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params) (*AddressTokenApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
