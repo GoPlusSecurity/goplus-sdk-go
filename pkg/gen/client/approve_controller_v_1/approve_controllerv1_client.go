@@ -69,7 +69,7 @@ func (a *Client) AddressContractUsingGET1(params *AddressContractUsingGET1Params
 }
 
 /*
-ApprovalContractUsingGET obtains license contract information
+ApprovalContractUsingGET checks if the approval is secure
 */
 func (a *Client) ApprovalContractUsingGET(params *ApprovalContractUsingGETParams) (*ApprovalContractUsingGETOK, error) {
 	// TODO: Validate the params before sending

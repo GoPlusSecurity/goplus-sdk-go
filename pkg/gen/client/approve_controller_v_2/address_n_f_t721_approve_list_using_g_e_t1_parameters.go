@@ -62,7 +62,7 @@ for the address n f t721 approve list using g e t 1 operation typically these ar
 type AddressNFT721ApproveListUsingGET1Params struct {
 
 	/*Authorization
-	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW1zQ9cCv8WrbB1)
+	  Authorization example：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...
 
 	*/
 	Authorization *string
