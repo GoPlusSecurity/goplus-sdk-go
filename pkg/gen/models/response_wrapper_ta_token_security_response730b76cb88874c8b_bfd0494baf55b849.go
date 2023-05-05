@@ -24,8 +24,8 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 stru
 	// Response message
 	Message string `json:"message,omitempty"`
 
-	// result
-	Result *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result `json:"result,omitempty"`
+	// Response result
+	Result map[string]ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon `json:"result,omitempty"`
 }
 
 // Validate validates this response wrapper ta token security response 730b76cb 8887 4c8b bfd0 494baf55b849
@@ -48,13 +48,17 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 		return nil
 	}
 
-	if m.Result != nil {
-		if err := m.Result.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result")
-			}
-			return err
+	for k := range m.Result {
+
+		if swag.IsZero(m.Result[k]) { // not required
+			continue
 		}
+		if val, ok := m.Result[k]; ok {
+			if err := val.Validate(formats); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -78,69 +82,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result Response result
+// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon contarct address
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result struct {
-
-	// contract address
-	ContractAddress *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress `json:"{{contract_address}},omitempty"`
-}
-
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateContractAddress(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) validateContractAddress(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ContractAddress) { // not required
-		return nil
-	}
-
-	if m.ContractAddress != nil {
-		if err := m.ContractAddress.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("result" + "." + "{{contract_address}}")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Result
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress contarct address
-//
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress struct {
+// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon
+type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon struct {
 
 	// It describes whether the contract has the function to modify the maximum amount of transactions or the maximum token position.
 	// "1" means true;
@@ -196,7 +141,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	CreatorPercent string `json:"creator_percent,omitempty"`
 
 	// It describes Dex information of where the token that can be traded.(Notice:When "is_in_dex": "0", there will be empty array. )
-	Dex []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0 `json:"dex"`
+	Dex []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 `json:"dex"`
 
 	// It describes whether the contract would call functions of other contracts when primary methods are executed.
 	// "1" means true;
@@ -218,7 +163,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	HolderCount string `json:"holder_count,omitempty"`
 
 	// Top10 holders info
-	Holders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0 `json:"holders"`
+	Holders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 `json:"holders"`
 
 	// It describes whether the token is an airdrop scam.
 	// "1" means true;
@@ -297,7 +242,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	LpHolderCount string `json:"lp_holder_count,omitempty"`
 
 	// Top10 LP token holders info(Notice:When "is_in_dex": "0", there will be no return. )
-	LpHolders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0 `json:"lp_holders"`
+	LpHolders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 `json:"lp_holders"`
 
 	// It describes the supply number of the LP token.
 	// Example:"lp_total_supply": "100000000".
@@ -409,8 +354,8 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	TrustList string `json:"trust_list,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDex(formats); err != nil {
@@ -431,7 +376,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateDex(formats strfmt.Registry) error {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateDex(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Dex) { // not required
 		return nil
@@ -445,7 +390,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 		if m.Dex[i] != nil {
 			if err := m.Dex[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "dex" + "." + strconv.Itoa(i))
+					return ve.ValidateName("dex" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -456,7 +401,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateHolders(formats strfmt.Registry) error {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateHolders(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Holders) { // not required
 		return nil
@@ -470,7 +415,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 		if m.Holders[i] != nil {
 			if err := m.Holders[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "holders" + "." + strconv.Itoa(i))
+					return ve.ValidateName("holders" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -481,7 +426,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) validateLpHolders(formats strfmt.Registry) error {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateLpHolders(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.LpHolders) { // not required
 		return nil
@@ -495,7 +440,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 		if m.LpHolders[i] != nil {
 			if err := m.LpHolders[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("result" + "." + "{{contract_address}}" + "." + "lp_holders" + "." + strconv.Itoa(i))
+					return ve.ValidateName("lp_holders" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -507,7 +452,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -515,8 +460,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddress
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -524,10 +469,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address dex items0
+// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon dex items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0 struct {
+// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0
+type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 struct {
 
 	// Liquidity is converted to USDT denomination.
 	Liquidity string `json:"liquidity,omitempty"`
@@ -539,13 +484,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Pair string `json:"pair,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address dex items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon dex items0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -553,8 +498,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressDexItems0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -562,10 +507,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address holders items0
+// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon holders items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0 struct {
+// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0
+type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 struct {
 
 	// It describes the holder address;
 	Address string `json:"address,omitempty"`
@@ -590,13 +535,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Tag string `json:"tag,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address holders items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon holders items0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -604,8 +549,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressHoldersItems0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -613,10 +558,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address lp holders items0
+// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon lp holders items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0 struct {
+// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0
+type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 struct {
 
 	// It describes the holder address;
 	Address string `json:"address,omitempty"`
@@ -641,13 +586,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Tag string `json:"tag,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result contract address lp holders items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon lp holders items0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -655,8 +600,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultContractAddressLpHoldersItems0
+func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
