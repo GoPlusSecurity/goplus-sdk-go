@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -17,19 +19,23 @@ import (
 // swagger:model ParseAbiDataRequest
 type ParseAbiDataRequest struct {
 
-	// chain_id
+	// Chain id, (ETH: 1, Cronos:25, BSC: 56, Heco: 128, Polygon: 137, Fantom:250, KCC: 321, Arbitrum: 42161, Avalanche: 43114)
 	// Required: true
 	ChainID *string `json:"chain_id"`
 
-	// contract_address
+	// Carrying the signer and contract address will help to decode more information.
 	ContractAddress string `json:"contract_address,omitempty"`
 
-	// data
+	// Transaction input
 	// Required: true
 	Data *string `json:"data"`
 
-	// signer
+	// Carrying the signer and contract address will help to decode more information.
 	Signer string `json:"signer,omitempty"`
+
+	// Transaction type
+	// Enum: [COMMON ETH_SIGNTYPEDDATA_V4 PERSONAL_SIGN ETH_SIGN]
+	TranscationType string `json:"transcation_type,omitempty"`
 }
 
 // Validate validates this parse abi data request
@@ -41,6 +47,10 @@ func (m *ParseAbiDataRequest) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTranscationType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -62,6 +72,55 @@ func (m *ParseAbiDataRequest) validateChainID(formats strfmt.Registry) error {
 func (m *ParseAbiDataRequest) validateData(formats strfmt.Registry) error {
 
 	if err := validate.Required("data", "body", m.Data); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var parseAbiDataRequestTypeTranscationTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["COMMON","ETH_SIGNTYPEDDATA_V4","PERSONAL_SIGN","ETH_SIGN"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		parseAbiDataRequestTypeTranscationTypePropEnum = append(parseAbiDataRequestTypeTranscationTypePropEnum, v)
+	}
+}
+
+const (
+
+	// ParseAbiDataRequestTranscationTypeCOMMON captures enum value "COMMON"
+	ParseAbiDataRequestTranscationTypeCOMMON string = "COMMON"
+
+	// ParseAbiDataRequestTranscationTypeETHSIGNTYPEDDATAV4 captures enum value "ETH_SIGNTYPEDDATA_V4"
+	ParseAbiDataRequestTranscationTypeETHSIGNTYPEDDATAV4 string = "ETH_SIGNTYPEDDATA_V4"
+
+	// ParseAbiDataRequestTranscationTypePERSONALSIGN captures enum value "PERSONAL_SIGN"
+	ParseAbiDataRequestTranscationTypePERSONALSIGN string = "PERSONAL_SIGN"
+
+	// ParseAbiDataRequestTranscationTypeETHSIGN captures enum value "ETH_SIGN"
+	ParseAbiDataRequestTranscationTypeETHSIGN string = "ETH_SIGN"
+)
+
+// prop value enum
+func (m *ParseAbiDataRequest) validateTranscationTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, parseAbiDataRequestTypeTranscationTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ParseAbiDataRequest) validateTranscationType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TranscationType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTranscationTypeEnum("transcation_type", "body", m.TranscationType); err != nil {
 		return err
 	}
 

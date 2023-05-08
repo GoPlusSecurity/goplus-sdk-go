@@ -64,20 +64,20 @@ AddressContractUsingGET1OK handles this case with default header values.
 OK
 */
 type AddressContractUsingGET1OK struct {
-	Payload *models.ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39
+	Payload *models.ResponseWrapperObject545a2ceaB58741b4Aae7F3d73df91255
 }
 
 func (o *AddressContractUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/address_security/{address}][%d] addressContractUsingGET1OK  %+v", 200, o.Payload)
 }
 
-func (o *AddressContractUsingGET1OK) GetPayload() *models.ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39 {
+func (o *AddressContractUsingGET1OK) GetPayload() *models.ResponseWrapperObject545a2ceaB58741b4Aae7F3d73df91255 {
 	return o.Payload
 }
 
 func (o *AddressContractUsingGET1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39)
+	o.Payload = new(models.ResponseWrapperObject545a2ceaB58741b4Aae7F3d73df91255)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

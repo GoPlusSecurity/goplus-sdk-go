@@ -14,7 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/models"
 )
 
 // NewGetAccessTokenUsingPOSTParams creates a new GetAccessTokenUsingPOSTParams object
@@ -62,25 +63,11 @@ for the get access token using p o s t operation typically these are written to 
 */
 type GetAccessTokenUsingPOSTParams struct {
 
-	/*AppKey
-	  app_key
+	/*Request
+	  request
 
 	*/
-	AppKey string
-	/*Sign
-	  Concatenate app_key, time, app_secret in turn, and do sha1().app_key = mBOMg20QW11BbtyH4Zh0 \n" +
-	            "time = 1647847498 \n" +
-	            "app_secret = V6aRfxlPJwN3ViJSIFSCdxPvneajuJsh \n" +
-	            "sign = sha1(mBOMg20QW11BbtyH4Zh01647847498V6aRfxlPJwN3ViJSIFSCdxPvneajuJsh)\n" +
-	            "        = 7293d385b9225b3c3f232b76ba97255d0e21063e
-
-	*/
-	Sign string
-	/*Time
-	  Quest timestamp (Second)
-
-	*/
-	Time int64
+	Request *models.GetAccessTokenRequest
 
 	timeout    time.Duration
 	Context    context.Context
@@ -120,37 +107,15 @@ func (o *GetAccessTokenUsingPOSTParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithAppKey adds the appKey to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithAppKey(appKey string) *GetAccessTokenUsingPOSTParams {
-	o.SetAppKey(appKey)
+// WithRequest adds the request to the get access token using p o s t params
+func (o *GetAccessTokenUsingPOSTParams) WithRequest(request *models.GetAccessTokenRequest) *GetAccessTokenUsingPOSTParams {
+	o.SetRequest(request)
 	return o
 }
 
-// SetAppKey adds the appKey to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetAppKey(appKey string) {
-	o.AppKey = appKey
-}
-
-// WithSign adds the sign to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithSign(sign string) *GetAccessTokenUsingPOSTParams {
-	o.SetSign(sign)
-	return o
-}
-
-// SetSign adds the sign to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetSign(sign string) {
-	o.Sign = sign
-}
-
-// WithTime adds the time to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) WithTime(time int64) *GetAccessTokenUsingPOSTParams {
-	o.SetTime(time)
-	return o
-}
-
-// SetTime adds the time to the get access token using p o s t params
-func (o *GetAccessTokenUsingPOSTParams) SetTime(time int64) {
-	o.Time = time
+// SetRequest adds the request to the get access token using p o s t params
+func (o *GetAccessTokenUsingPOSTParams) SetRequest(request *models.GetAccessTokenRequest) {
+	o.Request = request
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -161,29 +126,8 @@ func (o *GetAccessTokenUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
-	// query param appKey
-	qrAppKey := o.AppKey
-	qAppKey := qrAppKey
-	if qAppKey != "" {
-		if err := r.SetQueryParam("appKey", qAppKey); err != nil {
-			return err
-		}
-	}
-
-	// query param sign
-	qrSign := o.Sign
-	qSign := qrSign
-	if qSign != "" {
-		if err := r.SetQueryParam("sign", qSign); err != nil {
-			return err
-		}
-	}
-
-	// query param time
-	qrTime := o.Time
-	qTime := swag.FormatInt64(qrTime)
-	if qTime != "" {
-		if err := r.SetQueryParam("time", qTime); err != nil {
+	if o.Request != nil {
+		if err := r.SetBodyParam(o.Request); err != nil {
 			return err
 		}
 	}

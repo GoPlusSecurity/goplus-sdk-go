@@ -64,20 +64,20 @@ GetNftInfoUsingGET1OK handles this case with default header values.
 OK
 */
 type GetNftInfoUsingGET1OK struct {
-	Payload *models.ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b
+	Payload *models.ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c
 }
 
 func (o *GetNftInfoUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/nft_security/{chain_id}][%d] getNftInfoUsingGET1OK  %+v", 200, o.Payload)
 }
 
-func (o *GetNftInfoUsingGET1OK) GetPayload() *models.ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b {
+func (o *GetNftInfoUsingGET1OK) GetPayload() *models.ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c {
 	return o.Payload
 }
 
 func (o *GetNftInfoUsingGET1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperJSONObject59da6cfeB2f246e4936a6968cc97141b)
+	o.Payload = new(models.ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
