@@ -64,20 +64,20 @@ TokenSecurityUsingGET1OK handles this case with default header values.
 OK
 */
 type TokenSecurityUsingGET1OK struct {
-	Payload *models.ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849
+	Payload *models.ResponseWrapperTaTokenSecurityResponse205696bcFb354bc5Ab26Ddc7cd495fe2
 }
 
 func (o *TokenSecurityUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/token_security/{chain_id}][%d] tokenSecurityUsingGET1OK  %+v", 200, o.Payload)
 }
 
-func (o *TokenSecurityUsingGET1OK) GetPayload() *models.ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 {
+func (o *TokenSecurityUsingGET1OK) GetPayload() *models.ResponseWrapperTaTokenSecurityResponse205696bcFb354bc5Ab26Ddc7cd495fe2 {
 	return o.Payload
 }
 
 func (o *TokenSecurityUsingGET1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
+	o.Payload = new(models.ResponseWrapperTaTokenSecurityResponse205696bcFb354bc5Ab26Ddc7cd495fe2)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

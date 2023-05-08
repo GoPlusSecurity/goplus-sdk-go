@@ -62,7 +62,7 @@ for the approval contract using g e t operation typically these are written to a
 type ApprovalContractUsingGETParams struct {
 
 	/*Authorization
-	  Authorization example：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...
+	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
 
 	*/
 	Authorization *string
@@ -75,7 +75,7 @@ type ApprovalContractUsingGETParams struct {
 	  Contract needs to be detected
 
 	*/
-	ContractAddresses *string
+	ContractAddresses string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,13 +138,13 @@ func (o *ApprovalContractUsingGETParams) SetChainID(chainID string) {
 }
 
 // WithContractAddresses adds the contractAddresses to the approval contract using g e t params
-func (o *ApprovalContractUsingGETParams) WithContractAddresses(contractAddresses *string) *ApprovalContractUsingGETParams {
+func (o *ApprovalContractUsingGETParams) WithContractAddresses(contractAddresses string) *ApprovalContractUsingGETParams {
 	o.SetContractAddresses(contractAddresses)
 	return o
 }
 
 // SetContractAddresses adds the contractAddresses to the approval contract using g e t params
-func (o *ApprovalContractUsingGETParams) SetContractAddresses(contractAddresses *string) {
+func (o *ApprovalContractUsingGETParams) SetContractAddresses(contractAddresses string) {
 	o.ContractAddresses = contractAddresses
 }
 
@@ -170,20 +170,13 @@ func (o *ApprovalContractUsingGETParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 
-	if o.ContractAddresses != nil {
-
-		// query param contract_addresses
-		var qrContractAddresses string
-		if o.ContractAddresses != nil {
-			qrContractAddresses = *o.ContractAddresses
+	// query param contract_addresses
+	qrContractAddresses := o.ContractAddresses
+	qContractAddresses := qrContractAddresses
+	if qContractAddresses != "" {
+		if err := r.SetQueryParam("contract_addresses", qContractAddresses); err != nil {
+			return err
 		}
-		qContractAddresses := qrContractAddresses
-		if qContractAddresses != "" {
-			if err := r.SetQueryParam("contract_addresses", qContractAddresses); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if len(res) > 0 {
