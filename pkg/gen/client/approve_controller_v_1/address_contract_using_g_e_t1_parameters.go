@@ -93,7 +93,7 @@ type AddressContractUsingGET1Params struct {
 	"tron" means Tron.
 
 	*/
-	ChainID string
+	ChainID *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -156,13 +156,13 @@ func (o *AddressContractUsingGET1Params) SetAddress(address string) {
 }
 
 // WithChainID adds the chainID to the address contract using g e t 1 params
-func (o *AddressContractUsingGET1Params) WithChainID(chainID string) *AddressContractUsingGET1Params {
+func (o *AddressContractUsingGET1Params) WithChainID(chainID *string) *AddressContractUsingGET1Params {
 	o.SetChainID(chainID)
 	return o
 }
 
 // SetChainID adds the chainId to the address contract using g e t 1 params
-func (o *AddressContractUsingGET1Params) SetChainID(chainID string) {
+func (o *AddressContractUsingGET1Params) SetChainID(chainID *string) {
 	o.ChainID = chainID
 }
 
@@ -188,13 +188,20 @@ func (o *AddressContractUsingGET1Params) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 
-	// query param chain_id
-	qrChainID := o.ChainID
-	qChainID := qrChainID
-	if qChainID != "" {
-		if err := r.SetQueryParam("chain_id", qChainID); err != nil {
-			return err
+	if o.ChainID != nil {
+
+		// query param chain_id
+		var qrChainID string
+		if o.ChainID != nil {
+			qrChainID = *o.ChainID
 		}
+		qChainID := qrChainID
+		if qChainID != "" {
+			if err := r.SetQueryParam("chain_id", qChainID); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {
