@@ -36,7 +36,7 @@ type Result struct {
 func (a *ApprovalSecurity) Run(chainId, address string) (*Result, error) {
 	params := approve_controller_v_1.NewApprovalContractUsingGETParams()
 	params.SetChainID(chainId)
-	params.SetContractAddresses(pointer.String(address))
+	params.SetContractAddresses(address)
 	if a.Config != nil && a.Config.Timeout != 0 {
 		params.SetTimeout(time.Duration(a.Config.Timeout))
 	}

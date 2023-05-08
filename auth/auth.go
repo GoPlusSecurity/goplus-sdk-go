@@ -9,6 +9,9 @@ import (
 
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/models"
+
+	"k8s.io/utils/pointer"
 )
 
 type accessTokenInfo struct {
@@ -45,9 +48,11 @@ func (a *App) GetAccessToken() (*Result, error) {
 	nowStr := strconv.FormatInt(now, 10)
 	s := sign(a.Key, a.Secret, nowStr)
 	params := token_controller.NewGetAccessTokenUsingPOSTParams()
-	params.SetAppKey(a.Key)
-	params.SetSign(s)
-	params.SetTime(now)
+	params.SetRequest(&models.GetAccessTokenRequest{
+		AppKey: pointer.String(a.Key),
+		Sign:   pointer.String(s),
+		Time:   pointer.Int64(now),
+	})
 	if a.Config != nil && a.Config.Timeout != 0 {
 		params.SetTimeout(time.Duration(a.Config.Timeout))
 	}
