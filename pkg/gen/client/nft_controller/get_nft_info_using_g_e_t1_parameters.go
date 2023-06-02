@@ -19,11 +19,8 @@ import (
 // NewGetNftInfoUsingGET1Params creates a new GetNftInfoUsingGET1Params object
 // with the default values initialized.
 func NewGetNftInfoUsingGET1Params() *GetNftInfoUsingGET1Params {
-	var (
-		tokenIDDefault = string("NFT token id")
-	)
+	var ()
 	return &GetNftInfoUsingGET1Params{
-		TokenID: &tokenIDDefault,
 
 		timeout: cr.DefaultTimeout,
 	}
@@ -32,11 +29,8 @@ func NewGetNftInfoUsingGET1Params() *GetNftInfoUsingGET1Params {
 // NewGetNftInfoUsingGET1ParamsWithTimeout creates a new GetNftInfoUsingGET1Params object
 // with the default values initialized, and the ability to set a timeout on a request
 func NewGetNftInfoUsingGET1ParamsWithTimeout(timeout time.Duration) *GetNftInfoUsingGET1Params {
-	var (
-		tokenIDDefault = string("NFT token id")
-	)
+	var ()
 	return &GetNftInfoUsingGET1Params{
-		TokenID: &tokenIDDefault,
 
 		timeout: timeout,
 	}
@@ -45,11 +39,8 @@ func NewGetNftInfoUsingGET1ParamsWithTimeout(timeout time.Duration) *GetNftInfoU
 // NewGetNftInfoUsingGET1ParamsWithContext creates a new GetNftInfoUsingGET1Params object
 // with the default values initialized, and the ability to set a context for a request
 func NewGetNftInfoUsingGET1ParamsWithContext(ctx context.Context) *GetNftInfoUsingGET1Params {
-	var (
-		tokenIdDefault = string("NFT token id")
-	)
+	var ()
 	return &GetNftInfoUsingGET1Params{
-		TokenID: &tokenIdDefault,
 
 		Context: ctx,
 	}
@@ -58,11 +49,8 @@ func NewGetNftInfoUsingGET1ParamsWithContext(ctx context.Context) *GetNftInfoUsi
 // NewGetNftInfoUsingGET1ParamsWithHTTPClient creates a new GetNftInfoUsingGET1Params object
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetNftInfoUsingGET1ParamsWithHTTPClient(client *http.Client) *GetNftInfoUsingGET1Params {
-	var (
-		tokenIdDefault = string("NFT token id")
-	)
+	var ()
 	return &GetNftInfoUsingGET1Params{
-		TokenID:    &tokenIdDefault,
 		HTTPClient: client,
 	}
 }

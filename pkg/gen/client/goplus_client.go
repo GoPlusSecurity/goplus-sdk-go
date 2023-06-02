@@ -14,6 +14,7 @@ import (
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/approve_controller_v_2"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/contract_abi_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/dapp_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/defi_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/nft_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller_v_1"
@@ -66,6 +67,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Goplus {
 	cli.ApproveControllerv2 = approve_controller_v_2.New(transport, formats)
 	cli.ContractAbiController = contract_abi_controller.New(transport, formats)
 	cli.DappController = dapp_controller.New(transport, formats)
+	cli.DefiController = defi_controller.New(transport, formats)
 	cli.NftController = nft_controller.New(transport, formats)
 	cli.TokenController = token_controller.New(transport, formats)
 	cli.TokenControllerv1 = token_controller_v_1.New(transport, formats)
@@ -122,6 +124,8 @@ type Goplus struct {
 
 	DappController dapp_controller.ClientService
 
+	DefiController defi_controller.ClientService
+
 	NftController nft_controller.ClientService
 
 	TokenController token_controller.ClientService
@@ -140,6 +144,7 @@ func (c *Goplus) SetTransport(transport runtime.ClientTransport) {
 	c.ApproveControllerv2.SetTransport(transport)
 	c.ContractAbiController.SetTransport(transport)
 	c.DappController.SetTransport(transport)
+	c.DefiController.SetTransport(transport)
 	c.NftController.SetTransport(transport)
 	c.TokenController.SetTransport(transport)
 	c.TokenControllerv1.SetTransport(transport)

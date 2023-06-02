@@ -11,10 +11,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39 ResponseWrapper«object»-f7b82021-fc93-4bb6-9009-542c33e30a39
+// ResponseWrapperAddressContract ResponseWrapper«AddressContract»
 //
-// swagger:model ResponseWrapper«object»-f7b82021-fc93-4bb6-9009-542c33e30a39
-type ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39 struct {
+// swagger:model ResponseWrapper«AddressContract»
+type ResponseWrapperAddressContract struct {
 
 	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
@@ -23,11 +23,11 @@ type ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39 struct {
 	Message string `json:"message,omitempty"`
 
 	// result
-	Result *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result `json:"result,omitempty"`
+	Result *ResponseWrapperAddressContractResult `json:"result,omitempty"`
 }
 
-// Validate validates this response wrapper object f7b82021 fc93 4bb6 9009 542c33e30a39
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper address contract
+func (m *ResponseWrapperAddressContract) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateResult(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) Validate(formats
 	return nil
 }
 
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) validateResult(formats strfmt.Registry) error {
+func (m *ResponseWrapperAddressContract) validateResult(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Result) { // not required
 		return nil
@@ -59,7 +59,7 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) validateResult(f
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperAddressContract) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -67,8 +67,8 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) MarshalBinary() 
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39
+func (m *ResponseWrapperAddressContract) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperAddressContract
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -76,10 +76,10 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39) UnmarshalBinary(
 	return nil
 }
 
-// ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result Response result
+// ResponseWrapperAddressContractResult Response result
 //
-// swagger:model ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result
-type ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result struct {
+// swagger:model ResponseWrapperAddressContractResult
+type ResponseWrapperAddressContractResult struct {
 
 	// It describes whether this address is suspected of malicious behavior.
 	// "1" means true;
@@ -161,13 +161,13 @@ type ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result struct {
 	StealingAttack string `json:"stealing_attack,omitempty"`
 }
 
-// Validate validates this response wrapper object f7b82021 fc934bb69009542c33e30a39 result
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper address contract result
+func (m *ResponseWrapperAddressContractResult) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperAddressContractResult) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -175,8 +175,8 @@ func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) MarshalBin
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperObjectF7b82021Fc934bb69009542c33e30a39Result
+func (m *ResponseWrapperAddressContractResult) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperAddressContractResult
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -30,11 +30,14 @@ type ParseAbiDataRequest struct {
 	// Required: true
 	Data *string `json:"data"`
 
+	// input info
+	Input map[string]interface{} `json:"input,omitempty"`
+
 	// Carrying the signer and contract address will help to decode more information.
 	Signer string `json:"signer,omitempty"`
 
 	// Transaction type
-	// Enum: [COMMON ETH_SIGNTYPEDDATA_V4 PERSONAL_SIGN ETH_SIGN]
+	// Enum: [common eth_signTypedData_v4 personal_sign eth_sign]
 	TranscationType string `json:"transcation_type,omitempty"`
 }
 
@@ -82,7 +85,7 @@ var parseAbiDataRequestTypeTranscationTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["COMMON","ETH_SIGNTYPEDDATA_V4","PERSONAL_SIGN","ETH_SIGN"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["common","eth_signTypedData_v4","personal_sign","eth_sign"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -92,17 +95,17 @@ func init() {
 
 const (
 
-	// ParseAbiDataRequestTranscationTypeCOMMON captures enum value "COMMON"
-	ParseAbiDataRequestTranscationTypeCOMMON string = "COMMON"
+	// ParseAbiDataRequestTranscationTypeCommon captures enum value "common"
+	ParseAbiDataRequestTranscationTypeCommon string = "common"
 
-	// ParseAbiDataRequestTranscationTypeETHSIGNTYPEDDATAV4 captures enum value "ETH_SIGNTYPEDDATA_V4"
-	ParseAbiDataRequestTranscationTypeETHSIGNTYPEDDATAV4 string = "ETH_SIGNTYPEDDATA_V4"
+	// ParseAbiDataRequestTranscationTypeEthSignTypedDataV4 captures enum value "eth_signTypedData_v4"
+	ParseAbiDataRequestTranscationTypeEthSignTypedDataV4 string = "eth_signTypedData_v4"
 
-	// ParseAbiDataRequestTranscationTypePERSONALSIGN captures enum value "PERSONAL_SIGN"
-	ParseAbiDataRequestTranscationTypePERSONALSIGN string = "PERSONAL_SIGN"
+	// ParseAbiDataRequestTranscationTypePersonalSign captures enum value "personal_sign"
+	ParseAbiDataRequestTranscationTypePersonalSign string = "personal_sign"
 
-	// ParseAbiDataRequestTranscationTypeETHSIGN captures enum value "ETH_SIGN"
-	ParseAbiDataRequestTranscationTypeETHSIGN string = "ETH_SIGN"
+	// ParseAbiDataRequestTranscationTypeEthSign captures enum value "eth_sign"
+	ParseAbiDataRequestTranscationTypeEthSign string = "eth_sign"
 )
 
 // prop value enum
