@@ -64,20 +64,20 @@ PhishingSiteUsingGETOK handles this case with default header values.
 OK
 */
 type PhishingSiteUsingGETOK struct {
-	Payload *models.ResponseWrapperMapStringString2a740de0Be5a4eb3B6e4A2cf0a2d8bf8
+	Payload *models.ResponseWrapperPhishingSite
 }
 
 func (o *PhishingSiteUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/phishing_site][%d] phishingSiteUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *PhishingSiteUsingGETOK) GetPayload() *models.ResponseWrapperMapStringString2a740de0Be5a4eb3B6e4A2cf0a2d8bf8 {
+func (o *PhishingSiteUsingGETOK) GetPayload() *models.ResponseWrapperPhishingSite {
 	return o.Payload
 }
 
 func (o *PhishingSiteUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperMapStringString2a740de0Be5a4eb3B6e4A2cf0a2d8bf8)
+	o.Payload = new(models.ResponseWrapperPhishingSite)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

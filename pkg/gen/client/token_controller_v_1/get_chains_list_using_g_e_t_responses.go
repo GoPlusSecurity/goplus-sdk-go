@@ -64,20 +64,20 @@ GetChainsListUsingGETOK handles this case with default header values.
 OK
 */
 type GetChainsListUsingGETOK struct {
-	Payload *models.ResponseWrapperListJSONObject9524a1c652c545bfB6c6898bfc3e93f3
+	Payload *models.ResponseWrapperListGetChainsList
 }
 
 func (o *GetChainsListUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/supported_chains][%d] getChainsListUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetChainsListUsingGETOK) GetPayload() *models.ResponseWrapperListJSONObject9524a1c652c545bfB6c6898bfc3e93f3 {
+func (o *GetChainsListUsingGETOK) GetPayload() *models.ResponseWrapperListGetChainsList {
 	return o.Payload
 }
 
 func (o *GetChainsListUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperListJSONObject9524a1c652c545bfB6c6898bfc3e93f3)
+	o.Payload = new(models.ResponseWrapperListGetChainsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

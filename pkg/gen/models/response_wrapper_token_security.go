@@ -13,10 +13,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 ResponseWrapper«TaTokenSecurityResponse»-730b76cb-8887-4c8b-bfd0-494baf55b849
+// ResponseWrapperTokenSecurity ResponseWrapper«TokenSecurity»
 //
-// swagger:model ResponseWrapper«TaTokenSecurityResponse»-730b76cb-8887-4c8b-bfd0-494baf55b849
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 struct {
+// swagger:model ResponseWrapper«TokenSecurity»
+type ResponseWrapperTokenSecurity struct {
 
 	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
@@ -25,11 +25,11 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849 stru
 	Message string `json:"message,omitempty"`
 
 	// Response result
-	Result map[string]ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon `json:"result,omitempty"`
+	Result map[string]ResponseWrapperTokenSecurityResultAnon `json:"result,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response 730b76cb 8887 4c8b bfd0 494baf55b849
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper token security
+func (m *ResponseWrapperTokenSecurity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateResult(formats); err != nil {
@@ -42,7 +42,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) validateResult(formats strfmt.Registry) error {
+func (m *ResponseWrapperTokenSecurity) validateResult(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Result) { // not required
 		return nil
@@ -65,7 +65,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTokenSecurity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -73,8 +73,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849
+func (m *ResponseWrapperTokenSecurity) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -82,10 +82,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849)
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon contarct address
+// ResponseWrapperTokenSecurityResultAnon key is contract address
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon struct {
+// swagger:model ResponseWrapperTokenSecurityResultAnon
+type ResponseWrapperTokenSecurityResultAnon struct {
 
 	// It describes whether the contract has the function to modify the maximum amount of transactions or the maximum token position.
 	// "1" means true;
@@ -141,7 +141,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	CreatorPercent string `json:"creator_percent,omitempty"`
 
 	// It describes Dex information of where the token that can be traded.(Notice:When "is_in_dex": "0", there will be empty array. )
-	Dex []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 `json:"dex"`
+	Dex []*ResponseWrapperTokenSecurityResultAnonDexItems0 `json:"dex"`
 
 	// It describes whether the contract would call functions of other contracts when primary methods are executed.
 	// "1" means true;
@@ -163,7 +163,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	HolderCount string `json:"holder_count,omitempty"`
 
 	// Top10 holders info
-	Holders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 `json:"holders"`
+	Holders []*ResponseWrapperTokenSecurityResultAnonHoldersItems0 `json:"holders"`
 
 	// It describes whether the token is an airdrop scam.
 	// "1" means true;
@@ -242,7 +242,7 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	LpHolderCount string `json:"lp_holder_count,omitempty"`
 
 	// Top10 LP token holders info(Notice:When "is_in_dex": "0", there will be no return. )
-	LpHolders []*ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 `json:"lp_holders"`
+	LpHolders []*ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 `json:"lp_holders"`
 
 	// It describes the supply number of the LP token.
 	// Example:"lp_total_supply": "100000000".
@@ -354,8 +354,8 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	TrustList string `json:"trust_list,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper token security result anon
+func (m *ResponseWrapperTokenSecurityResultAnon) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDex(formats); err != nil {
@@ -376,7 +376,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateDex(formats strfmt.Registry) error {
+func (m *ResponseWrapperTokenSecurityResultAnon) validateDex(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Dex) { // not required
 		return nil
@@ -401,7 +401,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateHolders(formats strfmt.Registry) error {
+func (m *ResponseWrapperTokenSecurityResultAnon) validateHolders(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Holders) { // not required
 		return nil
@@ -426,7 +426,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) validateLpHolders(formats strfmt.Registry) error {
+func (m *ResponseWrapperTokenSecurityResultAnon) validateLpHolders(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.LpHolders) { // not required
 		return nil
@@ -452,7 +452,7 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTokenSecurityResultAnon) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -460,8 +460,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnon
+func (m *ResponseWrapperTokenSecurityResultAnon) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnon
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -469,10 +469,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon dex items0
+// ResponseWrapperTokenSecurityResultAnonDexItems0 response wrapper token security result anon dex items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0 struct {
+// swagger:model ResponseWrapperTokenSecurityResultAnonDexItems0
+type ResponseWrapperTokenSecurityResultAnonDexItems0 struct {
 
 	// Liquidity is converted to USDT denomination.
 	Liquidity string `json:"liquidity,omitempty"`
@@ -484,13 +484,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Pair string `json:"pair,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon dex items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper token security result anon dex items0
+func (m *ResponseWrapperTokenSecurityResultAnonDexItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTokenSecurityResultAnonDexItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -498,8 +498,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonDexItems0
+func (m *ResponseWrapperTokenSecurityResultAnonDexItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonDexItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -507,10 +507,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon holders items0
+// ResponseWrapperTokenSecurityResultAnonHoldersItems0 response wrapper token security result anon holders items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0 struct {
+// swagger:model ResponseWrapperTokenSecurityResultAnonHoldersItems0
+type ResponseWrapperTokenSecurityResultAnonHoldersItems0 struct {
 
 	// It describes the holder address;
 	Address string `json:"address,omitempty"`
@@ -535,13 +535,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Tag string `json:"tag,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon holders items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper token security result anon holders items0
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -549,8 +549,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonHoldersItems0
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonHoldersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -558,10 +558,10 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 	return nil
 }
 
-// ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon lp holders items0
+// ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 response wrapper token security result anon lp holders items0
 //
-// swagger:model ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0
-type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0 struct {
+// swagger:model ResponseWrapperTokenSecurityResultAnonLpHoldersItems0
+type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 
 	// It describes the holder address;
 	Address string `json:"address,omitempty"`
@@ -586,13 +586,13 @@ type ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849Resul
 	Tag string `json:"tag,omitempty"`
 }
 
-// Validate validates this response wrapper ta token security response730b76cb88874c8b bfd0494baf55b849 result anon lp holders items0
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper token security result anon lp holders items0
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -600,8 +600,8 @@ func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849R
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperTaTokenSecurityResponse730b76cb88874c8bBfd0494baf55b849ResultAnonLpHoldersItems0
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonLpHoldersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

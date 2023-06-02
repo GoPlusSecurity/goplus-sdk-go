@@ -13,10 +13,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c ResponseWrapper«JSONObject»-5c459c54-7a18-4b18-8067-1fad2eb60d6c
+// ResponseWrapperGetNftInfo ResponseWrapper«GetNftInfo»
 //
-// swagger:model ResponseWrapper«JSONObject»-5c459c54-7a18-4b18-8067-1fad2eb60d6c
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c struct {
+// swagger:model ResponseWrapper«GetNftInfo»
+type ResponseWrapperGetNftInfo struct {
 
 	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
@@ -25,11 +25,11 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c struct {
 	Message string `json:"message,omitempty"`
 
 	// result
-	Result *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult `json:"result,omitempty"`
+	Result *ResponseWrapperGetNftInfoResult `json:"result,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object 5c459c54 7a18 4b18 8067 1fad2eb60d6c
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info
+func (m *ResponseWrapperGetNftInfo) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateResult(formats); err != nil {
@@ -42,7 +42,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) Validate(for
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) validateResult(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfo) validateResult(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Result) { // not required
 		return nil
@@ -61,7 +61,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) validateResu
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfo) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -69,8 +69,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) MarshalBinar
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c
+func (m *ResponseWrapperGetNftInfo) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfo
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -78,10 +78,10 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6c) UnmarshalBin
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult Response result
+// ResponseWrapperGetNftInfoResult Response result
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
+// swagger:model ResponseWrapperGetNftInfoResult
+type ResponseWrapperGetNftInfoResult struct {
 
 	// It describes the average price of the NFT in 24h.
 	AveragePrice24h float64 `json:"average_price_24h,omitempty"`
@@ -165,10 +165,10 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
 	OversupplyMinting int32 `json:"oversupply_minting,omitempty"`
 
 	// privileged burn
-	PrivilegedBurn *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn `json:"privileged_burn,omitempty"`
+	PrivilegedBurn *ResponseWrapperGetNftInfoResultPrivilegedBurn `json:"privileged_burn,omitempty"`
 
 	// privileged minting
-	PrivilegedMinting *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting `json:"privileged_minting,omitempty"`
+	PrivilegedMinting *ResponseWrapperGetNftInfoResultPrivilegedMinting `json:"privileged_minting,omitempty"`
 
 	// red check mark
 	RedCheckMark int32 `json:"red_check_mark,omitempty"`
@@ -183,10 +183,10 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
 	Sales24h float64 `json:"sales_24h,omitempty"`
 
 	// It describes the info of other NFTs with duplicate name and symbol.
-	SameNfts []*ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0 `json:"same_nfts"`
+	SameNfts []*ResponseWrapperGetNftInfoResultSameNftsItems0 `json:"same_nfts"`
 
 	// self destruct
-	SelfDestruct *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct `json:"self_destruct,omitempty"`
+	SelfDestruct *ResponseWrapperGetNftInfoResultSelfDestruct `json:"self_destruct,omitempty"`
 
 	// It describes the telegram url of the NFT.
 	// Return “null” means there is no telegram url or didn't find the telegram url.
@@ -195,6 +195,9 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
 	// token_id
 	TokenID string `json:"token_id,omitempty"`
 
+	// token_owner
+	TokenOwner string `json:"token_owner,omitempty"`
+
 	// It describes the total volume of the NFT.
 	TotalVolume float64 `json:"total_volume,omitempty"`
 
@@ -202,7 +205,7 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
 	TradedVolume24h float64 `json:"traded_volume_24h,omitempty"`
 
 	// transfer without approval
-	TransferWithoutApproval *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval `json:"transfer_without_approval,omitempty"`
+	TransferWithoutApproval *ResponseWrapperGetNftInfoResultTransferWithoutApproval `json:"transfer_without_approval,omitempty"`
 
 	// It describes whether the NFT is a famous and trustworthy one.
 	// "1" means true;
@@ -219,8 +222,8 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult struct {
 	WebsiteURL string `json:"website_url,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result
+func (m *ResponseWrapperGetNftInfoResult) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validatePrivilegedBurn(formats); err != nil {
@@ -249,7 +252,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) Valida
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) validatePrivilegedBurn(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfoResult) validatePrivilegedBurn(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.PrivilegedBurn) { // not required
 		return nil
@@ -267,7 +270,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) valida
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) validatePrivilegedMinting(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfoResult) validatePrivilegedMinting(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.PrivilegedMinting) { // not required
 		return nil
@@ -285,7 +288,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) valida
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) validateSameNfts(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfoResult) validateSameNfts(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.SameNfts) { // not required
 		return nil
@@ -310,7 +313,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) valida
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) validateSelfDestruct(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfoResult) validateSelfDestruct(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.SelfDestruct) { // not required
 		return nil
@@ -328,7 +331,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) valida
 	return nil
 }
 
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) validateTransferWithoutApproval(formats strfmt.Registry) error {
+func (m *ResponseWrapperGetNftInfoResult) validateTransferWithoutApproval(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.TransferWithoutApproval) { // not required
 		return nil
@@ -347,7 +350,7 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) valida
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResult) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -355,8 +358,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) Marsha
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult
+func (m *ResponseWrapperGetNftInfoResult) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResult
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -364,10 +367,10 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResult) Unmars
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn It describes whether the NFT owner can burn others NFT.(Notice:Privileged_burn means that the owner can burn others' NFTs directly through the method.)
+// ResponseWrapperGetNftInfoResultPrivilegedBurn It describes whether the NFT owner can burn others NFT.(Notice:Privileged_burn means that the owner can burn others' NFTs directly through the method.)
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn struct {
+// swagger:model ResponseWrapperGetNftInfoResultPrivilegedBurn
+type ResponseWrapperGetNftInfoResultPrivilegedBurn struct {
 
 	// Owner_address describes the owner address.
 	// null: the owner address cannot be fetched.
@@ -390,13 +393,13 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBu
 	Value int32 `json:"value,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result privileged burn
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result privileged burn
+func (m *ResponseWrapperGetNftInfoResultPrivilegedBurn) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResultPrivilegedBurn) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -404,8 +407,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivileg
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedBurn
+func (m *ResponseWrapperGetNftInfoResultPrivilegedBurn) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResultPrivilegedBurn
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -413,11 +416,11 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivileg
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting It describes whether the NFT contract has  minting methods which can only be triggered by an address with special privileges.
+// ResponseWrapperGetNftInfoResultPrivilegedMinting It describes whether the NFT contract has  minting methods which can only be triggered by an address with special privileges.
 // (Notice:Some minting methods can only be triggered by an address with special privileges. Generally speaking, these are usually for the owner to mint.)
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting struct {
+// swagger:model ResponseWrapperGetNftInfoResultPrivilegedMinting
+type ResponseWrapperGetNftInfoResultPrivilegedMinting struct {
 
 	// Owner_address describes the owner address.
 	// null: the owner address cannot be fetched.
@@ -440,13 +443,13 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMi
 	Value int32 `json:"value,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result privileged minting
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result privileged minting
+func (m *ResponseWrapperGetNftInfoResultPrivilegedMinting) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResultPrivilegedMinting) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -454,8 +457,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivileg
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivilegedMinting
+func (m *ResponseWrapperGetNftInfoResultPrivilegedMinting) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResultPrivilegedMinting
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -463,10 +466,10 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultPrivileg
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0 response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result same nfts items0
+// ResponseWrapperGetNftInfoResultSameNftsItems0 response wrapper get nft info result same nfts items0
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0 struct {
+// swagger:model ResponseWrapperGetNftInfoResultSameNftsItems0
+type ResponseWrapperGetNftInfoResultSameNftsItems0 struct {
 
 	// describes the number of blocks created for the NFT.
 	// Return "null" means no NFTs with duplicate name and symbol.
@@ -485,13 +488,13 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItem
 	NftSymbol string `json:"nft_symbol,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result same nfts items0
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result same nfts items0
+func (m *ResponseWrapperGetNftInfoResultSameNftsItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResultSameNftsItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -499,8 +502,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNfts
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNftsItems0
+func (m *ResponseWrapperGetNftInfoResultSameNftsItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResultSameNftsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -508,11 +511,11 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSameNfts
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct { value: owner_address: owner_type }It describes whether this NFT contract can self destruct.
+// ResponseWrapperGetNftInfoResultSelfDestruct { value: owner_address: owner_type }It describes whether this NFT contract can self destruct.
 // (Notice:When the self-destruct function is triggered, this contract will be destroyed, all functions will be unavailable, and all related assets will be erased.)
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct struct {
+// swagger:model ResponseWrapperGetNftInfoResultSelfDestruct
+type ResponseWrapperGetNftInfoResultSelfDestruct struct {
 
 	// Owner_address describes the owner address.
 	// null: the owner address cannot be fetched.
@@ -535,13 +538,13 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct
 	Value int32 `json:"value,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result self destruct
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result self destruct
+func (m *ResponseWrapperGetNftInfoResultSelfDestruct) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResultSelfDestruct) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -549,8 +552,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDest
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDestruct
+func (m *ResponseWrapperGetNftInfoResultSelfDestruct) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResultSelfDestruct
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -558,11 +561,11 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultSelfDest
 	return nil
 }
 
-// ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval It describes whether the NFT owner can transfer NFT without approval.(Notice:Transfer_without_approval generally means the scammer does not need to get approvals to transfer another address's NFT.
+// ResponseWrapperGetNftInfoResultTransferWithoutApproval It describes whether the NFT owner can transfer NFT without approval.(Notice:Transfer_without_approval generally means the scammer does not need to get approvals to transfer another address's NFT.
 // One typical example is sleep_minting. Sleep_minting means that the scammer will first add the NFT to a well-known wallet address and then retrieve the NFT. After the value of the NFT has appreciated , it will be put back on the market.)
 //
-// swagger:model ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval
-type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval struct {
+// swagger:model ResponseWrapperGetNftInfoResultTransferWithoutApproval
+type ResponseWrapperGetNftInfoResultTransferWithoutApproval struct {
 
 	// Owner_address describes the owner address.
 	// null: the owner address cannot be fetched.
@@ -585,13 +588,13 @@ type ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWith
 	Value int32 `json:"value,omitempty"`
 }
 
-// Validate validates this response wrapper JSON object5c459c547a184b1880671fad2eb60d6c result transfer without approval
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper get nft info result transfer without approval
+func (m *ResponseWrapperGetNftInfoResultTransferWithoutApproval) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperGetNftInfoResultTransferWithoutApproval) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -599,8 +602,8 @@ func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransfer
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperJSONObject5c459c547a184b1880671fad2eb60d6cResultTransferWithoutApproval
+func (m *ResponseWrapperGetNftInfoResultTransferWithoutApproval) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperGetNftInfoResultTransferWithoutApproval
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
