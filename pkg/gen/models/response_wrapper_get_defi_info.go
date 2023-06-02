@@ -120,7 +120,7 @@ type ResponseWrapperGetDefiInfoResult struct {
 	// "1" means true;
 	// "0" means false;
 	// “-1” means unknown.
-	Selfdestruct string `json:"selfdestruct,omitempty"`
+	Selfdestruct int32 `json:"selfdestruct,omitempty"`
 
 	// It describes whether the contract lacks withdrawal method. If it is missing, users will be unable to withdraw the assets they have putted in.
 	// "1" means true;
