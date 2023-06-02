@@ -1,7 +1,6 @@
 package phishing_site
 
 import (
-	"encoding/json"
 	"time"
 
 	"k8s.io/utils/pointer"
@@ -27,11 +26,7 @@ func NewPhishingSiteDetection(accessToken string, config *Config) *PhishingSiteD
 	}
 }
 
-type Result struct {
-	Code    int            `json:"code"`
-	Message string         `json:"message"`
-	Result  map[string]any `json:"result"`
-}
+type Result = website_controller.PhishingSiteUsingGETOK
 
 func (s *PhishingSiteDetection) Run(url string) (*Result, error) {
 	params := website_controller.NewPhishingSiteUsingGETParams()
@@ -43,21 +38,5 @@ func (s *PhishingSiteDetection) Run(url string) (*Result, error) {
 		params.SetAuthorization(pointer.String(s.AccessToken))
 	}
 
-	response, err := client.Default.WebsiteController.PhishingSiteUsingGET(params)
-	if err != nil {
-		return nil, err
-	}
-
-	tmp, err := json.Marshal(response.Payload)
-	if err != nil {
-		return nil, err
-	}
-
-	res := Result{}
-	err = json.Unmarshal(tmp, &res)
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return client.Default.WebsiteController.PhishingSiteUsingGET(params)
 }

@@ -1,4 +1,4 @@
-package nft
+package phishing_site
 
 import (
 	"time"
@@ -6,7 +6,7 @@ import (
 	"k8s.io/utils/pointer"
 
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/nft_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/defi_controller"
 )
 
 type Config struct {
@@ -14,22 +14,22 @@ type Config struct {
 	Timeout int
 }
 
-type NFTSecurity struct {
+type RugPullDetection struct {
 	AccessToken string
 	Config      *Config
 }
 
-func NewNFTSecurity(accessToken string, config *Config) *NFTSecurity {
-	return &NFTSecurity{
+type Result = defi_controller.GetDefiInfoUsingGETOK
+
+func NewRugPullDetection(accessToken string, config *Config) *RugPullDetection {
+	return &RugPullDetection{
 		AccessToken: accessToken,
 		Config:      config,
 	}
 }
 
-type Result = nft_controller.GetNftInfoUsingGET1OK
-
-func (s *NFTSecurity) Run(chainId, address string) (*Result, error) {
-	params := nft_controller.NewGetNftInfoUsingGET1Params()
+func (s *RugPullDetection) Run(chainId, address string) (*Result, error) {
+	params := defi_controller.NewGetDefiInfoUsingGETParams()
 	params.SetChainID(chainId)
 	params.SetContractAddresses(address)
 	if s.Config != nil && s.Config.Timeout != 0 {
@@ -39,5 +39,5 @@ func (s *NFTSecurity) Run(chainId, address string) (*Result, error) {
 		params.SetAuthorization(pointer.String(s.AccessToken))
 	}
 
-	return client.Default.NftController.GetNftInfoUsingGET1(params)
+	return client.Default.DefiController.GetDefiInfoUsingGET(params)
 }

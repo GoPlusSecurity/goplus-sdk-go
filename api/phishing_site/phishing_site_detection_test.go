@@ -17,7 +17,7 @@ func TestPhishingSiteDetection_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != errorcode.SUCCESS {
-		t.Errorf(data.Message)
+	if data.Payload.Code != errorcode.SUCCESS {
+		t.Errorf(data.Payload.Message)
 	}
 }
