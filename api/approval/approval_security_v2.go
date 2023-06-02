@@ -1,7 +1,6 @@
 package approval
 
 import (
-	"encoding/json"
 	"time"
 
 	"k8s.io/utils/pointer"
@@ -27,13 +26,9 @@ func NewApprovalSecurityV2(accessToken string, config *ConfigV2) *ApprovalSecuri
 	}
 }
 
-type ResultV2 struct {
-	Code    int              `json:"code"`
-	Message string           `json:"message"`
-	Result  []map[string]any `json:"result"`
-}
+type TokenResult = approve_controller_v_2.AddressTokenApproveListUsingGET1OK
 
-func (a *ApprovalSecurityV2) Token(chainId, address string) (*ResultV2, error) {
+func (a *ApprovalSecurityV2) Token(chainId, address string) (*TokenResult, error) {
 	params := approve_controller_v_2.NewAddressTokenApproveListUsingGET1Params()
 	params.SetChainID(chainId)
 	params.SetAddresses(address)
@@ -44,26 +39,12 @@ func (a *ApprovalSecurityV2) Token(chainId, address string) (*ResultV2, error) {
 		params.SetAuthorization(pointer.String(a.AccessToken))
 	}
 
-	response, err := client.Default.ApproveControllerv2.AddressTokenApproveListUsingGET1(params)
-	if err != nil {
-		return nil, err
-	}
-
-	tmp, err := json.Marshal(response.Payload)
-	if err != nil {
-		return nil, err
-	}
-
-	res := ResultV2{}
-	err = json.Unmarshal(tmp, &res)
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return client.Default.ApproveControllerv2.AddressTokenApproveListUsingGET1(params)
 }
 
-func (a *ApprovalSecurityV2) ERC721NFT(chainId, address string) (*ResultV2, error) {
+type ERC721NFTResult = approve_controller_v_2.AddressNFT721ApproveListUsingGET1OK
+
+func (a *ApprovalSecurityV2) ERC721NFT(chainId, address string) (*ERC721NFTResult, error) {
 	params := approve_controller_v_2.NewAddressNFT721ApproveListUsingGET1Params()
 	params.SetChainID(chainId)
 	params.SetAddresses(address)
@@ -74,26 +55,12 @@ func (a *ApprovalSecurityV2) ERC721NFT(chainId, address string) (*ResultV2, erro
 		params.SetAuthorization(pointer.String(a.AccessToken))
 	}
 
-	response, err := client.Default.ApproveControllerv2.AddressNFT721ApproveListUsingGET1(params)
-	if err != nil {
-		return nil, err
-	}
-
-	tmp, err := json.Marshal(response.Payload)
-	if err != nil {
-		return nil, err
-	}
-
-	res := ResultV2{}
-	err = json.Unmarshal(tmp, &res)
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return client.Default.ApproveControllerv2.AddressNFT721ApproveListUsingGET1(params)
 }
 
-func (a *ApprovalSecurityV2) ERC1155NFT(chainId, address string) (*ResultV2, error) {
+type ERC1155NFTResult = approve_controller_v_2.AddressNFT1155ApproveListUsingGET1OK
+
+func (a *ApprovalSecurityV2) ERC1155NFT(chainId, address string) (*ERC1155NFTResult, error) {
 	params := approve_controller_v_2.NewAddressNFT1155ApproveListUsingGET1Params()
 	params.SetChainID(chainId)
 	params.SetAddresses(address)
@@ -104,21 +71,5 @@ func (a *ApprovalSecurityV2) ERC1155NFT(chainId, address string) (*ResultV2, err
 		params.SetAuthorization(pointer.String(a.AccessToken))
 	}
 
-	response, err := client.Default.ApproveControllerv2.AddressNFT1155ApproveListUsingGET1(params)
-	if err != nil {
-		return nil, err
-	}
-
-	tmp, err := json.Marshal(response.Payload)
-	if err != nil {
-		return nil, err
-	}
-
-	res := ResultV2{}
-	err = json.Unmarshal(tmp, &res)
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return client.Default.ApproveControllerv2.AddressNFT1155ApproveListUsingGET1(params)
 }

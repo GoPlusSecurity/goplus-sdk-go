@@ -1,7 +1,6 @@
 package decode
 
 import (
-	"encoding/json"
 	"time"
 
 	"k8s.io/utils/pointer"
@@ -15,11 +14,7 @@ type Config struct {
 	Timeout int
 }
 
-type Result struct {
-	Code    int            `json:"code"`
-	Message string         `json:"message"`
-	Result  map[string]any `json:"result"`
-}
+type Result = contract_abi_controller.GetAbiDataInfoUsingPOSTOK
 
 type SignatureDataDecode struct {
 	AccessToken string
@@ -48,20 +43,5 @@ func (s *SignatureDataDecode) Run(chainId, contractAddress, data string) (*Resul
 	}
 
 	response, _, err := client.Default.ContractAbiController.GetAbiDataInfoUsingPOST(params)
-	if err != nil {
-		return nil, err
-	}
-
-	tmp, err := json.Marshal(response.Payload)
-	if err != nil {
-		return nil, err
-	}
-
-	res := Result{}
-	err = json.Unmarshal(tmp, &res)
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return response, err
 }

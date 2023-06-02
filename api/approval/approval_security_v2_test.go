@@ -15,9 +15,11 @@ func TestApprovalSecurityV2_Token(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != errorcode.SUCCESS {
-		t.Errorf(data.Message)
+	if data.Payload.Code != errorcode.SUCCESS {
+		t.Errorf(data.Payload.Message)
 	}
+
+	t.Log(data.Payload.Result[0].TokenAddress)
 }
 
 func TestApprovalSecurityV2_ERC721NFT(t *testing.T) {
@@ -30,9 +32,10 @@ func TestApprovalSecurityV2_ERC721NFT(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != errorcode.SUCCESS {
-		t.Errorf(data.Message)
+	if data.Payload.Code != errorcode.SUCCESS {
+		t.Errorf(data.Payload.Message)
 	}
+	t.Log(data.Payload.Result[0].NftAddress)
 }
 
 func TestApprovalSecurityV2_ERC1155NFT(t *testing.T) {
@@ -45,7 +48,8 @@ func TestApprovalSecurityV2_ERC1155NFT(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != errorcode.SUCCESS {
-		t.Errorf(data.Message)
+	if data.Payload.Code != errorcode.SUCCESS {
+		t.Errorf(data.Payload.Message)
 	}
+	t.Log(data.Payload.Result[0].NftAddress)
 }

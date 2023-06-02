@@ -1,4 +1,4 @@
-package dapp
+package phishing_site
 
 import (
 	"testing"
@@ -6,12 +6,10 @@ import (
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/errorcode"
 )
 
-func TestDAppSecurity_Run(t *testing.T) {
+func TestPhishingSiteDetection_Run(t *testing.T) {
 	accessToken := ""
-	dAppSecurity := NewDAppSecurity(accessToken, nil)
-
-	url := "https://for.tube"
-	data, err := dAppSecurity.Run(url)
+	rugPull := NewRugPullDetection(accessToken, nil)
+	data, err := rugPull.Run("1", "0x6B175474E89094C44Da98b954EedeAC495271d0F")
 
 	if err != nil {
 		t.Errorf(err.Error())
@@ -20,5 +18,4 @@ func TestDAppSecurity_Run(t *testing.T) {
 	if data.Payload.Code != errorcode.SUCCESS {
 		t.Errorf(data.Payload.Message)
 	}
-
 }

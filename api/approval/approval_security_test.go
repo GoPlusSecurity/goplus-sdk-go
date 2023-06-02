@@ -14,7 +14,7 @@ func TestApprovalSecurity_Run(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if data.Code != errorcode.SUCCESS && data.Code != errorcode.DATA_PENDING_SYNC {
-		t.Errorf(data.Message)
+	if data.Payload.Code != errorcode.SUCCESS && data.Payload.Code != errorcode.DATA_PENDING_SYNC {
+		t.Errorf(data.Payload.Message)
 	}
 }
