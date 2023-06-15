@@ -9,9 +9,9 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// MapStringString Map«string,string»
+// MapStringString MapStringString
 //
-// swagger:model Map«string,string»
+// swagger:model MapStringString
 type MapStringString map[string]string
 
 // Validate validates this map string string

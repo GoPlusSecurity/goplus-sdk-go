@@ -10,15 +10,8 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/approve_controller_v_1"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/approve_controller_v_2"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/contract_abi_controller"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/dapp_controller"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/defi_controller"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/nft_controller"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller_v_1"
-	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/website_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/goplus_api"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/goplus_token_api"
 )
 
 // Default goplus HTTP client.
@@ -63,15 +56,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Goplus {
 
 	cli := new(Goplus)
 	cli.Transport = transport
-	cli.ApproveControllerv1 = approve_controller_v_1.New(transport, formats)
-	cli.ApproveControllerv2 = approve_controller_v_2.New(transport, formats)
-	cli.ContractAbiController = contract_abi_controller.New(transport, formats)
-	cli.DappController = dapp_controller.New(transport, formats)
-	cli.DefiController = defi_controller.New(transport, formats)
-	cli.NftController = nft_controller.New(transport, formats)
-	cli.TokenController = token_controller.New(transport, formats)
-	cli.TokenControllerv1 = token_controller_v_1.New(transport, formats)
-	cli.WebsiteController = website_controller.New(transport, formats)
+	cli.GoplusAPI = goplus_api.New(transport, formats)
+	cli.GoplusTokenAPI = goplus_token_api.New(transport, formats)
 	return cli
 }
 
@@ -116,23 +102,9 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // Goplus is a client for goplus
 type Goplus struct {
-	ApproveControllerv1 approve_controller_v_1.ClientService
+	GoplusAPI goplus_api.ClientService
 
-	ApproveControllerv2 approve_controller_v_2.ClientService
-
-	ContractAbiController contract_abi_controller.ClientService
-
-	DappController dapp_controller.ClientService
-
-	DefiController defi_controller.ClientService
-
-	NftController nft_controller.ClientService
-
-	TokenController token_controller.ClientService
-
-	TokenControllerv1 token_controller_v_1.ClientService
-
-	WebsiteController website_controller.ClientService
+	GoplusTokenAPI goplus_token_api.ClientService
 
 	Transport runtime.ClientTransport
 }
@@ -140,13 +112,6 @@ type Goplus struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *Goplus) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-	c.ApproveControllerv1.SetTransport(transport)
-	c.ApproveControllerv2.SetTransport(transport)
-	c.ContractAbiController.SetTransport(transport)
-	c.DappController.SetTransport(transport)
-	c.DefiController.SetTransport(transport)
-	c.NftController.SetTransport(transport)
-	c.TokenController.SetTransport(transport)
-	c.TokenControllerv1.SetTransport(transport)
-	c.WebsiteController.SetTransport(transport)
+	c.GoplusAPI.SetTransport(transport)
+	c.GoplusTokenAPI.SetTransport(transport)
 }

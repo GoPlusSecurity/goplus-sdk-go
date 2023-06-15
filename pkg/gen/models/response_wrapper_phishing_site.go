@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperPhishingSite ResponseWrapper«PhishingSite»
+// ResponseWrapperPhishingSite ResponseWrapperPhishingSite
 //
-// swagger:model ResponseWrapper«PhishingSite»
+// swagger:model ResponseWrapperPhishingSite
 type ResponseWrapperPhishingSite struct {
 
 	// Code 1：Success

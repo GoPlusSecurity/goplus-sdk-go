@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperParseAbiDataResponse ResponseWrapper«ParseAbiDataResponse»
+// ResponseWrapperParseAbiDataResponse ResponseWrapperParseAbiDataResponse
 //
-// swagger:model ResponseWrapper«ParseAbiDataResponse»
+// swagger:model ResponseWrapperParseAbiDataResponse
 type ResponseWrapperParseAbiDataResponse struct {
 
 	// Code 1：Success
