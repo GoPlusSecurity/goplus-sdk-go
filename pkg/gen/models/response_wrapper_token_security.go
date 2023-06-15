@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperTokenSecurity ResponseWrapper«TokenSecurity»
+// ResponseWrapperTokenSecurity ResponseWrapperTokenSecurity
 //
-// swagger:model ResponseWrapper«TokenSecurity»
+// swagger:model ResponseWrapperTokenSecurity
 type ResponseWrapperTokenSecurity struct {
 
 	// Code 1：Success

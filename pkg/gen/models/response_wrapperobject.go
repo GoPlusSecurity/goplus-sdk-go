@@ -10,10 +10,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperObject ResponseWrapper«object»
+// ResponseWrapperobject ResponseWrapperobject
 //
-// swagger:model ResponseWrapper«object»
-type ResponseWrapperObject struct {
+// swagger:model ResponseWrapperobject
+type ResponseWrapperobject struct {
 
 	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
@@ -25,13 +25,13 @@ type ResponseWrapperObject struct {
 	Result interface{} `json:"result,omitempty"`
 }
 
-// Validate validates this response wrapper object
-func (m *ResponseWrapperObject) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapperobject
+func (m *ResponseWrapperobject) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperObject) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperobject) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -39,8 +39,8 @@ func (m *ResponseWrapperObject) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperObject) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperObject
+func (m *ResponseWrapperobject) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperobject
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

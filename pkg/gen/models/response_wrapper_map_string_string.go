@@ -10,9 +10,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperMapStringString ResponseWrapper«Map«string,string»»
+// ResponseWrapperMapStringString ResponseWrapperMapStringString
 //
-// swagger:model ResponseWrapper«Map«string,string»»
+// swagger:model ResponseWrapperMapStringString
 type ResponseWrapperMapStringString struct {
 
 	// Code 1：Success

@@ -64,20 +64,20 @@ GetDefiInfoUsingGETOK handles this case with default header values.
 OK
 */
 type GetDefiInfoUsingGETOK struct {
-	Payload *models.ResponseWrapperGetDefiInfo
+	Payload *models.GetDefiInfoResponse
 }
 
 func (o *GetDefiInfoUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /api/v1/rugpull_detecting/{chain_id}][%d] getDefiInfoUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetDefiInfoUsingGETOK) GetPayload() *models.ResponseWrapperGetDefiInfo {
+func (o *GetDefiInfoUsingGETOK) GetPayload() *models.GetDefiInfoResponse {
 	return o.Payload
 }
 
 func (o *GetDefiInfoUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResponseWrapperGetDefiInfo)
+	o.Payload = new(models.GetDefiInfoResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

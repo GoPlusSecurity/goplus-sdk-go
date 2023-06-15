@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperGetNftInfo ResponseWrapper«GetNftInfo»
+// ResponseWrapperGetNftInfo ResponseWrapperGetNftInfo
 //
-// swagger:model ResponseWrapper«GetNftInfo»
+// swagger:model ResponseWrapperGetNftInfo
 type ResponseWrapperGetNftInfo struct {
 
 	// Code 1：Success

@@ -11,10 +11,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperGetDefiInfo ResponseWrapper«GetDefiInfo»
+// GetDefiInfoResponse GetDefiInfoResponse
 //
-// swagger:model ResponseWrapper«GetDefiInfo»
-type ResponseWrapperGetDefiInfo struct {
+// swagger:model GetDefiInfoResponse
+type GetDefiInfoResponse struct {
 
 	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
@@ -23,11 +23,11 @@ type ResponseWrapperGetDefiInfo struct {
 	Message string `json:"message,omitempty"`
 
 	// result
-	Result *ResponseWrapperGetDefiInfoResult `json:"result,omitempty"`
+	Result *GetDefiInfoResponseResult `json:"result,omitempty"`
 }
 
-// Validate validates this response wrapper get defi info
-func (m *ResponseWrapperGetDefiInfo) Validate(formats strfmt.Registry) error {
+// Validate validates this get defi info response
+func (m *GetDefiInfoResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateResult(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *ResponseWrapperGetDefiInfo) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ResponseWrapperGetDefiInfo) validateResult(formats strfmt.Registry) error {
+func (m *GetDefiInfoResponse) validateResult(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Result) { // not required
 		return nil
@@ -59,7 +59,7 @@ func (m *ResponseWrapperGetDefiInfo) validateResult(formats strfmt.Registry) err
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfo) MarshalBinary() ([]byte, error) {
+func (m *GetDefiInfoResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -67,8 +67,8 @@ func (m *ResponseWrapperGetDefiInfo) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfo) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperGetDefiInfo
+func (m *GetDefiInfoResponse) UnmarshalBinary(b []byte) error {
+	var res GetDefiInfoResponse
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -76,10 +76,10 @@ func (m *ResponseWrapperGetDefiInfo) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// ResponseWrapperGetDefiInfoResult Response result
+// GetDefiInfoResponseResult Response result
 //
-// swagger:model ResponseWrapperGetDefiInfoResult
-type ResponseWrapperGetDefiInfoResult struct {
+// swagger:model GetDefiInfoResponseResult
+type GetDefiInfoResponseResult struct {
 
 	// It describes whether the owner can spend the allowance that obtained by the contract. If so, this function could potentially be abused to steal user assets.
 	// "1" means true;
@@ -108,7 +108,7 @@ type ResponseWrapperGetDefiInfoResult struct {
 	IsProxy int32 `json:"is_proxy,omitempty"`
 
 	// owner
-	Owner *ResponseWrapperGetDefiInfoResultOwner `json:"owner,omitempty"`
+	Owner *GetDefiInfoResponseResultOwner `json:"owner,omitempty"`
 
 	// It descirbes whether the contract owner can withdraw all the assets in the contract, without uses' permission.
 	// "1" means true;
@@ -129,8 +129,8 @@ type ResponseWrapperGetDefiInfoResult struct {
 	WithdrawMissing int32 `json:"withdraw_missing,omitempty"`
 }
 
-// Validate validates this response wrapper get defi info result
-func (m *ResponseWrapperGetDefiInfoResult) Validate(formats strfmt.Registry) error {
+// Validate validates this get defi info response result
+func (m *GetDefiInfoResponseResult) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateOwner(formats); err != nil {
@@ -143,7 +143,7 @@ func (m *ResponseWrapperGetDefiInfoResult) Validate(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *ResponseWrapperGetDefiInfoResult) validateOwner(formats strfmt.Registry) error {
+func (m *GetDefiInfoResponseResult) validateOwner(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Owner) { // not required
 		return nil
@@ -162,7 +162,7 @@ func (m *ResponseWrapperGetDefiInfoResult) validateOwner(formats strfmt.Registry
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfoResult) MarshalBinary() ([]byte, error) {
+func (m *GetDefiInfoResponseResult) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -170,8 +170,8 @@ func (m *ResponseWrapperGetDefiInfoResult) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfoResult) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperGetDefiInfoResult
+func (m *GetDefiInfoResponseResult) UnmarshalBinary(b []byte) error {
+	var res GetDefiInfoResponseResult
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -179,11 +179,11 @@ func (m *ResponseWrapperGetDefiInfoResult) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// ResponseWrapperGetDefiInfoResultOwner When there is no owner function, or the ownership is unreadable or private, it would return empty.
+// GetDefiInfoResponseResultOwner When there is no owner function, or the ownership is unreadable or private, it would return empty.
 // "owner": {  }
 //
-// swagger:model ResponseWrapperGetDefiInfoResultOwner
-type ResponseWrapperGetDefiInfoResultOwner struct {
+// swagger:model GetDefiInfoResponseResultOwner
+type GetDefiInfoResponseResultOwner struct {
 
 	// owner address of the contract.
 	// No return means unknown.
@@ -202,13 +202,13 @@ type ResponseWrapperGetDefiInfoResultOwner struct {
 	OwnerType string `json:"owner_type,omitempty"`
 }
 
-// Validate validates this response wrapper get defi info result owner
-func (m *ResponseWrapperGetDefiInfoResultOwner) Validate(formats strfmt.Registry) error {
+// Validate validates this get defi info response result owner
+func (m *GetDefiInfoResponseResultOwner) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfoResultOwner) MarshalBinary() ([]byte, error) {
+func (m *GetDefiInfoResponseResultOwner) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -216,8 +216,8 @@ func (m *ResponseWrapperGetDefiInfoResultOwner) MarshalBinary() ([]byte, error) 
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperGetDefiInfoResultOwner) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperGetDefiInfoResultOwner
+func (m *GetDefiInfoResponseResultOwner) UnmarshalBinary(b []byte) error {
+	var res GetDefiInfoResponseResultOwner
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

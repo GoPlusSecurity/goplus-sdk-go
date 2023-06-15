@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperDappContractSecurityResponse ResponseWrapper«DappContractSecurityResponse»
+// ResponseWrapperDappContractSecurityResponse ResponseWrapperDappContractSecurityResponse
 //
-// swagger:model ResponseWrapper«DappContractSecurityResponse»
+// swagger:model ResponseWrapperDappContractSecurityResponse
 type ResponseWrapperDappContractSecurityResponse struct {
 
 	// Code 1：Success
