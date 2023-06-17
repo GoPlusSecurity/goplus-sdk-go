@@ -1,4 +1,4 @@
-package phishing_site
+package phishingsite
 
 import (
 	"time"
