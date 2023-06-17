@@ -7,8 +7,7 @@ import (
 )
 
 func TestSignatureDataDecode_Run(t *testing.T) {
-	accessToken := ""
-	signatureDataDecode := NewSignatureDataDecode(accessToken, nil)
+	signatureDataDecode := NewSignatureDataDecode(nil)
 
 	chainId := "1"
 	contractAddress := "0x4cc8aa0c6ffbe18534584da9b592aa438733ee66"

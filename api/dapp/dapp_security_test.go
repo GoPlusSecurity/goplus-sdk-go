@@ -7,8 +7,7 @@ import (
 )
 
 func TestDAppSecurity_Run(t *testing.T) {
-	accessToken := ""
-	dAppSecurity := NewDAppSecurity(accessToken, nil)
+	dAppSecurity := NewDAppSecurity(nil)
 
 	url := "https://for.tube"
 	data, err := dAppSecurity.Run(url)

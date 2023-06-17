@@ -11,20 +11,20 @@ import (
 )
 
 type Config struct {
-	Timeout int
+	// timeout seconds
+	Timeout     int
+	AccessToken string
 }
 
 type Result = contract_abi_controller.GetAbiDataInfoUsingPOSTOK
 
 type SignatureDataDecode struct {
-	AccessToken string
-	Config      *Config
+	Config *Config
 }
 
-func NewSignatureDataDecode(accessToken string, config *Config) *SignatureDataDecode {
+func NewSignatureDataDecode(config *Config) *SignatureDataDecode {
 	return &SignatureDataDecode{
-		AccessToken: accessToken,
-		Config:      config,
+		Config: config,
 	}
 }
 
@@ -35,11 +35,13 @@ func (s *SignatureDataDecode) Run(chainId, contractAddress, data string) (*Resul
 		ContractAddress: contractAddress,
 		Data:            pointer.String(data),
 	})
-	if s.Config != nil && s.Config.Timeout != 0 {
-		params.SetTimeout(time.Duration(s.Config.Timeout))
-	}
-	if s.AccessToken != "" {
-		params.SetAuthorization(pointer.String(s.AccessToken))
+	if s.Config != nil {
+		if s.Config.AccessToken != "" {
+			params.SetAuthorization(pointer.String(s.Config.AccessToken))
+		}
+		if s.Config.Timeout != 0 {
+			params.SetTimeout(time.Duration(s.Config.Timeout) * time.Second)
+		}
 	}
 
 	response, _, err := client.Default.ContractAbiController.GetAbiDataInfoUsingPOST(params)

@@ -7,8 +7,7 @@ import (
 )
 
 func TestNFTSecurity_Run(t *testing.T) {
-	accessToken := ""
-	nftSecurity := NewNFTSecurity(accessToken, nil)
+	nftSecurity := NewNFTSecurity(nil)
 
 	chainId := "1"
 	contractAddress := "0x82f5ef9ddc3d231962ba57a9c2ebb307dc8d26c2"

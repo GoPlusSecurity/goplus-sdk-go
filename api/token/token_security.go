@@ -12,18 +12,17 @@ import (
 
 type Config struct {
 	// timeout seconds
-	Timeout int
+	Timeout     int
+	AccessToken string
 }
 
 type TokenSecurity struct {
-	AccessToken string
-	Config      *Config
+	Config *Config
 }
 
-func NewTokenSecurity(accessToken string, config *Config) *TokenSecurity {
+func NewTokenSecurity(config *Config) *TokenSecurity {
 	return &TokenSecurity{
-		AccessToken: accessToken,
-		Config:      config,
+		Config: config,
 	}
 }
 
@@ -35,11 +34,13 @@ func (s *TokenSecurity) Run(chainId string, addresses []string) (*Result, error)
 	params := token_controller_v_1.NewTokenSecurityUsingGET1Params()
 	params.SetChainID(chainId)
 	params.SetContractAddresses(contractAddresses)
-	if s.Config != nil && s.Config.Timeout != 0 {
-		params.SetTimeout(time.Duration(s.Config.Timeout))
-	}
-	if s.AccessToken != "" {
-		params.SetAuthorization(pointer.String(s.AccessToken))
+	if s.Config != nil {
+		if s.Config.AccessToken != "" {
+			params.SetAuthorization(pointer.String(s.Config.AccessToken))
+		}
+		if s.Config.Timeout != 0 {
+			params.SetTimeout(time.Duration(s.Config.Timeout) * time.Second)
+		}
 	}
 
 	return client.Default.TokenControllerv1.TokenSecurityUsingGET1(params)

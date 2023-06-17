@@ -7,8 +7,7 @@ import (
 )
 
 func TestPhishingSiteDetection_Run(t *testing.T) {
-	accessToken := ""
-	phishingSiteSecurity := NewPhishingSiteDetection(accessToken, nil)
+	phishingSiteSecurity := NewPhishingSiteDetection(nil)
 
 	url := "https://xn--cm-68s.cc/"
 	data, err := phishingSiteSecurity.Run(url)

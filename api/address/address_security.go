@@ -1,6 +1,8 @@
 package address
 
 import (
+	"time"
+
 	"k8s.io/utils/pointer"
 
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client"
@@ -9,18 +11,17 @@ import (
 
 type Config struct {
 	// timeout seconds
-	Timeout int
+	Timeout     int64
+	AccessToken string
 }
 
 type AddressSecurity struct {
-	AccessToken string
-	Config      *Config
+	Config *Config
 }
 
-func NewAddressSecurity(accessToken string, config *Config) *AddressSecurity {
+func NewAddressSecurity(config *Config) *AddressSecurity {
 	return &AddressSecurity{
-		AccessToken: accessToken,
-		Config:      config,
+		Config: config,
 	}
 }
 
@@ -32,8 +33,13 @@ func (s *AddressSecurity) Run(chainId, address string) (*Result, error) {
 	if chainId != "" {
 		params.SetChainID(pointer.String(chainId))
 	}
-	if s.AccessToken != "" {
-		params.SetAuthorization(pointer.String(s.AccessToken))
+	if s.Config != nil {
+		if s.Config.AccessToken != "" {
+			params.SetAuthorization(pointer.String(s.Config.AccessToken))
+		}
+		if s.Config.Timeout != 0 {
+			params.SetTimeout(time.Duration(s.Config.Timeout) * time.Second)
+		}
 	}
 
 	return client.Default.ApproveControllerv1.AddressContractUsingGET1(params)

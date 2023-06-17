@@ -11,18 +11,17 @@ import (
 
 type Config struct {
 	// timeout seconds
-	Timeout int
+	Timeout     int
+	AccessToken string
 }
 
 type ApprovalSecurity struct {
-	AccessToken string
-	Config      *Config
+	Config *Config
 }
 
-func NewApprovalSecurity(accessToken string, config *Config) *ApprovalSecurity {
+func NewApprovalSecurity(config *Config) *ApprovalSecurity {
 	return &ApprovalSecurity{
-		AccessToken: accessToken,
-		Config:      config,
+		Config: config,
 	}
 }
 
@@ -32,11 +31,13 @@ func (a *ApprovalSecurity) Run(chainId, address string) (*Result, error) {
 	params := approve_controller_v_1.NewApprovalContractUsingGETParams()
 	params.SetChainID(chainId)
 	params.SetContractAddresses(address)
-	if a.Config != nil && a.Config.Timeout != 0 {
-		params.SetTimeout(time.Duration(a.Config.Timeout))
-	}
-	if a.AccessToken != "" {
-		params.SetAuthorization(pointer.String(a.AccessToken))
+	if a.Config != nil {
+		if a.Config.AccessToken != "" {
+			params.SetAuthorization(pointer.String(a.Config.AccessToken))
+		}
+		if a.Config.Timeout != 0 {
+			params.SetTimeout(time.Duration(a.Config.Timeout) * time.Second)
+		}
 	}
 
 	return client.Default.ApproveControllerv1.ApprovalContractUsingGET(params)

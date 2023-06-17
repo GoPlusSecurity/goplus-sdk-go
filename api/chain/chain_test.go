@@ -7,8 +7,7 @@ import (
 )
 
 func TestChain_Run(t *testing.T) {
-	accessToken := ""
-	chain := NewChain(accessToken, nil)
+	chain := NewChain(nil)
 	data, err := chain.Run("")
 
 	if err != nil {

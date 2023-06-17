@@ -7,8 +7,7 @@ import (
 )
 
 func TestPhishingSiteDetection_Run(t *testing.T) {
-	accessToken := ""
-	rugPull := NewRugPullDetection(accessToken, nil)
+	rugPull := NewRugPullDetection(nil)
 	data, err := rugPull.Run("1", "0x6B175474E89094C44Da98b954EedeAC495271d0F")
 
 	if err != nil {

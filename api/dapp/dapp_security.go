@@ -11,18 +11,17 @@ import (
 
 type Config struct {
 	// timeout seconds
-	Timeout int
+	Timeout     int
+	AccessToken string
 }
 
 type DAppSecurity struct {
-	AccessToken string
-	Config      *Config
+	Config *Config
 }
 
-func NewDAppSecurity(accessToken string, config *Config) *DAppSecurity {
+func NewDAppSecurity(config *Config) *DAppSecurity {
 	return &DAppSecurity{
-		AccessToken: accessToken,
-		Config:      config,
+		Config: config,
 	}
 }
 
@@ -31,11 +30,13 @@ type Result = dapp_controller.GetDappInfoUsingGETOK
 func (s *DAppSecurity) Run(url string) (*Result, error) {
 	params := dapp_controller.NewGetDappInfoUsingGETParams()
 	params.SetURL(pointer.String(url))
-	if s.Config != nil && s.Config.Timeout != 0 {
-		params.SetTimeout(time.Duration(s.Config.Timeout))
-	}
-	if s.AccessToken != "" {
-		params.SetAuthorization(pointer.String(s.AccessToken))
+	if s.Config != nil {
+		if s.Config.AccessToken != "" {
+			params.SetAuthorization(pointer.String(s.Config.AccessToken))
+		}
+		if s.Config.Timeout != 0 {
+			params.SetTimeout(time.Duration(s.Config.Timeout) * time.Second)
+		}
 	}
 
 	return client.Default.DappController.GetDappInfoUsingGET(params)
