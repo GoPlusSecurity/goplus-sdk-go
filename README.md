@@ -193,7 +193,7 @@ if data.Payload.Code != errorcode.SUCCESS && data.Payload.Code != errorcode.DATA
     panic(data.Payload.Message)
 }
 
-fmt.Printf("%v", data.Payload.Result.Name)
+fmt.Printf("%v", data.Payload.Result.NftName)
 ```
 
 ### dApp Security Info API
