@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperListApproveTokenOutListResponse ResponseWrapper«List«ApproveTokenOutListResponse»»
+// ResponseWrapperListApproveTokenOutListResponse ResponseWrapperListApproveTokenOutListResponse
 //
-// swagger:model ResponseWrapper«List«ApproveTokenOutListResponse»»
+// swagger:model ResponseWrapperListApproveTokenOutListResponse
 type ResponseWrapperListApproveTokenOutListResponse struct {
 
 	// Code 1：Success

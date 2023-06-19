@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperAddressContract ResponseWrapper«AddressContract»
+// ResponseWrapperAddressContract ResponseWrapperAddressContract
 //
-// swagger:model ResponseWrapper«AddressContract»
+// swagger:model ResponseWrapperAddressContract
 type ResponseWrapperAddressContract struct {
 
 	// Code 1：Success

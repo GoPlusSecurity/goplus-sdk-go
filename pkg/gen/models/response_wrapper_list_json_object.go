@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperListJSONObject ResponseWrapper«List«JSONObject»»
+// ResponseWrapperListJSONObject ResponseWrapperListJSONObject
 //
-// swagger:model ResponseWrapper«List«JSONObject»»
+// swagger:model ResponseWrapperListJSONObject
 type ResponseWrapperListJSONObject struct {
 
 	// Code 1：Success

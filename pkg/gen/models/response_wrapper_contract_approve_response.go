@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperContractApproveResponse ResponseWrapper«ContractApproveResponse»
+// ResponseWrapperContractApproveResponse ResponseWrapperContractApproveResponse
 //
-// swagger:model ResponseWrapper«ContractApproveResponse»
+// swagger:model ResponseWrapperContractApproveResponse
 type ResponseWrapperContractApproveResponse struct {
 
 	// Code 1：Success

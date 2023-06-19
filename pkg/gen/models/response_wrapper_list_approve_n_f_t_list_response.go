@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperListApproveNFTListResponse ResponseWrapper«List«ApproveNFTListResponse»»
+// ResponseWrapperListApproveNFTListResponse ResponseWrapperListApproveNFTListResponse
 //
-// swagger:model ResponseWrapper«List«ApproveNFTListResponse»»
+// swagger:model ResponseWrapperListApproveNFTListResponse
 type ResponseWrapperListApproveNFTListResponse struct {
 
 	// Code 1：Success
