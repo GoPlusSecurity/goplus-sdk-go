@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperGetAccessTokenResponse ResponseWrapper«GetAccessTokenResponse»
+// ResponseWrapperGetAccessTokenResponse ResponseWrapperGetAccessTokenResponse
 //
-// swagger:model ResponseWrapper«GetAccessTokenResponse»
+// swagger:model ResponseWrapperGetAccessTokenResponse
 type ResponseWrapperGetAccessTokenResponse struct {
 
 	// Code 1：Success

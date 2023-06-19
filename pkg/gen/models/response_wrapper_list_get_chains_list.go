@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ResponseWrapperListGetChainsList ResponseWrapper«List«GetChainsList»»
+// ResponseWrapperListGetChainsList ResponseWrapperListGetChainsList
 //
-// swagger:model ResponseWrapper«List«GetChainsList»»
+// swagger:model ResponseWrapperListGetChainsList
 type ResponseWrapperListGetChainsList struct {
 
 	// Code 1：Success
