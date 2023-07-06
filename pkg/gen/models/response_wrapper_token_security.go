@@ -525,8 +525,8 @@ type ResponseWrapperTokenSecurityResultAnonHoldersItems0 struct {
 	// (3) “tag” describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
 	IsLocked int32 `json:"is_locked,omitempty"`
 
-	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. In every objetc, "amount" describes the number of token locked, "end_time" describes when the token will be unlocked, "opt_time" describes when the token was locked.(Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
-	LockedDetail []string `json:"locked_detail"`
+	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. (Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
+	LockedDetail []*ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0 `json:"locked_detail"`
 
 	// It  describes the percentage of tokens held by this holder (Notice:About "percent": 1 means 100% here.)
 	Percent string `json:"percent,omitempty"`
@@ -537,6 +537,40 @@ type ResponseWrapperTokenSecurityResultAnonHoldersItems0 struct {
 
 // Validate validates this response wrapper token security result anon holders items0
 func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLockedDetail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) validateLockedDetail(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LockedDetail) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LockedDetail); i++ {
+		if swag.IsZero(m.LockedDetail[i]) { // not required
+			continue
+		}
+
+		if m.LockedDetail[i] != nil {
+			if err := m.LockedDetail[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("locked_detail" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -551,6 +585,44 @@ func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) MarshalBinary() ([
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperTokenSecurityResultAnonHoldersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0 response wrapper token security result anon holders items0 locked detail items0
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0
+type ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0 struct {
+
+	// "amount" describes the number of token locked
+	Amount string `json:"amount,omitempty"`
+
+	// "end_time" describes when the token will be unlocked
+	EndTime string `json:"end_time,omitempty"`
+
+	// "opt_time" describes when the token was locked
+	OptTime string `json:"opt_time,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon holders items0 locked detail items0
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -576,8 +648,8 @@ type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 	// (3) “tag” describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
 	IsLocked int32 `json:"is_locked,omitempty"`
 
-	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. In every objetc, "amount" describes the number of token locked, "end_time" describes when the token will be unlocked, "opt_time" describes when the token was locked.(Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
-	LockedDetail []string `json:"locked_detail"`
+	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. (Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
+	LockedDetail []*ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0 `json:"locked_detail"`
 
 	// It  describes the percentage of tokens held by this holder (Notice:About "percent": 1 means 100% here.)
 	Percent string `json:"percent,omitempty"`
@@ -588,6 +660,40 @@ type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 
 // Validate validates this response wrapper token security result anon lp holders items0
 func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLockedDetail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) validateLockedDetail(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LockedDetail) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LockedDetail); i++ {
+		if swag.IsZero(m.LockedDetail[i]) { // not required
+			continue
+		}
+
+		if m.LockedDetail[i] != nil {
+			if err := m.LockedDetail[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("locked_detail" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -602,6 +708,44 @@ func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) MarshalBinary() 
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperTokenSecurityResultAnonLpHoldersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0 response wrapper token security result anon lp holders items0 locked detail items0
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0
+type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0 struct {
+
+	// "amount" describes the number of token locked
+	Amount string `json:"amount,omitempty"`
+
+	// "end_time" describes when the token will be unlocked
+	EndTime string `json:"end_time,omitempty"`
+
+	// "opt_time" describes when the token was locked
+	OptTime string `json:"opt_time,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon lp holders items0 locked detail items0
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
