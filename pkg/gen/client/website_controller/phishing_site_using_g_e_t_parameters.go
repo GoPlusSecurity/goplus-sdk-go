@@ -62,7 +62,7 @@ for the phishing site using g e t operation typically these are written to a htt
 type PhishingSiteUsingGETParams struct {
 
 	/*Authorization
-	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
+	  Authorization (test: Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
 
 	*/
 	Authorization *string

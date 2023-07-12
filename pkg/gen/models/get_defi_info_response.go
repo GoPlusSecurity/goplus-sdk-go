@@ -16,7 +16,7 @@ import (
 // swagger:model GetDefiInfoResponse
 type GetDefiInfoResponse struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
@@ -84,7 +84,7 @@ type GetDefiInfoResponseResult struct {
 	// It describes whether the owner can spend the allowance that obtained by the contract. If so, this function could potentially be abused to steal user assets.
 	// "1" means true;
 	// "0" means false;
-	// “-1” means unknown.
+	// "-1" means unknown.
 	ApprovalAbuse int32 `json:"approval_abuse,omitempty"`
 
 	// It describes whether the contract has blacklist function that would block user from withdrawing their assets.
@@ -104,7 +104,7 @@ type GetDefiInfoResponseResult struct {
 	// It describes whether this contract has a proxy contract.
 	// "1" means true;
 	// "0" means false;
-	// “-1” means unknown.
+	// "-1" means unknown.
 	IsProxy int32 `json:"is_proxy,omitempty"`
 
 	// owner
@@ -119,7 +119,7 @@ type GetDefiInfoResponseResult struct {
 	// It describes whether this contract can self destruct.
 	// "1" means true;
 	// "0" means false;
-	// “-1” means unknown.
+	// "-1" means unknown.
 	Selfdestruct int32 `json:"selfdestruct,omitempty"`
 
 	// It describes whether the contract lacks withdrawal method. If it is missing, users will be unable to withdraw the assets they have putted in.

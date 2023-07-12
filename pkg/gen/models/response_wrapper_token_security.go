@@ -18,7 +18,7 @@ import (
 // swagger:model ResponseWrapperTokenSecurity
 type ResponseWrapperTokenSecurity struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
@@ -118,7 +118,7 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	// "0" means false;
 	// No return means unknown.(Notice:(1) Generally, "cannot_buy": "1" would be found in Reward Tokens. Such Tokens are issued as rewards for some on-chain applications and cannot be bought directly by users.
 	// (2) Sometimes token's anti-bot mechanism would affect our sandbox system, causing the display of "buy_tax": "1".
-	// (3) When “cannot_buy”: "1", our sandbox system might be bloked, causing the display of "buy_tax": "1" and "sell_tax": "1")
+	// (3) When "cannot_buy": "1", our sandbox system might be bloked, causing the display of "buy_tax": "1" and "sell_tax": "1")
 	CannotBuy string `json:"cannot_buy,omitempty"`
 
 	// It describes whether the contract has the function restricting token holder selling all the token.
@@ -151,7 +151,7 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	ExternalCall string `json:"external_call,omitempty"`
 
 	// It describes whether the contract has hidden owners. For contract with a hidden owner, developer can still manipulate the contract even if the ownership has been abandoned.
-	// “1” means true;
+	// "1" means true;
 	// "0" means false;
 	// No return means unknown.(Notice:(1) When "is_open_source": "0", there will be no return.
 	// (2) Sometimes, when "is_proxy": "1", there will be no return.
@@ -252,13 +252,13 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 
 	// It describes whether the contract has other things investors need to know.
 	// Example:
-	// "note”: “Contract owner is a multisign contract.”(Notice:(1) If we haven't found any other thing which is valuable yet, there will be no return.
+	// "note": "Contract owner is a multisign contract."(Notice:(1) If we haven't found any other thing which is valuable yet, there will be no return.
 	// (2) Type: string.)
 	Note string `json:"note,omitempty"`
 
 	// It describes whether the contract has other potential risks.
 	// Example:
-	// “other_potential_risks”: “Owner can set different transaction taxes for each user, which can trigger serious losses.”(Notice:(1) If we haven't found any other potential risk yet, there will be no return.
+	// "other_potential_risks": "Owner can set different transaction taxes for each user, which can trigger serious losses."(Notice:(1) If we haven't found any other potential risk yet, there will be no return.
 	// (2) Type: string.)
 	OtherPotentialRisks string `json:"other_potential_risks,omitempty"`
 
@@ -522,7 +522,7 @@ type ResponseWrapperTokenSecurityResultAnonHoldersItems0 struct {
 	IsContract int32 `json:"is_contract,omitempty"`
 
 	// It describes whether the tokens owned by the holder are locked "1" means true; "0" means false;
-	// (3) “tag” describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
+	// (3) "tag" describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
 	IsLocked int32 `json:"is_locked,omitempty"`
 
 	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. (Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
@@ -645,7 +645,7 @@ type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 	IsContract int32 `json:"is_contract,omitempty"`
 
 	// It describes whether the tokens owned by the holder are locked "1" means true; "0" means false;
-	// (3) “tag” describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
+	// (3) "tag" describes the address's public tag. Example:Burn (Notice:About "locked": We only support the token lock addresses or black hole addresses that we have included. )
 	IsLocked int32 `json:"is_locked,omitempty"`
 
 	// It is an array, decribes lock position info of this holder, only shows when "locked": 1. This Array may contain multiple objects for multiple locking info. (Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)

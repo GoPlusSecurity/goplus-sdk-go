@@ -18,7 +18,7 @@ import (
 // swagger:model ResponseWrapperGetNftInfo
 type ResponseWrapperGetNftInfo struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
@@ -87,20 +87,20 @@ type ResponseWrapperGetNftInfoResult struct {
 	AveragePrice24h float64 `json:"average_price_24h,omitempty"`
 
 	// It describes the number of blocks created for the NFT.
-	// Return “null” means that we didn't find the number of blocks created for the NFT.
+	// Return "null" means that we didn't find the number of blocks created for the NFT.
 	CreateBlockNumber int64 `json:"create_block_number,omitempty"`
 
 	// It describes the creator address of the NFT.
 	// Example: "creator_address": "0x1ee0af784b96bb55ece98c9b15675726b0da1b6b";
-	// Return “null” means that we didn't find the creator address.
+	// Return "null" means that we didn't find the creator address.
 	CreatorAddress string `json:"creator_address,omitempty"`
 
 	// It describes the discord url of the NFT.
-	// Return “null” means there is no discord url or didn't find the discord url.
+	// Return "null" means there is no discord url or didn't find the discord url.
 	DiscordURL string `json:"discord_url,omitempty"`
 
 	// It describes the github url of the NFT.
-	// Return “null” means there is no github url or didn't find the github url.
+	// Return "null" means there is no github url or didn't find the github url.
 	GithubURL string `json:"github_url,omitempty"`
 
 	// It describes the highest price of the NFT.
@@ -115,14 +115,14 @@ type ResponseWrapperGetNftInfoResult struct {
 	MaliciousNftContract int32 `json:"malicious_nft_contract,omitempty"`
 
 	// It describes the medium url of the NFT.
-	// Return “null” means there is no medium url or didn't find the medium url.
+	// Return "null" means there is no medium url or didn't find the medium url.
 	MediumURL string `json:"medium_url,omitempty"`
 
 	// metadata_frozen
 	MetadataFrozen int32 `json:"metadata_frozen,omitempty"`
 
 	// It describes the introduction of the NFT.
-	// Return “null” means there is no description of the NFT.
+	// Return "null" means there is no description of the NFT.
 	NftDescription string `json:"nft_description,omitempty"`
 
 	// It describes the ERC protocol of the NFT.
@@ -189,7 +189,7 @@ type ResponseWrapperGetNftInfoResult struct {
 	SelfDestruct *ResponseWrapperGetNftInfoResultSelfDestruct `json:"self_destruct,omitempty"`
 
 	// It describes the telegram url of the NFT.
-	// Return “null” means there is no telegram url or didn't find the telegram url.
+	// Return "null" means there is no telegram url or didn't find the telegram url.
 	TelegramURL string `json:"telegram_url,omitempty"`
 
 	// token_id
@@ -214,11 +214,11 @@ type ResponseWrapperGetNftInfoResult struct {
 	TrustList int32 `json:"trust_list,omitempty"`
 
 	// It describes the twitter url of the NFT.
-	// Return “null” means there is no twitter url or didn't find the twitter url.
+	// Return "null" means there is no twitter url or didn't find the twitter url.
 	TwitterURL string `json:"twitter_url,omitempty"`
 
 	// It describes the website url of the NFT.
-	// Return “null” means there is no website url or didn't find the website url.
+	// Return "null" means there is no website url or didn't find the website url.
 	WebsiteURL string `json:"website_url,omitempty"`
 }
 

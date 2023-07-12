@@ -18,7 +18,7 @@ import (
 // swagger:model ResponseWrapperListApproveNFT1155ListResponse
 type ResponseWrapperListApproveNFT1155ListResponse struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
