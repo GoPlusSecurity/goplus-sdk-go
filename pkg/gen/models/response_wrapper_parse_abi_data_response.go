@@ -16,7 +16,7 @@ import (
 // swagger:model ResponseWrapperParseAbiDataResponse
 type ResponseWrapperParseAbiDataResponse struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message

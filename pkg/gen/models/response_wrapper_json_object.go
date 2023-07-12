@@ -15,7 +15,7 @@ import (
 // swagger:model ResponseWrapperJSONObject
 type ResponseWrapperJSONObject struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message

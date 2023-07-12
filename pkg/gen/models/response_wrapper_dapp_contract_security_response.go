@@ -16,7 +16,7 @@ import (
 // swagger:model ResponseWrapperDappContractSecurityResponse
 type ResponseWrapperDappContractSecurityResponse struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message

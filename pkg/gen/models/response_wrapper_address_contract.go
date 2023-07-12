@@ -16,7 +16,7 @@ import (
 // swagger:model ResponseWrapperAddressContract
 type ResponseWrapperAddressContract struct {
 
-	// Code 1：Success
+	// Code 1: Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
@@ -108,7 +108,7 @@ type ResponseWrapperAddressContractResult struct {
 	DarkwebTransactions string `json:"darkweb_transactions,omitempty"`
 
 	// It describes the data source for this address information.
-	// For example：GoPlus/SlowMist
+	// For example: GoPlus/SlowMist
 	DataSource string `json:"data_source,omitempty"`
 
 	// It describes whether this address is involved in fake KYC.

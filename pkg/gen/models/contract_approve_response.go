@@ -55,7 +55,7 @@ type ContractApproveResponse struct {
 	// "cybercrime" means that this address is involved in cybercrime.
 	// "money_laundering" means that this address is involved in money laundering.
 	// "financial_crime" means that this address is involved in financial crime.
-	// “blacklist_doubt” means that the address is suspected of malicious behavior and is therefore blacklisted.(Notice:Returning an empty array means that no malicious behavior was found at that address.)
+	// "blacklist_doubt" means that the address is suspected of malicious behavior and is therefore blacklisted.(Notice:Returning an empty array means that no malicious behavior was found at that address.)
 	MaliciousBehavior []string `json:"malicious_behavior"`
 
 	// It describes which dapp uses the contract.

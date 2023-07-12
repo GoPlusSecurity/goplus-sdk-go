@@ -62,7 +62,7 @@ for the address token approve list using g e t 1 operation typically these are w
 type AddressTokenApproveListUsingGET1Params struct {
 
 	/*Authorization
-	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
+	  Authorization (test: Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
 
 	*/
 	Authorization *string

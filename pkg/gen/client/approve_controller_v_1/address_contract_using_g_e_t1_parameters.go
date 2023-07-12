@@ -62,7 +62,7 @@ for the address contract using g e t 1 operation typically these are written to 
 type AddressContractUsingGET1Params struct {
 
 	/*Authorization
-	  Authorization (test：Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
+	  Authorization (test: Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
 
 	*/
 	Authorization *string
@@ -75,9 +75,9 @@ type AddressContractUsingGET1Params struct {
 	  The chain_id of the blockchain.
 	"1" means Ethereum;
 	"10" means Optimism;
-	“25” means Cronos;
+	"25" means Cronos;
 	"56" means BSC;
-	“66” means OKC;
+	"66" means OKC;
 	"100" means Gnosis;
 	"128" means HECO;
 	"137" means Polygon;
