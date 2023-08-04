@@ -37,7 +37,9 @@ type ClientService interface {
 }
 
 /*
-AddressNFT1155ApproveListUsingGET1 checks risk of all erc1155 approvals under one e o a
+AddressNFT1155ApproveListUsingGET1 returns the e r c 1155 approvals of an e o a address and associated risk items
+
+Reports the outstanding token approvals issued to ERC-1155 contracts by the given EOA address and associated risk items, including the date that the approval was issued, the allowance of the approval, and the transaction ID issuing the allowance.
 */
 func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155ApproveListUsingGET1Params) (*AddressNFT1155ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -71,7 +73,9 @@ func (a *Client) AddressNFT1155ApproveListUsingGET1(params *AddressNFT1155Approv
 }
 
 /*
-AddressNFT721ApproveListUsingGET1 checks risk of all erc721 approvals under one e o a
+AddressNFT721ApproveListUsingGET1 returns the e r c 721 approvals of an e o a address and associated risk items
+
+Reports the outstanding token approvals issued to ERC-721 contracts by the given EOA address and associated risk items, including the date that the approval was issued, the allowance of the approval, and the transaction ID issuing the allowance.
 */
 func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveListUsingGET1Params) (*AddressNFT721ApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -105,7 +109,9 @@ func (a *Client) AddressNFT721ApproveListUsingGET1(params *AddressNFT721ApproveL
 }
 
 /*
-AddressTokenApproveListUsingGET1 checks risk of all erc20 approvals under one e o a
+AddressTokenApproveListUsingGET1 returns the e r c 20 approvals of an e o a address and associated risk items
+
+Reports the outstanding token approvals issued to ERC-20 contracts by the given EOA address and associated risk items, including the date that the approval was issued, the allowance of the approval, and the transaction ID issuing the allowance.
 */
 func (a *Client) AddressTokenApproveListUsingGET1(params *AddressTokenApproveListUsingGET1Params) (*AddressTokenApproveListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
