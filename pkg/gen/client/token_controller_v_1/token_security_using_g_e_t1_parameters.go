@@ -83,7 +83,9 @@ type TokenSecurityUsingGET1Params struct {
 	"201022" means FON;
 	"42161" means Arbitrum;
 	"43114" means Avalanche;
-	"59140" means Linea;
+	"59144" means Linea Mainet;
+	"59140" means Linea Testnet;
+	"8453" Base;
 	"1666600000" means Harmony;
 	"tron" means Tron.
 
