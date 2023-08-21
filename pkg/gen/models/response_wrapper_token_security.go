@@ -165,6 +165,9 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	// Top10 holders info
 	Holders []*ResponseWrapperTokenSecurityResultAnonHoldersItems0 `json:"holders"`
 
+	// It describes the number of honeypot tokens created by this creator.
+	HoneypotWithSameCreator string `json:"honeypot_with_same_creator,omitempty"`
+
 	// It describes whether the token is an airdrop scam.
 	// "1" means true;
 	// "0" means false;
