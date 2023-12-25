@@ -150,6 +150,9 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	// (2) External call would cause the implementation of this contract to be highly dependent on other external contracts, which may be a potential risk.)
 	ExternalCall string `json:"external_call,omitempty"`
 
+	// fake token
+	FakeToken *ResponseWrapperTokenSecurityResultAnonFakeToken `json:"fake_token,omitempty"`
+
 	// It describes whether the contract has hidden owners. For contract with a hidden owner, developer can still manipulate the contract even if the ownership has been abandoned.
 	// "1" means true;
 	// "0" means false;
@@ -365,6 +368,10 @@ func (m *ResponseWrapperTokenSecurityResultAnon) Validate(formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.validateFakeToken(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHolders(formats); err != nil {
 		res = append(res, err)
 	}
@@ -399,6 +406,24 @@ func (m *ResponseWrapperTokenSecurityResultAnon) validateDex(formats strfmt.Regi
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnon) validateFakeToken(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.FakeToken) { // not required
+		return nil
+	}
+
+	if m.FakeToken != nil {
+		if err := m.FakeToken.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fake_token")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -503,6 +528,41 @@ func (m *ResponseWrapperTokenSecurityResultAnonDexItems0) MarshalBinary() ([]byt
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperTokenSecurityResultAnonDexItems0) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperTokenSecurityResultAnonDexItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonFakeToken It indicates whether the token is a counterfeit of a mainstream asset. (If there is no evidence indicating that it is a counterfeit asset, there will be no return.)
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonFakeToken
+type ResponseWrapperTokenSecurityResultAnonFakeToken struct {
+
+	// If the value is set to 1, and true_token_address is the address of the authentic mainstream asset that the token is imitating on this public chain. If there are multiple mainstream assets with the same name, they will be separated by commas.
+	TrueTokenAddress string `json:"true_token_address,omitempty"`
+
+	// If the value is set to 1, and true_token_address is the address of the authentic mainstream asset that the token is imitating on this public chain. If there are multiple mainstream assets with the same name, they will be separated by commas.
+	Value int32 `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon fake token
+func (m *ResponseWrapperTokenSecurityResultAnonFakeToken) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonFakeToken) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonFakeToken) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonFakeToken
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -638,6 +698,9 @@ func (m *ResponseWrapperTokenSecurityResultAnonHoldersItems0LockedDetailItems0) 
 // swagger:model ResponseWrapperTokenSecurityResultAnonLpHoldersItems0
 type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 
+	// It is an array, decribes nft list
+	NFTList []*ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0 `json:"NFT_list"`
+
 	// It describes the holder address;
 	Address string `json:"address,omitempty"`
 
@@ -665,6 +728,10 @@ type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0 struct {
 func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateNFTList(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLockedDetail(formats); err != nil {
 		res = append(res, err)
 	}
@@ -672,6 +739,31 @@ func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) Validate(formats
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0) validateNFTList(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.NFTList) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NFTList); i++ {
+		if swag.IsZero(m.NFTList[i]) { // not required
+			continue
+		}
+
+		if m.NFTList[i] != nil {
+			if err := m.NFTList[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("NFT_list" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -749,6 +841,51 @@ func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperTokenSecurityResultAnonLpHoldersItems0LockedDetailItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0 response wrapper token security result anon lp holders items0 n f t list items0
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0
+type ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0 struct {
+
+	// "NFT_id" is the NFTID corresponding to that NFT.
+	NFTID string `json:"NFT_id,omitempty"`
+
+	// "NFT_percentage" represents the proportion of that NFT in the total liquidity.
+	// When the LP holder is a lockup address, this information will also appear in the "locked_detail" section.
+	NFTPercentage string `json:"NFT_percentage,omitempty"`
+
+	// "amount" is the liquidity quantity corresponding to the NFT.
+	Amount string `json:"amount,omitempty"`
+
+	// "in_effect" indicates whether the liquidity corresponding to that NFT is effective at the current price.
+	InEffect string `json:"in_effect,omitempty"`
+
+	// "value" is the total USD value corresponding to the NFT.
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon lp holders items0 n f t list items0
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonLpHoldersItems0NFTListItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
