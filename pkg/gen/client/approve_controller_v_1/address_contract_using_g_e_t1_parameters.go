@@ -89,8 +89,9 @@ type AddressContractUsingGET1Params struct {
 	"42161" means Arbitrum;
 	"43114" means Avalanche;
 	"59140" means Linea;
-	"1666600000" means Harmony;
-	"tron" means Tron.
+	"tron" means Tron;
+	"534352" means Scroll;
+	"204" means opBNB;
 
 	*/
 	ChainID *string

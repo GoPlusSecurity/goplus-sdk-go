@@ -83,11 +83,11 @@ type TokenSecurityUsingGET1Params struct {
 	"201022" means FON;
 	"42161" means Arbitrum;
 	"43114" means Avalanche;
-	"59144" means Linea Mainet;
-	"59140" means Linea Testnet;
+	"59144" means Linea Mainnet;
 	"8453" Base;
-	"1666600000" means Harmony;
-	"tron" means Tron.
+	"tron" means Tron;
+	"534352" means Scroll;
+	"204" means opBNB;
 
 	*/
 	ChainID string

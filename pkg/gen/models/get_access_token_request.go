@@ -32,7 +32,7 @@ type GetAccessTokenRequest struct {
 	// Required: true
 	Sign *string `json:"sign"`
 
-	// Quest timestamp (Second)
+	// Quest timestamp (Second), should be within +-1000s around current timestamp
 	// Required: true
 	Time *int64 `json:"time"`
 }
