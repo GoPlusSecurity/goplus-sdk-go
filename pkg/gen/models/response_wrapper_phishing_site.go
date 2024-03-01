@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -16,7 +18,7 @@ import (
 // swagger:model ResponseWrapperPhishingSite
 type ResponseWrapperPhishingSite struct {
 
-	// Code 1: Success
+	// Code 1：Success
 	Code int32 `json:"code,omitempty"`
 
 	// Response message
@@ -87,11 +89,45 @@ type ResponseWrapperPhishingSiteResult struct {
 	PhishingSite int32 `json:"phishing_site,omitempty"`
 
 	// website contract security
-	WebsiteContractSecurity []string `json:"website_contract_security"`
+	WebsiteContractSecurity []*ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0 `json:"website_contract_security"`
 }
 
 // Validate validates this response wrapper phishing site result
 func (m *ResponseWrapperPhishingSiteResult) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateWebsiteContractSecurity(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResult) validateWebsiteContractSecurity(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.WebsiteContractSecurity) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.WebsiteContractSecurity); i++ {
+		if swag.IsZero(m.WebsiteContractSecurity[i]) { // not required
+			continue
+		}
+
+		if m.WebsiteContractSecurity[i] != nil {
+			if err := m.WebsiteContractSecurity[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("result" + "." + "website_contract_security" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -106,6 +142,439 @@ func (m *ResponseWrapperPhishingSiteResult) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperPhishingSiteResult) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperPhishingSiteResult
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0 response wrapper phishing site result website contract security items0
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0 struct {
+
+	// address risk
+	AddressRisk []string `json:"address_risk"`
+
+	// contract address
+	Contract string `json:"contract,omitempty"`
+
+	// It describes whether the holder is a contract "1" means true; "0" means false.
+	IsContract int32 `json:"is_contract,omitempty"`
+
+	// It describes whether this contract is open source.
+	// "1" means true;
+	// "0" means false.(Notice:Un-open-sourced contracts may hide various unknown mechanisms and are extremely risky. When the contract is not open source, we will not be able to detect other risk items.)
+	IsOpenSource int32 `json:"is_open_source,omitempty"`
+
+	// nft risk
+	NftRisk *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk `json:"nft_risk,omitempty"`
+
+	// contract type(erc20, erc721, erc1155)
+	Standard string `json:"standard,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateNftRisk(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0) validateNftRisk(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.NftRisk) { // not required
+		return nil
+	}
+
+	if m.NftRisk != nil {
+		if err := m.NftRisk.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nft_risk")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk nft check risk
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk struct {
+
+	// It describes whether this contract is open source.
+	// "1" means true;
+	// "0" means false.(Notice:Un-open-sourced contracts may hide various unknown mechanisms and are extremely risky. When the contract is not open source, we will not be able to detect other risk items.)
+	NftOpenSource int32 `json:"nft_open_source,omitempty"`
+
+	// It describes whether this NFT contract has a proxy contract.
+	// "1" means true;
+	// "0" means false;
+	// "Null" means unknown.(Notice:(1) When "is_open_source":"0", it will return "null".
+	// (2) Most Proxy contracts are accompanied by modifiable implementation contracts, and implementation contracts may contain significant potential risk.)
+	NftProxy int32 `json:"nft_proxy,omitempty"`
+
+	// It describes whether this NFT owner can bypass the maximum amount of minting specified in the contract, and continue to mint NFTs beyond this limit.
+	// "1" means true;
+	// "0" means false;
+	// "Null" means unknown.(Notice:Oversupply minting refers to the existence of a special mint method in the NFT contract - the owner can bypass the maximum amount of minting specified in the contract, and continue to mint NFTs beyond this limit.)
+	OversupplyMinting int32 `json:"oversupply_minting,omitempty"`
+
+	// privileged burn
+	PrivilegedBurn *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn `json:"privileged_burn,omitempty"`
+
+	// privileged minting
+	PrivilegedMinting *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting `json:"privileged_minting,omitempty"`
+
+	// It describes whether the NFT contract can restrict the approval, resulting in NFT can not be traded on the NFT DEX.
+	// "1" means true;
+	// "0" means false;
+	// "Null" means unknown.(Notice:If this risk exists, it means that users will not be able to trade the NFT on the exchange and only privileged users in the whitelist will be able to trade normally.)
+	RestrictedApproval int32 `json:"restricted_approval,omitempty"`
+
+	// self destruct
+	SelfDestruct *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct `json:"self_destruct,omitempty"`
+
+	// transfer without approval
+	TransferWithoutApproval *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval `json:"transfer_without_approval,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0 nft risk
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePrivilegedBurn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrivilegedMinting(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSelfDestruct(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTransferWithoutApproval(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) validatePrivilegedBurn(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PrivilegedBurn) { // not required
+		return nil
+	}
+
+	if m.PrivilegedBurn != nil {
+		if err := m.PrivilegedBurn.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nft_risk" + "." + "privileged_burn")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) validatePrivilegedMinting(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PrivilegedMinting) { // not required
+		return nil
+	}
+
+	if m.PrivilegedMinting != nil {
+		if err := m.PrivilegedMinting.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nft_risk" + "." + "privileged_minting")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) validateSelfDestruct(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.SelfDestruct) { // not required
+		return nil
+	}
+
+	if m.SelfDestruct != nil {
+		if err := m.SelfDestruct.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nft_risk" + "." + "self_destruct")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) validateTransferWithoutApproval(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TransferWithoutApproval) { // not required
+		return nil
+	}
+
+	if m.TransferWithoutApproval != nil {
+		if err := m.TransferWithoutApproval.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nft_risk" + "." + "transfer_without_approval")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRisk
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn It describes whether the NFT owner can burn others NFT.(Notice:Privileged_burn means that the owner can burn others' NFTs directly through the method.)
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn struct {
+
+	// Owner_address describes the owner address.
+	// null: the owner address cannot be fetched.
+	OwnerAddress string `json:"owner_address,omitempty"`
+
+	// "blackhole" : the owner is a blackhole address.
+	// "contract" : the owner is a contract.
+	// "eoa" : the owner is a common address (eoa).
+	// "multi-address":the owner is an array/list.
+	// null: the address is not detected.
+	OwnerType string `json:"owner_type,omitempty"`
+
+	// The "value" describes the status of the risk.
+	// null: the contract is not open source or there is a proxy, it is not possible to detect whether the risk exists. -1: the risk is detected but the ownership give up. If the detection of a code vulnerability, it can also be considered risk-free.
+	// 0: the risk is not detected.
+	// 1: the risk is detected, and the owner address is a common address (EOA), then it can be said that there is a clear risk.
+	// 2: The risk is detected, but the owner address is a contract address, the risk is not significant.
+	// 3: The risk is detected, but the owner address is not detectable / or an array.
+	//
+	Value int32 `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0 nft risk privileged burn
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedBurn
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting It describes whether the NFT contract has  minting methods which can only be triggered by an address with special privileges.
+// (Notice:Some minting methods can only be triggered by an address with special privileges. Generally speaking, these are usually for the owner to mint.)
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting struct {
+
+	// Owner_address describes the owner address.
+	// null: the owner address cannot be fetched.
+	OwnerAddress string `json:"owner_address,omitempty"`
+
+	// "blackhole" : the owner is a blackhole address.
+	// "contract" : the owner is a contract.
+	// "eoa" : the owner is a common address (eoa).
+	// "multi-address":the owner is an array/list.
+	// null: the address is not detected.
+	OwnerType string `json:"owner_type,omitempty"`
+
+	// The "value" describes the status of the risk.
+	// null: the contract is not open source or there is a proxy, it is not possible to detect whether the risk exists. -1: the risk is detected but the ownership give up. If the detection of a code vulnerability, it can also be considered risk-free.
+	// 0: the risk is not detected.
+	// 1: the risk is detected, and the owner address is a common address (EOA), then it can be said that there is a clear risk.
+	// 2: The risk is detected, but the owner address is a contract address, the risk is not significant.
+	// 3: The risk is detected, but the owner address is not detectable / or an array.
+	//
+	Value int32 `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0 nft risk privileged minting
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskPrivilegedMinting
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct { value: owner_address: owner_type }It describes whether this NFT contract can self destruct.
+// (Notice:When the self-destruct function is triggered, this contract will be destroyed, all functions will be unavailable, and all related assets will be erased.)
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct struct {
+
+	// Owner_address describes the owner address.
+	// null: the owner address cannot be fetched.
+	OwnerAddress string `json:"owner_address,omitempty"`
+
+	// "blackhole" : the owner is a blackhole address.
+	// "contract" : the owner is a contract.
+	// "eoa" : the owner is a common address (eoa).
+	// "multi-address":the owner is an array/list.
+	// null: the address is not detected.
+	OwnerType string `json:"owner_type,omitempty"`
+
+	// The "value" describes the status of the risk.
+	// null: the contract is not open source or there is a proxy, it is not possible to detect whether the risk exists. -1: the risk is detected but the ownership give up. If the detection of a code vulnerability, it can also be considered risk-free.
+	// 0: the risk is not detected.
+	// 1: the risk is detected, and the owner address is a common address (EOA), then it can be said that there is a clear risk.
+	// 2: The risk is detected, but the owner address is a contract address, the risk is not significant.
+	// 3: The risk is detected, but the owner address is not detectable / or an array.
+	//
+	Value int32 `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0 nft risk self destruct
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskSelfDestruct
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval It describes whether the NFT owner can transfer NFT without approval.(Notice:Transfer_without_approval generally means the scammer does not need to get approvals to transfer another address's NFT.
+// One typical example is sleep_minting. Sleep_minting means that the scammer will first add the NFT to a well-known wallet address and then retrieve the NFT. After the value of the NFT has appreciated , it will be put back on the market.)
+//
+// swagger:model ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval
+type ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval struct {
+
+	// Owner_address describes the owner address.
+	// null: the owner address cannot be fetched.
+	OwnerAddress string `json:"owner_address,omitempty"`
+
+	// "blackhole" : the owner is a blackhole address.
+	// "contract" : the owner is a contract.
+	// "eoa" : the owner is a common address (eoa).
+	// "multi-address":the owner is an array/list.
+	// null: the address is not detected.
+	OwnerType string `json:"owner_type,omitempty"`
+
+	// The "value" describes the status of the risk.
+	// null: the contract is not open source or there is a proxy, it is not possible to detect whether the risk exists. -1: the risk is detected but the ownership give up. If the detection of a code vulnerability, it can also be considered risk-free.
+	// 0: the risk is not detected.
+	// 1: the risk is detected, and the owner address is a common address (EOA), then it can be said that there is a clear risk.
+	// 2: The risk is detected, but the owner address is a contract address, the risk is not significant.
+	// 3: The risk is detected, but the owner address is not detectable / or an array.
+	//
+	Value int32 `json:"value,omitempty"`
+}
+
+// Validate validates this response wrapper phishing site result website contract security items0 nft risk transfer without approval
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperPhishingSiteResultWebsiteContractSecurityItems0NftRiskTransferWithoutApproval
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
