@@ -92,6 +92,8 @@ type AddressContractUsingGET1Params struct {
 	"tron" means Tron;
 	"534352" means Scroll;
 	"204" means opBNB;
+	"solana" means Solana;
+	 Solana and Tron address are case-sensitive;
 
 	*/
 	ChainID *string
