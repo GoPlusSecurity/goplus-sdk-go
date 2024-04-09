@@ -119,6 +119,9 @@ type ResponseWrapperAddressContractResult struct {
 	// It describes whether this contract contains standard interfaces that do not conform the requirements of the standard protocol.(Notice:Fake Standard Interface is mostly seen in scam assets.)
 	FakeStandardInterface string `json:"fake_standard_interface,omitempty"`
 
+	// It indicates whether the token is a counterfeit of a mainstream asset.
+	FakeToken string `json:"fake_token,omitempty"`
+
 	// It describes whether this address is involved in financial crime.
 	// "1" means true;
 	// "0" means false.
