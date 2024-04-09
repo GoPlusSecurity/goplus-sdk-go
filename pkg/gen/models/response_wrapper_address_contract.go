@@ -116,10 +116,16 @@ type ResponseWrapperAddressContractResult struct {
 	// "0" means false.
 	FakeKyc string `json:"fake_kyc,omitempty"`
 
+	// It describes whether this contract contains standard interfaces that do not conform the requirements of the standard protocol.(Notice:Fake Standard Interface is mostly seen in scam assets.)
+	FakeStandardInterface string `json:"fake_standard_interface,omitempty"`
+
 	// It describes whether this address is involved in financial crime.
 	// "1" means true;
 	// "0" means false.
 	FinancialCrime string `json:"financial_crime,omitempty"`
+
+	// It describes whether this address is cheating other user's gas fee to mint other assets.(Notice:Any interaction with such addresses may result in loss of property.)
+	GasAbuse string `json:"gas_abuse,omitempty"`
 
 	// It describes whether this address is related to honeypot tokens or has created scam tokens.
 	// "1" means true;
@@ -149,6 +155,9 @@ type ResponseWrapperAddressContractResult struct {
 	// "1" means true;
 	// "0" means false.
 	PhishingActivities string `json:"phishing_activities,omitempty"`
+
+	// It describes whether this address/contract has been deployed more than onces, and can be deployed again.(Notice:If a contract can be reinited, the developer can change the contract code whenever he wants.)
+	Reinit string `json:"reinit,omitempty"`
 
 	// It describes whether this address is coin sanctioned address.
 	// "1" means true;
