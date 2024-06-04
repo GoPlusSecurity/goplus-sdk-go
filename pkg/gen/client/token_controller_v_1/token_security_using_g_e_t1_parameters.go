@@ -72,7 +72,6 @@ type TokenSecurityUsingGET1Params struct {
 	"10" means Optimism;
 	"25" means Cronos;
 	"56" means BSC;
-	"66" means OKC;
 	"100" means Gnosis;
 	"128" means HECO;
 	"137" means Polygon;
@@ -88,6 +87,15 @@ type TokenSecurityUsingGET1Params struct {
 	"tron" means Tron;
 	"534352" means Scroll;
 	"204" means opBNB;
+	"5000" means Mantle;
+	"42766" means ZKFair;
+	"81457" means Blast;
+	"169" means Manta Pacific;
+	"80085" means Berachain Artio Testnet;
+	"4200" means Merlin;
+	"200901" means Bitlayer Mainnet;
+	"810180" means zkLink Nova;
+	"196" means X Layer Mainnet;
 
 	*/
 	ChainID string
