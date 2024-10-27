@@ -274,7 +274,7 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	// (2) Sometimes, when "is_proxy": "1", there will be no return.
 	// (3) Ownership is mostly used to adjust the parameters and status of the contract, such as minting, modification of slippage, suspension of trading, setting blacklist, etc.
 	// When the contract does not have an owner (or if the owner is a black hole address) and the owner cannot be retrieved, these functions will most likely be disabled.)
-	OwnerAddress string `json:"owner_address,omitempty"`
+	OwnerAddress *string `json:"owner_address,omitempty"`
 
 	// It describes the balance of the contract owner.
 	// Example: "owner_balance": "100000000".
