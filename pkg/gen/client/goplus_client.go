@@ -15,9 +15,13 @@ import (
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/contract_abi_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/dapp_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/defi_controller"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/lock_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/nft_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_controller_v_1"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_security_api_for_solana_beta"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/token_security_api_for_sui"
+	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/transaction_simulation_for_solana"
 	"github.com/GoPlusSecurity/goplus-sdk-go/pkg/gen/client/website_controller"
 )
 
@@ -68,9 +72,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Goplus {
 	cli.ContractAbiController = contract_abi_controller.New(transport, formats)
 	cli.DappController = dapp_controller.New(transport, formats)
 	cli.DefiController = defi_controller.New(transport, formats)
+	cli.LockController = lock_controller.New(transport, formats)
 	cli.NftController = nft_controller.New(transport, formats)
 	cli.TokenController = token_controller.New(transport, formats)
 	cli.TokenControllerv1 = token_controller_v_1.New(transport, formats)
+	cli.TokenSecurityAPIForSolanaBeta = token_security_api_for_solana_beta.New(transport, formats)
+	cli.TokenSecurityAPIForSui = token_security_api_for_sui.New(transport, formats)
+	cli.TransactionSimulationForSolana = transaction_simulation_for_solana.New(transport, formats)
 	cli.WebsiteController = website_controller.New(transport, formats)
 	return cli
 }
@@ -126,11 +134,19 @@ type Goplus struct {
 
 	DefiController defi_controller.ClientService
 
+	LockController lock_controller.ClientService
+
 	NftController nft_controller.ClientService
 
 	TokenController token_controller.ClientService
 
 	TokenControllerv1 token_controller_v_1.ClientService
+
+	TokenSecurityAPIForSolanaBeta token_security_api_for_solana_beta.ClientService
+
+	TokenSecurityAPIForSui token_security_api_for_sui.ClientService
+
+	TransactionSimulationForSolana transaction_simulation_for_solana.ClientService
 
 	WebsiteController website_controller.ClientService
 
@@ -145,8 +161,12 @@ func (c *Goplus) SetTransport(transport runtime.ClientTransport) {
 	c.ContractAbiController.SetTransport(transport)
 	c.DappController.SetTransport(transport)
 	c.DefiController.SetTransport(transport)
+	c.LockController.SetTransport(transport)
 	c.NftController.SetTransport(transport)
 	c.TokenController.SetTransport(transport)
 	c.TokenControllerv1.SetTransport(transport)
+	c.TokenSecurityAPIForSolanaBeta.SetTransport(transport)
+	c.TokenSecurityAPIForSui.SetTransport(transport)
+	c.TransactionSimulationForSolana.SetTransport(transport)
 	c.WebsiteController.SetTransport(transport)
 }

@@ -64,7 +64,7 @@ for the get abi data info using p o s t operation typically these are written to
 type GetAbiDataInfoUsingPOSTParams struct {
 
 	/*Authorization
-	  Authorization (test: Bearer 81|9ihH8JzEuFu4MQ9DjWmH5WrNCPW...)
+	  Authorization token in the format: Bearer <token> (e.g., Bearer eyJsZXZlbCI6NSwiYXBwTmFtZSI6ImF2cyIsImFwcEtleSI6IjFaW...)
 
 	*/
 	Authorization *string
