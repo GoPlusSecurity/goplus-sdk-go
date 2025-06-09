@@ -94,7 +94,7 @@ type ResponseWrapperSolanaTokenSecurityResultAnon struct {
 	Closable *ResponseWrapperSolanaTokenSecurityResultAnonClosable `json:"closable,omitempty"`
 
 	// Contains information about the token creators.
-	Creator []*ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0 `json:"creator"`
+	Creators []*ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0 `json:"creators"`
 
 	// The default state of newly created accounts. "0" for Uninitialized, "1" for Initialized, "2" for Frozen.(Notice: Uninitialized (0): The token is newly created and not ready for use. It cannot perform any token operations and typically needs to be initialized to become active.
 	// Initialized (1): The token is fully ready for use and can engage in normal token transactions. Most token operations require the account to be in this state.
@@ -156,7 +156,7 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnon) Validate(formats strfmt.R
 		res = append(res, err)
 	}
 
-	if err := m.validateCreator(formats); err != nil {
+	if err := m.validateCreators(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -250,21 +250,21 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnon) validateClosable(formats 
 	return nil
 }
 
-func (m *ResponseWrapperSolanaTokenSecurityResultAnon) validateCreator(formats strfmt.Registry) error {
+func (m *ResponseWrapperSolanaTokenSecurityResultAnon) validateCreators(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Creator) { // not required
+	if swag.IsZero(m.Creators) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Creator); i++ {
-		if swag.IsZero(m.Creator[i]) { // not required
+	for i := 0; i < len(m.Creators); i++ {
+		if swag.IsZero(m.Creators[i]) { // not required
 			continue
 		}
 
-		if m.Creator[i] != nil {
-			if err := m.Creator[i].Validate(formats); err != nil {
+		if m.Creators[i] != nil {
+			if err := m.Creators[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("creator" + "." + strconv.Itoa(i))
+					return ve.ValidateName("creators" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -745,10 +745,10 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnonClosableAuthorityItems0) Un
 	return nil
 }
 
-// ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0 response wrapper solana token security result anon creator items0
+// ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0 response wrapper solana token security result anon creators items0
 //
-// swagger:model ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0
-type ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0 struct {
+// swagger:model ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0
+type ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0 struct {
 
 	// Address of the creator.
 	Address string `json:"address,omitempty"`
@@ -757,13 +757,13 @@ type ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0 struct {
 	MaliciousAddress int32 `json:"malicious_address,omitempty"`
 }
 
-// Validate validates this response wrapper solana token security result anon creator items0
-func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this response wrapper solana token security result anon creators items0
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0) MarshalBinary() ([]byte, error) {
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -771,8 +771,8 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0) MarshalBinar
 }
 
 // UnmarshalBinary interface implementation
-func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0) UnmarshalBinary(b []byte) error {
-	var res ResponseWrapperSolanaTokenSecurityResultAnonCreatorItems0
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperSolanaTokenSecurityResultAnonCreatorsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
