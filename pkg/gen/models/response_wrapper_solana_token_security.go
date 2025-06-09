@@ -141,7 +141,7 @@ type ResponseWrapperSolanaTokenSecurityResultAnon struct {
 	TransferHookUpgradable *ResponseWrapperSolanaTokenSecurityResultAnonTransferHookUpgradable `json:"transfer_hook_upgradable,omitempty"`
 
 	// If the token is a famous and trustworthy one. "1" means yes.
-	TrustedToken string `json:"trusted_token,omitempty"`
+	TrustedToken int32 `json:"trusted_token,omitempty"`
 }
 
 // Validate validates this response wrapper solana token security result anon
@@ -889,6 +889,9 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnonDefaultAccountStateUpgradab
 // swagger:model ResponseWrapperSolanaTokenSecurityResultAnonDexItems0
 type ResponseWrapperSolanaTokenSecurityResultAnonDexItems0 struct {
 
+	// Percentage of burned LP
+	BurnPercent float64 `json:"burn_percent,omitempty"`
+
 	// day
 	Day *ResponseWrapperSolanaTokenSecurityResultAnonDexItems0Day `json:"day,omitempty"`
 
@@ -1243,6 +1246,13 @@ type ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0 struct {
 	// Amount of tokens held.
 	Balance string `json:"balance,omitempty"`
 
+	// It describes whether the tokens owned by the holder are locked "1" means true; "0" means false;
+	// (3) 'tag' describes the address's public tag. Example:Burn (Notice:About "locked":We only support the token lock addresses or black hole addresses that we have included. )
+	IsLocked int32 `json:"is_locked,omitempty"`
+
+	// It is an array, decribes lock position info of this holder, only shows when "locked":1. This Array may contain multiple objects for multiple locking info. (Notice:When "locked":0, or lock address is a black hole address,  "locked_detail" will be no return.)
+	LockedDetail []*ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0 `json:"locked_detail"`
+
 	// Percentage of total supply held.
 	Percent string `json:"percent,omitempty"`
 
@@ -1255,6 +1265,40 @@ type ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0 struct {
 
 // Validate validates this response wrapper solana token security result anon holders items0
 func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLockedDetail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0) validateLockedDetail(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LockedDetail) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LockedDetail); i++ {
+		if swag.IsZero(m.LockedDetail[i]) { // not required
+			continue
+		}
+
+		if m.LockedDetail[i] != nil {
+			if err := m.LockedDetail[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("locked_detail" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -1269,6 +1313,44 @@ func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0) MarshalBinar
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0 response wrapper solana token security result anon holders items0 locked detail items0
+//
+// swagger:model ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0
+type ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0 struct {
+
+	// "amount" describes the number of token locked
+	Amount string `json:"amount,omitempty"`
+
+	// "end_time" describes when the token will be unlocked
+	EndTime string `json:"end_time,omitempty"`
+
+	// "opt_time" describes when the token was locked
+	OptTime string `json:"opt_time,omitempty"`
+}
+
+// Validate validates this response wrapper solana token security result anon holders items0 locked detail items0
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperSolanaTokenSecurityResultAnonHoldersItems0LockedDetailItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
