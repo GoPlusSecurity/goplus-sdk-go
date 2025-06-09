@@ -18,7 +18,7 @@ import (
 type TaNftLockerLockInfoobject struct {
 
 	// 解锁时间戳
-	EndTime int32 `json:"endTime,omitempty"`
+	EndTime int64 `json:"endTime,omitempty"`
 
 	// lock id
 	LockID string `json:"lockId,omitempty"`

@@ -21,7 +21,7 @@ type TaTokenLockerLockInfoobject struct {
 	Amount string `json:"amount,omitempty"`
 
 	// 解锁时间戳
-	EndTime int32 `json:"endTime,omitempty"`
+	EndTime int64 `json:"endTime,omitempty"`
 
 	// 是否为lp token -1:未知、0:否、1:是
 	IsLpToken int32 `json:"isLpToken,omitempty"`
