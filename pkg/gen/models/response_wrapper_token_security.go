@@ -95,6 +95,9 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 	// (3)When the anti whale value is set to a very small value, all tradinge would fail.)
 	AntiWhaleModifiable string `json:"anti_whale_modifiable,omitempty"`
 
+	// b20 token
+	B20Token *ResponseWrapperTokenSecurityResultAnonB20Token `json:"b20_token,omitempty"`
+
 	// It describes the tax when buying the token.
 	// Example: "buy_tax": 0.1%.
 	// No return means unknown.(Notice:(1) When "is_in_dex": "0", there will be no return.
@@ -364,6 +367,10 @@ type ResponseWrapperTokenSecurityResultAnon struct {
 func (m *ResponseWrapperTokenSecurityResultAnon) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateB20Token(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDex(formats); err != nil {
 		res = append(res, err)
 	}
@@ -383,6 +390,24 @@ func (m *ResponseWrapperTokenSecurityResultAnon) Validate(formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnon) validateB20Token(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.B20Token) { // not required
+		return nil
+	}
+
+	if m.B20Token != nil {
+		if err := m.B20Token.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -490,6 +515,608 @@ func (m *ResponseWrapperTokenSecurityResultAnon) MarshalBinary() ([]byte, error)
 // UnmarshalBinary interface implementation
 func (m *ResponseWrapperTokenSecurityResultAnon) UnmarshalBinary(b []byte) error {
 	var res ResponseWrapperTokenSecurityResultAnon
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20Token It describes the B20 token information. (Notice: Only returned when the token is a B20 token and new account.)
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20Token
+type ResponseWrapperTokenSecurityResultAnonB20Token struct {
+
+	// b20 info
+	B20Info *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info `json:"b20_info,omitempty"`
+
+	// It describes whether the token is a B20 token.
+	// "1" means true;
+	// "0" means false;
+	IsB20Token string `json:"is_b20_token,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token
+func (m *ResponseWrapperTokenSecurityResultAnonB20Token) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateB20Info(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20Token) validateB20Info(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.B20Info) { // not required
+		return nil
+	}
+
+	if m.B20Info != nil {
+		if err := m.B20Info.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20Token) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20Token) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20Token
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20Info It describes the detailed B20 token permission information.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20Info
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20Info struct {
+
+	// blacklist
+	Blacklist *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist `json:"blacklist,omitempty"`
+
+	// cannot buy
+	CannotBuy *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy `json:"cannot_buy,omitempty"`
+
+	// cannot sell
+	CannotSell *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell `json:"cannot_sell,omitempty"`
+
+	// metadata modifiable
+	MetadataModifiable *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable `json:"metadata_modifiable,omitempty"`
+
+	// mintable
+	Mintable *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable `json:"mintable,omitempty"`
+
+	// owner change balance
+	OwnerChangeBalance *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance `json:"owner_change_balance,omitempty"`
+
+	// transfer pausable
+	TransferPausable *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable `json:"transfer_pausable,omitempty"`
+
+	// whitelist
+	Whitelist *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist `json:"whitelist,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBlacklist(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCannotBuy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCannotSell(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadataModifiable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMintable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwnerChangeBalance(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTransferPausable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWhitelist(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateBlacklist(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Blacklist) { // not required
+		return nil
+	}
+
+	if m.Blacklist != nil {
+		if err := m.Blacklist.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "blacklist")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateCannotBuy(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CannotBuy) { // not required
+		return nil
+	}
+
+	if m.CannotBuy != nil {
+		if err := m.CannotBuy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "cannot_buy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateCannotSell(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CannotSell) { // not required
+		return nil
+	}
+
+	if m.CannotSell != nil {
+		if err := m.CannotSell.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "cannot_sell")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateMetadataModifiable(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.MetadataModifiable) { // not required
+		return nil
+	}
+
+	if m.MetadataModifiable != nil {
+		if err := m.MetadataModifiable.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "metadata_modifiable")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateMintable(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Mintable) { // not required
+		return nil
+	}
+
+	if m.Mintable != nil {
+		if err := m.Mintable.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "mintable")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateOwnerChangeBalance(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.OwnerChangeBalance) { // not required
+		return nil
+	}
+
+	if m.OwnerChangeBalance != nil {
+		if err := m.OwnerChangeBalance.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "owner_change_balance")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateTransferPausable(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TransferPausable) { // not required
+		return nil
+	}
+
+	if m.TransferPausable != nil {
+		if err := m.TransferPausable.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "transfer_pausable")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) validateWhitelist(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Whitelist) { // not required
+		return nil
+	}
+
+	if m.Whitelist != nil {
+		if err := m.Whitelist.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("b20_token" + "." + "b20_info" + "." + "whitelist")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20Info) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20Info
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist It describes the blacklist permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist struct {
+
+	// It describes the admin addresses who have the blacklist permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the blacklist permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info blacklist
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoBlacklist
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy It describes the cannot_buy permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy struct {
+
+	// It describes the admin addresses who have the cannot_buy permission.
+	// Example: []
+	Admin []string `json:"admin"`
+
+	// It describes whether the cannot_buy permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info cannot buy
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotBuy
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell It describes the cannot_sell permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell struct {
+
+	// It describes the admin addresses who have the cannot_sell permission.
+	// Example: []
+	Admin []string `json:"admin"`
+
+	// It describes whether the cannot_sell permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info cannot sell
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoCannotSell
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable It describes the metadata_modifiable permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable struct {
+
+	// It describes the admin addresses who have the metadata_modifiable permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the metadata_modifiable permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info metadata modifiable
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMetadataModifiable
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable It describes the mintable permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable struct {
+
+	// It describes the admin addresses who have the mintable permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the mintable permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info mintable
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoMintable
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance It describes the owner_change_balance permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance struct {
+
+	// It describes the admin addresses who have the owner_change_balance permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the owner_change_balance permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info owner change balance
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoOwnerChangeBalance
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable It describes the transfer_pausable permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable struct {
+
+	// It describes the admin addresses who have the transfer_pausable permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the transfer_pausable permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info transfer pausable
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoTransferPausable
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist It describes the whitelist permission of the B20 token.
+//
+// swagger:model ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist
+type ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist struct {
+
+	// It describes the admin addresses who have the whitelist permission.
+	// Example: ["0x71ae788403067678fb509f1a018ce5cb50bca444"]
+	Admin []string `json:"admin"`
+
+	// It describes whether the whitelist permission is enabled.
+	// "1" means enabled;
+	// "0" means disabled;
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this response wrapper token security result anon b20 token b20 info whitelist
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist) UnmarshalBinary(b []byte) error {
+	var res ResponseWrapperTokenSecurityResultAnonB20TokenB20InfoWhitelist
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
