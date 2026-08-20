@@ -27,11 +27,51 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	GetNftLockerLockInfosListUsingGET(params *GetNftLockerLockInfosListUsingGETParams) (*GetNftLockerLockInfosListUsingGETOK, error)
+
 	GetNftLockersUsingGET(params *GetNftLockersUsingGETParams) (*GetNftLockersUsingGETOK, error)
 
 	GetTokenLockersUsingGET(params *GetTokenLockersUsingGETParams) (*GetTokenLockersUsingGETOK, error)
 
+	GetV4NftLockerLockInfosListUsingGET(params *GetV4NftLockerLockInfosListUsingGETParams) (*GetV4NftLockerLockInfosListUsingGETOK, error)
+
+	GetV4NftLockersUsingGET(params *GetV4NftLockersUsingGETParams) (*GetV4NftLockersUsingGETOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+GetNftLockerLockInfosListUsingGET gets lpv3 locker infos
+*/
+func (a *Client) GetNftLockerLockInfosListUsingGET(params *GetNftLockerLockInfosListUsingGETParams) (*GetNftLockerLockInfosListUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNftLockerLockInfosListUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getNftLockerLockInfosListUsingGET",
+		Method:             "GET",
+		PathPattern:        "/open/api/v1/locks/lpv3s",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetNftLockerLockInfosListUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetNftLockerLockInfosListUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNftLockerLockInfosListUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -99,6 +139,74 @@ func (a *Client) GetTokenLockersUsingGET(params *GetTokenLockersUsingGETParams) 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getTokenLockersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV4NftLockerLockInfosListUsingGET gets lpv4 locker infos
+*/
+func (a *Client) GetV4NftLockerLockInfosListUsingGET(params *GetV4NftLockerLockInfosListUsingGETParams) (*GetV4NftLockerLockInfosListUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV4NftLockerLockInfosListUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getV4NftLockerLockInfosListUsingGET",
+		Method:             "GET",
+		PathPattern:        "/open/api/v1/locks/lpv4s",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV4NftLockerLockInfosListUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV4NftLockerLockInfosListUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV4NftLockerLockInfosListUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV4NftLockersUsingGET gets v4 nft locker info
+*/
+func (a *Client) GetV4NftLockersUsingGET(params *GetV4NftLockersUsingGETParams) (*GetV4NftLockersUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV4NftLockersUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getV4NftLockersUsingGET",
+		Method:             "GET",
+		PathPattern:        "/open/api/v1/locks/lpv4",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV4NftLockersUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV4NftLockersUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV4NftLockersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
